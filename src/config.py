@@ -49,7 +49,7 @@ class ClassConfiguration:
 
     def __init__(self, scenarioName, Precision_BLD, Precision_EXP, Precision_THN):
         
-        self.psep =  "\\" 
+        self.psep =  "/" 
         # Path to current working directory
         self.path_Cwd = os.getcwd() + self.psep
 

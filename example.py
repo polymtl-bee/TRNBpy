@@ -1,17 +1,5 @@
-# local
-from   config         import (ClassConfiguration)
-from   src._Logging   import logger, log_recap
-import src._TranslateToB18      as convert
-import src.S1_SiteDataBuilder   as sitedatabuilder
-import src.S2_JsonBuilder       as jsonbuilder
-import src.S3_NoiseBuilder      as noisebuilder
-import src.S4_DeckBuilder       as deckbuilder
-import src.S6_LoadBuilder       as loadbuilder
-import src.S8_ThnBuilder        as thnbuilder
-# Packages
-import os                       # To manage cwd path and access files in dir.
-import subprocess               # To run the TRNSYS simulation.
-import time                     # To check time
+# import TRNBpy
+from src.TRNBby import *
 
 # ===========================================================================
 # Preparatory Steps =========================================================
@@ -20,7 +8,75 @@ import time                     # To check time
 #  Create site data function (used for detailed approach, to generate surfaces of each spacetype for each building, subbuilding, floor)
 
 # Work in progress automated simulation of deck
-def main_3_SimmulateModels(c):
+
+def Get_c(scenario, Precision_THN):
+
+    if "detailed" in scenario:
+        Precision_BLD="detailed"
+    elif "tailored" in scenario:
+        Precision_BLD="tailored"
+    else:
+        Precision_BLD="prototype"
+    if ("val" in scenario) or ("sch" in scenario) or ("sto" in scenario) or ("tset" in scenario):
+        Precision_EXP = "stochastic"
+    elif ("var" in scenario):
+        Precision_EXP = "variable"
+    else:
+        Precision_EXP = "determinist"
+    
+    c = ClassConfiguration(scenarioName=scenario,    # Folder name.  Windows my\\path but Linux my/ 
+                       Precision_BLD=Precision_BLD,             # "detailed" - "tailored" - "prototype"
+                       Precision_EXP=Precision_EXP,          # "determinist" - "variable" - "stochastic"
+                       Precision_THN=Precision_THN)   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
+    c._load_keys()
+    return c
+
+def main_1_BuildDCK(c):
+    # Step 1: Preparation of spacetype ------------
+    logger.info("===============================================")
+    logger.info("Step 1 - Preparation of spacetype =============")
+    logger.info("===============================================")
+    print("Step 1 - Preparation of spacetype")
+    sitedatabuilder._loadAllSchedules_InAllSpacetypes(c)
+    logger.info(">> All good...")
+
+    # Step 2 : Generate JSON Building file --------
+    logger.info("===============================================")
+    logger.info("Step 2 - Generate JSON Building file ==========")
+    logger.info("===============================================")
+    print("Step 2 - Generate JSON Building file")
+    jsonbuilder._BuildJSONFile(c)
+    logger.info(">> All good...")
+
+    # Step 3 : Noise generation -------------------
+    logger.info("===============================================")
+    logger.info("Step 3 - Noise generation =====================")
+    logger.info("===============================================")
+    if c.Precision_EXP == "stochastic":
+        print("Step 3 - Noise generation: For non-deterministic approaches, add noise & variability to some values")
+        if ("sto" in s) or ("val" in s): 
+            noisebuilder.noiseValues(c)
+        if ("sto" in s) or ("sch" in s):
+            noisebuilder.noiseSchedules(c)
+        if ("sto" in s) or ("tset" in s):
+            noisebuilder.noiseTsetpoint(c)
+    else:
+        print("Step 3 - Skipping noise generation")
+
+    logger.info(">> All good...")
+
+    # Step 4 : Generate DECK Building file --------
+    logger.info("===============================================")
+    logger.info("Step 4 - DECK Generation ======================")
+    logger.info("===============================================")
+    print("Step 4.1 - Convert JSON Building file to B18")
+    convert.convert_FromJSON_ToB18(c)
+
+    print("Step 4.2 - Deck generation")
+    deckbuilder.generate_AllDeckForSimulations(c)
+    logger.info(">> All good...")
+
+def main_2_SimmulateModels(c):
     """
     """
     logger.info("STARTING STEP 3 ===========================")
@@ -77,103 +133,7 @@ def main_3_SimmulateModels(c):
     logger.info(str(elapsed_time))
     """
 
-def Get_c(scenario, Precision_THN):
-
-    if "detailed" in scenario:
-        Precision_BLD="detailed"
-    elif "tailored" in scenario:
-        Precision_BLD="tailored"
-    else:
-        Precision_BLD="prototype"
-    if ("val" in scenario) or ("sch" in scenario) or ("sto" in scenario) or ("tset" in scenario):
-        Precision_EXP = "stochastic"
-    elif ("var" in scenario):
-        Precision_EXP = "variable"
-    else:
-        Precision_EXP = "determinist"
-    
-    c = ClassConfiguration(scenarioName=scenario,    # Folder name.  Windows my\\path but Linux my/ 
-                       Precision_BLD=Precision_BLD,             # "detailed" - "tailored" - "prototype"
-                       Precision_EXP=Precision_EXP,          # "determinist" - "variable" - "stochastic"
-                       Precision_THN=Precision_THN)   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
-    c._load_keys()
-    return c
-
-"""sitedatabuilder._make_Site(c)"""
-"""NamurSiteBuilder_v2(c)"""
-"""sitedatabuilder._make_Buildings(c)"""
-"""main_3_SimmulateModels(c)"""
-
-# ===========================================================================
-# Main workflow =============================================================
-# ===========================================================================
-
-# Step 0 : Config ------------------------------
-
-slist = [ "data\\RTH_detailed_det\\", "data\\RTH_tailored\\", "data\\RTH_prototype\\", "data\\RTH_detailed_sto\\", "data\\RTH_detailed_var\\"]
-# slist = ["data\\RTH_detailed_sto\\", "data\\RTH_detailed_var\\"]
-for s in slist:
-    
-    print("====== DO FOR "+s+" ========")
-    c = Get_c(scenario=s, Precision_THN="TopologyReduced")
-
-    
-    """
-    # Step 1: Preparation of spacetype ------------
-    logger.info("===============================================")
-    logger.info("Step 1 - Preparation of spacetype =============")
-    logger.info("===============================================")
-    print("Step 1 - Preparation of spacetype")
-    sitedatabuilder._loadAllSchedules_InAllSpacetypes(c)
-    logger.info(">> All good...")
-
-    # Step 2 : Generate JSON Building file --------
-    logger.info("===============================================")
-    logger.info("Step 2 - Generate JSON Building file ==========")
-    logger.info("===============================================")
-    print("Step 2 - Generate JSON Building file")
-    jsonbuilder._BuildJSONFile(c)
-    logger.info(">> All good...")
-
-    # Step 3 : Noise generation -------------------
-    logger.info("===============================================")
-    logger.info("Step 3 - Noise generation =====================")
-    logger.info("===============================================")
-    if c.Precision_EXP == "stochastic":
-        print("Step 3 - Noise generation: For non-deterministic approaches, add noise & variability to some values")
-        if ("sto" in s) or ("val" in s): 
-            noisebuilder.noiseValues(c)
-        if ("sto" in s) or ("sch" in s):
-            noisebuilder.noiseSchedules(c)
-        if ("sto" in s) or ("tset" in s):
-            noisebuilder.noiseTsetpoint(c)
-    else:
-        print("Step 3 - Skipping noise generation")
-
-        
-    logger.info(">> All good...")
-
-    # Step 4 : Generate DECK Building file --------
-    logger.info("===============================================")
-    logger.info("Step 4 - DECK Generation ======================")
-    logger.info("===============================================")
-    print("Step 4.1 - Convert JSON Building file to B18")
-    convert.convert_FromJSON_ToB18(c)
-
-    print("Step 4.2 - Deck generation")
-    deckbuilder.generate_AllDeckForSimulations(c)
-    logger.info(">> All good...")
-
-    # Step 5 : Simulate models ---------------------
-    # As of now, for each deck directory in "data/scenarioName/4_Output/DCK_DeckTrnsys/":
-    # - Open dck files in TrnEdit
-    # - Run simulations in TrnEdit
-    
-
-
-
-    
-
+def main_3_BuildBuildingLoads(c):
     # Step 6 : Scaling up ----------------------
     logger.info("===============================================")
     logger.info("Step 6 - Load Builder =========================")
@@ -181,12 +141,8 @@ for s in slist:
     print("Step 6 - Load builder: Start scaling from model to building loads")
     loadbuilder.Scaling(c)
     logger.info(">> All good...")
-    """
-    
-    
-    
-    
-    
+
+def main_4_BuildThermalNetworkDCK(c):
     # Step 7 : Pipe sizing & cluster loads ------
     # As of now:
     # - Copy&Paste loads in "data/scenarioName/4_Output/CSV_loads/LOADS/" to a "data/scenarioName/" directory in PipeSizingTool_v2.1.
@@ -208,9 +164,29 @@ for s in slist:
     # - Open dck file "data/scenarioName/6_RTh/RTh_sized.dck" in TrnEdit
     # - Run simulation in TrnEdit
 
+"""sitedatabuilder._make_Site(c)"""
+"""NamurSiteBuilder_v2(c)"""
+"""sitedatabuilder._make_Buildings(c)"""
+"""main_3_SimmulateModels(c)"""
 
-    # Step 10 : Analyse results -----------------
-    # As of now: 
-    # - Copy&Paste csv files from "data/scenarioName/6_RTh/" to PostProcess tool.
-    # - Analyse using PostProcess tool.
+# ===========================================================================
+# Main workflow =============================================================
+# ===========================================================================
+
+# Step 0 : Config ------------------------------
+
+slist = ["data/RTH_detailed_sto/"]
+for s in slist:
+    
+    print("====== DO FOR "+s+" ========")
+    c = Get_c(scenario=s, Precision_THN="TopologyReduced")
+
+    main_1_BuildDCK(c)
+    main_2_SimmulateModels(c)
+    main_3_BuildBuildingLoads(c)
+    main_4_BuildThermalNetworkDCK(c)
+
+
+
+
     
