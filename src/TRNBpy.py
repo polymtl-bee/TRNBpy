@@ -1,6 +1,7 @@
 # local
 from   src.config         import (ClassConfiguration)
 from   src._Logging   import logger, log_recap
+import src._Logging             as logg
 import src._TranslateToB18      as convert
 import src.S1_SiteDataBuilder   as sitedatabuilder
 import src.S2_JsonBuilder       as jsonbuilder
