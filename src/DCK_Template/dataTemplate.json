@@ -1,0 +1,204 @@
+{   "NOTICE":{
+        "You CAN'T do": "Edit KEYS and structure (as it is used in the tool)",
+        "You CAN do": "Edit values to match the keys of your current spacetype keys.",
+        "Descrition1": "The values stored in this template correspond to the keys of the JSON TRNSYS/spacetype format.",
+        "Descrition2": "So for now, everything must be the same as the keys in this template.json.",
+        "Descrition3": "In the future, if TRNSYS/Spacetype keys evolve and change names, update the values here."
+
+    },
+    "Types":{
+        "Coolings":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "Type":"Type",
+                "Power":"Power",
+                "TdbConsigne":"TdbConsigne",
+                "AreaRelPower":"AreaRelPower",
+                "RadFrac":"RadFrac",
+                "Humidity":"Humidity",
+                "ElecPowerFrac":"ElecPowerFrac"
+            }
+        },
+        "Gains":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "GainCategory":"GainCategory",
+                "GainType":"GainType",
+                "GainSchedule":"GainSchedule",
+                "GainInput": "GainInput",
+                "Convective":"Convective",
+                "Radiative":"Radiative",
+                "Humidity":"Humidity",
+                "ElecPowerFrac":"ElecPowerFrac"
+            }
+        },
+        "Heatings":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "Type":"Type",
+                "Power":"Power",
+                "TdbConsigne":"TdbConsigne",
+                "AreaRelPower":"AreaRelPower",
+                "RadFrac":"RadFrac",
+                "Humidity":"Humidity",
+                "ElecPowerFrac":"ElecPowerFrac"  
+            }
+        },
+        "Infiltrations":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "InfType":"InfType",
+                "InfRate":"InfRate"  
+            }
+        },
+        "Schedules":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "SchedType":"SchedType",
+                "TimeList":"TimeList",
+                "ValueList":"ValueList"
+            }
+        },
+        "Ventilations":{
+            "0":{
+                "Name": "Name",
+                "Source": "Source",
+                "Description":"Description",
+                "Mode":"Mode",
+                "FlowValue": "FlowValue",
+                "FlowInput": "FlowInput",
+                "FlowSchedule": "FlowSchedule",
+                "Tdb":"Tdb",
+                "TdbType":"TdbType",
+                "Humidity":"Humidity",
+                "HumidityType":"HumidityType",
+                "RelOrAbs":"RelOrAbs",
+                "SpecFanPower":"SpecFanPower",
+                "SensHr":"SensHr",
+                "Calcqahu":"Calcqahu"
+            }
+        },
+        "SpaceType":{
+            "0":{
+                "Name": "Office_Space",
+                "Decription": "Spacetype bureaux. Espace openspace.",
+                "Source": "Guilwen Meunier",
+                "ScheduleSource": "horexA",
+                "Coolings":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "Type":"Type",
+                        "Power":"Power",
+                        "TdbConsigne":"TdbConsigne",
+                        "AreaRelPower":"AreaRelPower",
+                        "RadFrac":"RadFrac",
+                        "Humidity":"Humidity",
+                        "ElecPowerFrac":"ElecPowerFrac"
+                    }
+                },
+                "Gains":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "GainCategory":"GainCategory",
+                        "GainType":"GainType",
+                        "GainSchedule":"GainSchedule",
+                        "GainInput": "GainInput",
+                        "Convective":"Convective",
+                        "Radiative":"Radiative",
+                        "Humidity":"Humidity",
+                        "ElecPowerFrac":"ElecPowerFrac"
+                    }
+                },
+                "Heatings":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "Type":"Type",
+                        "Power":"Power",
+                        "TdbConsigne":"TdbConsigne",
+                        "AreaRelPower":"AreaRelPower",
+                        "RadFrac":"RadFrac",
+                        "Humidity":"Humidity",
+                        "ElecPowerFrac":"ElecPowerFrac"  
+                    }
+                },
+                "Infiltrations":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "InfType":"InfType",
+                        "InfRate":"InfRate"  
+                    }
+                },
+                "Schedules":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "SchedType":"SchedType",
+                        "TimeList":"TimeList",
+                        "ValueList":"ValueList"
+                    }
+                },
+                "Ventilations":{
+                    "0":{
+                        "Name": "Name",
+                        "Source": "Source",
+                        "Description":"Description",
+                        "Mode":"Mode",
+                        "FlowValue": "FlowValue",
+                        "FlowInput": "FlowInput",
+                        "FlowSchedule": "FlowSchedule",
+                        "Tdb":"Tdb",
+                        "TdbType":"TdbType",
+                        "Humidity":"Humidity",
+                        "HumidityType":"HumidityType",
+                        "RelOrAbs":"RelOrAbs",
+                        "SpecFanPower":"SpecFanPower",
+                        "SensHr":"SensHr",
+                        "Calcqahu":"Calcqahu"
+                    }
+                }
+            }
+        },
+        "MySpaceType":{
+        }
+
+    },
+
+    "Building":{
+        "0":{
+            "ZoneName":"ZoneName",
+            "ZoneDescription":"ZoneDescription",
+            "Airnodes":{
+                "0":{
+                    "AirnodeName":"AirnodeName",
+                    "SpaceType":"SpaceType",
+                    "Regime":{
+                        "IdealCooling":"IdealCooling",
+                        "IdealHeating":"IdealHeating",
+                        "Infiltration":"Infiltration",
+                        "GainList":"GainList",
+                        "VentilationList":"VentilationList"
+                    }
+                }
+            }
+        }
+    }
+}

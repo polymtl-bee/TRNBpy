@@ -1,0 +1,751 @@
+*********************************************************************************
+*  TRNBuild   3.0.302
+*********************************************************************************
+*   BUILDING DESCRIPTIONS FILE TRNSYS
+*   FOR BUILDING:   Z:\home\gmlow\Documents\3_POLYMTL\1_Maitrise\1_Code\TRNBpy_v1\TRNBpy\src\template\template.b18
+*   GET BY WORKING WITH TRNBuild 1.0 for Windows
+*********************************************************************************
+*
+*--------------------------------------------------------------------------------
+*  C o m m e n t s
+*--------------------------------------------------------------------------------
+*#C Originally created by TRNSIDF Version 1.85
+*--------------------------------------------------------------------------------
+*  P r o j e c t
+*--------------------------------------------------------------------------------
+*+++ PROJECT
+*+++ TITLE=UNDEFINED
+*+++ DESCRIPTION=UNDEFINED
+*+++ CREATED=UNDEFINED
+*+++ ADDRESS=UNDEFINED
+*+++ CITY=UNDEFINED
+*+++ SWITCH=UNDEFINED
+*--------------------------------------------------------------------------------
+*  P r o p e r t i e s
+*--------------------------------------------------------------------------------
+PROPERTIES
+ DENSITY=1.204 : CAPACITY=1.012 : PRESSURE=101325.000 : HVAPOR=2454.0 : SIGMA=2.041e-007 : RTEMP=293.15
+*--- convective heat transfer coefficient calculation ---------------------
+ KFLOORUP=7.2 : EFLOORUP=0.31 : KFLOORDOWN=3.888 : EFLOORDOWN=0.31
+ KCEILUP=7.2 : ECEILUP=0.31 : KCEILDOWN=3.888 : ECEILDOWN=0.31
+ KVERTICAL=5.76 : EVERTICAL=0.3
+*--- radiance parameters -------------------
+ SCENE_ROTATION_ANGLE=0 : GROUND_IDS= : GROUND_REFLECTANCE=0.2 : SHADER_REFLECTANCE=0
+ CALC_MODE=RAD : LATITUDE=48 : LONGITUDE=-9.2 : TIME_ZONE=-15 : SITE_ELEVATION=200
+ AB=5 : AD=1000 : AS=20 : AR=300 : AA=0.1
+ LR=6 : ST=0.15 : SJ=1 : LW=0.004 : DJ=0 : DS=0.2 : DR=2 : DP=512
+*--- comfort parameters -------------------
+ DIAM-SENSOR=0.07 : EPS-SENSOR=0.82 : REFL-SENSOR=0.47 : ELV_AIRSPEED1=0.3 : ELV_AIRSPEED2=0.7 : ELV_AIRSPEED3=1.2
+*--- solar matrix parameters -------------------
+ FSCAL_TREGENZA=MEDIUM : SHM_MODE=0 : SURFGRID=0.2 : GRIDDISTANCE=0.03
+*--- daylight  -------------------
+ UDIMIN=100 : UDIMAX=2000 : DAMIN=300
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  L a y e r s
+*--------------------------------------------------------------------------------
+LAYER PanPla
+ CONDUCTIVITY=   0.576 : CAPACITY=      1.09 : DENSITY=   800 : PERT=      0 : PENRT=      0
+LAYER IsoIntMurExt
+ CONDUCTIVITY=  0.12 : CAPACITY=      0.71 : DENSITY=   10 : PERT=      0 : PENRT=      0
+LAYER CouProExt
+ CONDUCTIVITY=  0.576 : CAPACITY=      1.09 : DENSITY=     7830 : PERT=      0 : PENRT=      0
+LAYER IsoExtMurExt
+ CONDUCTIVITY=  0.18 : CAPACITY=      1.22 : DENSITY=    600 : PERT=      0 : PENRT=      0
+LAYER RecBri
+ CONDUCTIVITY=  2.808 : CAPACITY=    0.72 : DENSITY=    1920 : PERT=      0 : PENRT=      0
+LAYER DalBetToi
+ CONDUCTIVITY=   6.48 : CAPACITY=      0.85 : DENSITY=   2250 : PERT=      0 : PENRT=      0
+LAYER IsoExtToiExt
+ CONDUCTIVITY=  0.5 : CAPACITY=    1.22 : DENSITY=    28 : PERT=      0 : PENRT=      0
+LAYER ToiMul
+ CONDUCTIVITY=   0.583 : CAPACITY=      1.47 : DENSITY=   1121 : PERT=      0 : PENRT=      0
+LAYER BetCoule
+ CONDUCTIVITY=  4.774 : CAPACITY=      0.912 : DENSITY=     1842 : PERT=      0 : PENRT=      0
+LAYER DalBetFlo
+ CONDUCTIVITY=  8.316 : CAPACITY=      0.832 : DENSITY=     2322 : PERT=      0 : PENRT=      0
+LAYER TuileAcoust
+ CONDUCTIVITY=  0.22 : CAPACITY=      0.59 : DENSITY=     368 : PERT=      0 : PENRT=      0
+LAYER IsoGroToi
+ CONDUCTIVITY=  0.09 : CAPACITY=      1.22 : DENSITY=     800: PERT=      0 : PENRT=      0
+LAYER IsoGroFlo
+ CONDUCTIVITY=  0.22 : CAPACITY=      1.22 : DENSITY=     800 : PERT=      0 : PENRT=      0
+LAYER AirLayer
+ RESISTANCE= 0.044 : PERT=      0 : PENRT=      0
+LAYER CarpetLayer
+ RESISTANCE= 0.06 : PERT=      0 : PENRT=      0
+*--------------------------------------------------------------------------------
+*  I n p u t s
+*--------------------------------------------------------------------------------
+INPUTS TGROUND TBOUNDARY SHADE_CLOSE SHADE_OPEN MAX_ISHADE MAX_ESHADE
+INPUTS_DESCRIPTION
+ TGROUND : any : Input
+ TBOUNDARY : any : Input
+ SHADE_CLOSE : any : Input
+ SHADE_OPEN : any : Input
+ MAX_ISHADE : any : Input
+ MAX_ESHADE : any : Input
+*--------------------------------------------------------------------------------
+*  S c h e d u l e s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  C O N S T R U C T I O N (Wall, Floor, Ceiling,..)
+*--------------------------------------------------------------------------------
+CONSTRUCTION EXT_WALL
+ LAYERS   = PanPla  IsoIntMurExt CouProExt IsoExtMurExt AirLayer RecBri   
+ THICKNESS= 0.013 0.092 0.013 0.092  0 0.092
+ ABS-FRONT= 0.4   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 22 : HBACK= 125
+CONSTRUCTION EXT_ROOF
+ LAYERS   = DalBetToi IsoExtToiExt ToiMul 
+ THICKNESS= 0.203 0.102  0.01
+ ABS-FRONT= 0.1   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 32 : HBACK= 125
+CONSTRUCTION GROUND_FLOOR
+ LAYERS   = DalBetFlo IsoGroFlo  
+ THICKNESS= 0.203 0.102
+ ABS-FRONT= 0.8   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 32 : HBACK= 0.001
+CONSTRUCTION GROUND_WALL
+ LAYERS   = BetCoule  IsoGroToi  
+ THICKNESS= 0.203 0.102 
+ ABS-FRONT= 0.4   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 22 : HBACK= 0.001
+CONSTRUCTION ADJ_WALL
+ LAYERS   = PanPla  AirLayer PanPla  
+ THICKNESS= 0.016 0   0.016 
+ ABS-FRONT= 0.4   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 22 : HBACK= 22
+CONSTRUCTION ADJ_CEILING
+ LAYERS   = CarpetLayer DalBetFlo AirLayer TuileAcoust  
+ THICKNESS= 0 0.203 0  0.013 
+ ABS-FRONT= 0.8   : ABS-BACK= 0.5  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 32 : HBACK= 32
+*--------------------------------------------------------------------------------
+*  W i n d o w s
+*--------------------------------------------------------------------------------
+ WINDOW EXT_WINDOW1
+ WINID=6505 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=-999 : SPACID=4 : WWID=0.77 : WHEIG=1.08 : FFRAME=0.15 : UFRAME=2.52 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=INPUT 1*SHADE_CLOSE : ITSHADEOPEN=INPUT 1*SHADE_OPEN : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+*--------------------------------------------------------------------------------
+*  G a i n s / L o s s e s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  C o m f o r t
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  I n f i l t r a t i o n
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  V e n t i l a t i o n
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  C o o l i n g
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  H e a t i n g
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  D a y l i g h t   C o n t r o l 
+*--------------------------------------------------------------------------------
+*
+*--------------------------------------------------------------------------------
+*  Z o n e s
+*--------------------------------------------------------------------------------
+ZONES 
+
+*--------------------------------------------------------------------------------
+*  O r i e n t a t i o n s
+*--------------------------------------------------------------------------------
+HEMISPHERE NORTHERN
+ORIENTATIONS H_0_0 S_0_90 W_90_90 N_180_90 E_270_90
+INTERNAL_CALCULATION H_0_0 S_0_90 W_90_90 N_180_90 E_270_90
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BUILDING
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*--------------------------------------------------------------------------------
+*  Z o n e ExempleName  /  A i r n o d e  ExempleName
+*--------------------------------------------------------------------------------
+ZONE ExempleName
+RADIATIONMODE
+ BEAM=STANDARD : DIFFUSE=STANDARD : LONGWAVE=STANDARD : GEOMODE=3D_DATA : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE ExempleName
+WALL         =GROUND_WALL   : SURF=  1 : AREA=        72 : BOUNDARY=INPUT 1*TGROUND : GEOSURF=0.052174
+WALL         =GROUND_WALL   : SURF=  2 : AREA=        66 : BOUNDARY=INPUT 1*TGROUND : GEOSURF=0.047826
+WALL         =GROUND_WALL   : SURF=  4 : AREA=        72 : BOUNDARY=INPUT 1*TGROUND : GEOSURF=0.052174
+WALL         =GROUND_WALL   : SURF=  5 : AREA=        66 : BOUNDARY=INPUT 1*TGROUND : GEOSURF=0.047826
+CEILING      =ADJ_CEILING : SURF=  6 : AREA=        80 : ADJACENT=ExempleName2 : ADJ_SURF=175 : FRONT
+FLOOR        =GROUND_FLOOR : SURF=  7 : AREA=       528 : BOUNDARY=INPUT 1*TGROUND : GEOSURF=0.8
+ REGIME
+ CAPACITANCE = 1900.8  : VOLUME= 1584    : REFAREA= 528     : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
+
+*--------------------------------------------------------------------------------
+*  O u t p u t s
+*--------------------------------------------------------------------------------
+OUTPUTS
+ TRANSFER : TIMEBASE=1.000
+ AIRNODES = ExempleName
+ NTYPES =   1 : TAIR - air temperature of airnode
+        =  25 : TOP - obsolete use new comfort outputs (Version 16: Operative temperature)
+        =  30 : QHEAT - sensible heating demand of airnode (positive values)
+        =  31 : QCOOL - sensible cooling demand of airnode (positive values)
+        = 156 : QELEQUIP - Electric energy demand of "equipment" gains of airnode [kJ/hr]
+        = 155 : QELLIGHT - Electric energy demand of "lights" gains of airnode [kJ/hr]
+*--------------------------------------------------------------------------------
+*  E n d
+*--------------------------------------------------------------------------------
+END
+
+_EXTENSION_WINPOOL_START_
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Single Clear
+Window ID   : 6501
+Tilt        : 90.0
+Glazings    : 1
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1              0       0      0      0      0      0       0      0       0
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.870 0.870 0.868 0.865 0.857 0.837 0.789 0.674 0.417 0.000 0.791
+Abs1  0.052 0.053 0.054 0.055 0.057 0.060 0.062 0.063 0.062 0.000 0.058
+Abs2      0     0     0     0     0     0     0     0     0     0     0
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.078 0.078 0.078 0.080 0.086 0.103 0.149 0.262 0.521 1.000 0.141
+Rbsol 0.078 0.078 0.078 0.080 0.086 0.103 0.149 0.262 0.521 1.000 0.141
+Tvis  0.896 0.895 0.895 0.892 0.885 0.866 0.818 0.701 0.437 0.000 0.818
+Rfvis 0.081 0.081 0.081 0.083 0.090 0.107 0.154 0.270 0.533 1.000 0.146
+Rbvis 0.081 0.081 0.081 0.083 0.090 0.107 0.154 0.270 0.533 1.000 0.146
+SHGC  0.808   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.905
+Layer ID#        21011        0        0        0        0        0
+Tir              0.000        0        0        0        0        0
+Emis F           0.840        0        0        0        0        0
+Emis B           0.840        0        0        0        0        0
+Thickness(mm)      4.0        0        0        0        0        0
+Cond(W/m2-K     ) 250.0        0        0        0        0        0
+Spectral File PLANICLEAR 4         None         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.54  7.16  3.62 3.62  3.66 3.66  3.74 3.74  4.09 4.09
+0        6.71  30.84  3.30  7.26  5.84 5.84  5.48 5.48  5.49 5.49  6.18 6.18
+783        0.00   4.00  3.59  7.12  3.62 3.62  3.66 3.66  3.74 3.74  4.09 4.09
+783        6.71  30.84  3.32  7.25  5.84 5.84  5.48 5.48  5.49 5.49  6.18 6.18
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Clear Air
+Window ID   : 6502
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Air       12.0 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.765 0.765 0.763 0.757 0.744 0.713 0.641 0.492 0.242 0.000 0.663
+Abs1  0.055 0.056 0.057 0.059 0.061 0.064 0.069 0.074 0.078 0.000 0.063
+Abs2  0.042 0.042 0.043 0.044 0.045 0.046 0.045 0.042 0.032 0.000 0.043
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.138 0.138 0.138 0.141 0.150 0.177 0.245 0.392 0.648 1.000 0.221
+Rbsol 0.138 0.138 0.138 0.141 0.150 0.177 0.245 0.392 0.648 1.000 0.221
+Tvis  0.808 0.807 0.806 0.801 0.789 0.758 0.685 0.530 0.267 0.000 0.705
+Rfvis 0.146 0.146 0.147 0.150 0.160 0.189 0.259 0.413 0.676 1.000 0.234
+Rbvis 0.146 0.146 0.147 0.150 0.160 0.189 0.259 0.413 0.676 1.000 0.234
+SHGC  0.699   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.820
+Layer ID#        21011    21011        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANICLEAR 4 PLANICLEAR 4         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.39  7.01  2.13 2.13  2.26 2.26  2.33 2.33  2.50 2.50
+0        6.71  30.84  3.23  7.08  2.73 2.73  2.82 2.82  2.90 2.90  3.14 3.14
+783        0.00   4.00  3.50  6.83  2.13 2.13  2.26 2.26  2.33 2.33  2.50 2.50
+783        6.71  30.84  3.26  7.01  2.73 2.73  2.82 2.82  2.90 2.90  3.14 3.14
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Clear Argon
+Window ID   : 6503
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.765 0.765 0.763 0.757 0.744 0.713 0.641 0.492 0.242 0.000 0.663
+Abs1  0.055 0.056 0.057 0.059 0.061 0.064 0.069 0.074 0.078 0.000 0.063
+Abs2  0.042 0.042 0.043 0.044 0.045 0.046 0.045 0.042 0.032 0.000 0.043
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.138 0.138 0.138 0.141 0.150 0.177 0.245 0.392 0.648 1.000 0.221
+Rbsol 0.138 0.138 0.138 0.141 0.150 0.177 0.245 0.392 0.648 1.000 0.221
+Tvis  0.808 0.807 0.806 0.801 0.789 0.758 0.685 0.530 0.267 0.000 0.705
+Rfvis 0.146 0.146 0.147 0.150 0.160 0.189 0.259 0.413 0.676 1.000 0.234
+Rbvis 0.146 0.146 0.147 0.150 0.160 0.189 0.259 0.413 0.676 1.000 0.234
+SHGC  0.699   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.825
+Layer ID#        21011    21011        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANICLEAR 4 PLANICLEAR 4         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.38  6.99  2.03 2.03  2.16 2.16  2.24 2.24  2.40 2.40
+0        6.71  30.84  3.23  7.06  2.55 2.55  2.67 2.67  2.76 2.76  2.98 2.98
+783        0.00   4.00  3.49  6.80  2.03 2.03  2.16 2.16  2.24 2.24  2.40 2.40
+783        6.71  30.84  3.26  6.98  2.55 2.55  2.67 2.67  2.76 2.76  2.98 2.98
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e #3 Air
+Window ID   : 6504
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Air       12.0 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.462 0.465 0.458 0.450 0.439 0.417 0.368 0.273 0.132 0.000 0.388
+Abs1  0.076 0.077 0.078 0.080 0.083 0.087 0.090 0.093 0.090 0.000 0.084
+Abs2  0.061 0.062 0.069 0.074 0.076 0.080 0.093 0.103 0.079 0.000 0.080
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.401 0.396 0.395 0.396 0.402 0.416 0.449 0.531 0.699 1.000 0.437
+Rbsol 0.407 0.402 0.400 0.402 0.410 0.425 0.455 0.524 0.680 0.999 0.441
+Tvis  0.654 0.658 0.649 0.637 0.622 0.590 0.520 0.383 0.184 0.000 0.549
+Rfvis 0.261 0.255 0.254 0.257 0.268 0.291 0.340 0.456 0.680 1.000 0.322
+Rbvis 0.259 0.253 0.250 0.253 0.263 0.284 0.323 0.413 0.608 0.999 0.307
+SHGC  0.431   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.719
+Layer ID#        21011    21414        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.022        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANICLEAR 4 PLANITHERM O         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.31  6.86  1.37 1.37  1.37 1.37  1.40 1.40  1.46 1.46
+0        6.71  30.84  3.21  6.92  1.64 1.64  1.56 1.56  1.59 1.59  1.65 1.65
+783        0.00   4.00  3.46  6.05  1.37 1.37  1.37 1.37  1.40 1.40  1.46 1.46
+783        6.71  30.84  3.25  6.60  1.64 1.64  1.56 1.56  1.59 1.59  1.65 1.65
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e #2 Air
+Window ID   : 6505
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Air       12.0 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.462 0.465 0.458 0.450 0.439 0.417 0.368 0.273 0.132 0.000 0.388
+Abs1  0.113 0.115 0.123 0.129 0.132 0.138 0.158 0.186 0.175 0.001 0.142
+Abs2  0.018 0.018 0.018 0.019 0.019 0.019 0.019 0.017 0.014 0.000 0.018
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.407 0.402 0.400 0.402 0.410 0.425 0.455 0.524 0.680 0.999 0.441
+Rbsol 0.401 0.396 0.395 0.396 0.402 0.416 0.449 0.531 0.699 1.000 0.437
+Tvis  0.654 0.658 0.649 0.637 0.622 0.590 0.520 0.383 0.184 0.000 0.549
+Rfvis 0.259 0.253 0.250 0.253 0.263 0.284 0.323 0.413 0.608 0.999 0.307
+Rbvis 0.261 0.255 0.254 0.257 0.268 0.291 0.340 0.456 0.680 1.000 0.322
+SHGC  0.389   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.719
+Layer ID#        21414    21011        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.022    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANITHERM O PLANICLEAR 4         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.31  6.86  1.37 1.37  1.37 1.37  1.40 1.40  1.46 1.46
+0        6.71  30.84  3.21  6.92  1.64 1.64  1.56 1.56  1.59 1.59  1.65 1.65
+783        0.00   4.00  3.50  6.59  1.37 1.37  1.37 1.37  1.40 1.40  1.46 1.46
+783        6.71  30.84  3.26  6.82  1.64 1.64  1.56 1.56  1.59 1.59  1.65 1.65
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e #3 Argon
+Window ID   : 6506
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.462 0.465 0.458 0.450 0.439 0.417 0.368 0.273 0.132 0.000 0.388
+Abs1  0.076 0.077 0.078 0.080 0.083 0.087 0.090 0.093 0.090 0.000 0.084
+Abs2  0.061 0.062 0.069 0.074 0.076 0.080 0.093 0.103 0.079 0.000 0.080
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.401 0.396 0.395 0.396 0.402 0.416 0.449 0.531 0.699 1.000 0.437
+Rbsol 0.407 0.402 0.400 0.402 0.410 0.425 0.455 0.524 0.680 0.999 0.441
+Tvis  0.654 0.658 0.649 0.637 0.622 0.590 0.520 0.383 0.184 0.000 0.549
+Rfvis 0.261 0.255 0.254 0.257 0.268 0.291 0.340 0.456 0.680 1.000 0.322
+Rbvis 0.259 0.253 0.250 0.253 0.263 0.284 0.323 0.413 0.608 0.999 0.307
+SHGC  0.433   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.719
+Layer ID#        21011    21414        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.022        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANICLEAR 4 PLANITHERM O         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.29  6.79  1.12 1.12  1.08 1.08  1.11 1.11  1.15 1.15
+0        6.71  30.84  3.20  6.85  1.33 1.33  1.19 1.19  1.22 1.22  1.27 1.27
+783        0.00   4.00  3.44  6.12  1.12 1.12  1.08 1.08  1.11 1.11  1.15 1.15
+783        6.71  30.84  3.24  6.35  1.33 1.33  1.19 1.19  1.22 1.22  1.27 1.27
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e #2 Argon
+Window ID   : 6507
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.462 0.465 0.458 0.450 0.439 0.417 0.368 0.273 0.132 0.000 0.388
+Abs1  0.113 0.115 0.123 0.129 0.132 0.138 0.158 0.186 0.175 0.001 0.142
+Abs2  0.018 0.018 0.018 0.019 0.019 0.019 0.019 0.017 0.014 0.000 0.018
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.407 0.402 0.400 0.402 0.410 0.425 0.455 0.524 0.680 0.999 0.441
+Rbsol 0.401 0.396 0.395 0.396 0.402 0.416 0.449 0.531 0.699 1.000 0.437
+Tvis  0.654 0.658 0.649 0.637 0.622 0.590 0.520 0.383 0.184 0.000 0.549
+Rfvis 0.259 0.253 0.250 0.253 0.263 0.284 0.323 0.413 0.608 0.999 0.307
+Rbvis 0.261 0.255 0.254 0.257 0.268 0.291 0.340 0.456 0.680 1.000 0.322
+SHGC  0.387   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.719
+Layer ID#        21414    21011        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.022    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANITHERM O PLANICLEAR 4         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.29  6.79  1.12 1.12  1.08 1.08  1.11 1.11  1.15 1.15
+0        6.71  30.84  3.20  6.85  1.33 1.33  1.19 1.19  1.22 1.22  1.27 1.27
+783        0.00   4.00  3.48  6.47  1.12 1.12  1.08 1.08  1.11 1.11  1.15 1.15
+783        6.71  30.84  3.25  6.72  1.33 1.33  1.19 1.19  1.22 1.22  1.27 1.27
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e Cool #3 Argon
+Window ID   : 6508
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.259 0.261 0.257 0.252 0.246 0.234 0.206 0.153 0.074 0.000 0.218
+Abs1  0.081 0.082 0.083 0.086 0.089 0.093 0.096 0.098 0.095 0.000 0.090
+Abs2  0.193 0.194 0.198 0.200 0.199 0.196 0.192 0.174 0.110 0.000 0.187
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.467 0.463 0.462 0.462 0.466 0.478 0.506 0.575 0.722 1.000 0.496
+Rbsol 0.318 0.312 0.311 0.313 0.321 0.336 0.364 0.435 0.612 0.999 0.354
+Tvis  0.424 0.426 0.420 0.413 0.403 0.382 0.337 0.249 0.120 0.000 0.356
+Rfvis 0.300 0.295 0.293 0.296 0.306 0.327 0.373 0.480 0.691 1.000 0.356
+Rbvis 0.202 0.195 0.194 0.196 0.206 0.224 0.259 0.345 0.552 0.999 0.248
+SHGC  0.342   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.523
+Layer ID#        21011    21135        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.016        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File PLANICLEAR 4 COOL-LITE SK         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.28  6.78  1.11 1.11  1.06 1.06  1.09 1.09  1.13 1.13
+0        6.71  30.84  3.20  6.84  1.31 1.31  1.17 1.17  1.19 1.19  1.24 1.24
+783        0.00   4.00  3.49  7.59  1.11 1.11  1.06 1.06  1.09 1.09  1.13 1.13
+783        6.71  30.84  3.25  7.36  1.31 1.31  1.17 1.17  1.19 1.19  1.24 1.24
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Double Low-e Cool #2 Argon
+Window ID   : 6509
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.259 0.261 0.257 0.252 0.246 0.234 0.206 0.153 0.074 0.000 0.218
+Abs1  0.416 0.420 0.425 0.428 0.425 0.423 0.422 0.406 0.309 0.001 0.411
+Abs2  0.007 0.007 0.007 0.007 0.007 0.008 0.007 0.007 0.005 0.000 0.007
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.318 0.312 0.311 0.313 0.321 0.336 0.364 0.435 0.612 0.999 0.354
+Rbsol 0.467 0.463 0.462 0.462 0.466 0.478 0.506 0.575 0.722 1.000 0.496
+Tvis  0.424 0.426 0.420 0.413 0.403 0.382 0.337 0.249 0.120 0.000 0.356
+Rfvis 0.202 0.195 0.194 0.196 0.206 0.224 0.259 0.345 0.552 0.999 0.248
+Rbvis 0.300 0.295 0.293 0.296 0.306 0.327 0.373 0.480 0.691 1.000 0.356
+SHGC  0.221   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.523
+Layer ID#        21135    21011        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.016    0.840        0        0        0        0
+Thickness(mm)      4.0      4.0        0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0        0        0        0        0
+Spectral File COOL-LITE SK PLANICLEAR 4         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.28  6.78  1.11 1.11  1.06 1.06  1.09 1.09  1.13 1.13
+0        6.71  30.84  3.20  6.84  1.31 1.31  1.17 1.17  1.19 1.19  1.24 1.24
+783        0.00   4.00  4.01  6.24  1.11 1.11  1.06 1.06  1.09 1.09  1.13 1.13
+783        6.71  30.84  3.38  6.66  1.31 1.31  1.17 1.17  1.19 1.19  1.24 1.24
+BERKELEY LAB WINDOW v7.6.4.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : TRNSYS 18 Glazing Lib
+Desc        : ENE6510 Triple Low-e #2#5 High Gain
+Window ID   : 6510
+Tilt        : 90.0
+Glazings    : 3
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Air       12.7 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+2 Air       12.7 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.483 0.488 0.475 0.459 0.440 0.405 0.331 0.209 0.077 0.000 0.375
+Abs1  0.111 0.113 0.124 0.133 0.137 0.148 0.178 0.222 0.218 0.001 0.154
+Abs2  0.038 0.039 0.039 0.039 0.040 0.041 0.041 0.037 0.030 0.000 0.039
+Abs3  0.041 0.043 0.049 0.054 0.055 0.058 0.066 0.067 0.041 0.000 0.056
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.327 0.318 0.314 0.315 0.327 0.348 0.384 0.464 0.635 0.999 0.366
+Rbsol 0.327 0.318 0.314 0.315 0.327 0.348 0.384 0.464 0.635 0.999 0.366
+Tvis  0.686 0.693 0.675 0.653 0.626 0.575 0.469 0.294 0.108 0.000 0.532
+Rfvis 0.191 0.180 0.174 0.178 0.194 0.224 0.275 0.379 0.584 0.999 0.248
+Rbvis 0.191 0.180 0.174 0.178 0.194 0.224 0.275 0.379 0.584 0.999 0.248
+SHGC  0.421   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.744
+Layer ID#        21422    21011    21422        0        0        0
+Tir              0.000    0.000    0.000        0        0        0
+Emis F           0.840    0.840    0.039        0        0        0
+Emis B           0.039    0.840    0.840        0        0        0
+Thickness(mm)      4.0      4.0      4.0        0        0        0
+Cond(W/m2-K     ) 250.0    250.0    250.0        0        0        0
+Spectral File PLANITHERM X PLANICLEAR 4 PLANITHERM X         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   4.00  3.26  6.68  0.82 0.82  0.84 0.84  0.86 0.86  0.89 0.89
+0        6.71  30.84  3.19  6.71  0.90 0.90  0.91 0.91  0.93 0.93  0.96 0.96
+783        0.00   4.00  3.51  6.66  0.82 0.82  0.84 0.84  0.86 0.86  0.89 0.89
+783        6.71  30.84  3.25  6.23  0.90 0.90  0.91 0.91  0.93 0.93  0.96 0.96
+*** END OF LIBRARY ***
+************************************************************************************************************
+*WinID   Description                              Design         U-Value g-value T-sol Rf-sol T-vis-daylight
+************************************************************************************************************
+  6501   ENE6510 Single Clear                     4                5.49  0.808  0.87  0.078  0.905
+  6502   ENE6510 Double Clear Air                 4/12/4           2.9  0.699  0.765  0.138  0.82
+  6503   ENE6510 Double Clear Argon               4/12/4           2.76  0.699  0.765  0.138  0.825
+  6504   ENE6510 Double Low-e #3 Air              4/12/4           1.59  0.431  0.462  0.401  0.719
+  6505   ENE6510 Double Low-e #2 Air              4/12/4           1.59  0.389  0.462  0.407  0.719
+  6506   ENE6510 Double Low-e #3 Argon            4/12/4           1.22  0.433  0.462  0.401  0.719
+  6507   ENE6510 Double Low-e #2 Argon            4/12/4           1.22  0.387  0.462  0.407  0.719
+  6508   ENE6510 Double Low-e Cool #3 Argon       4/12/4           1.19  0.342  0.259  0.467  0.523
+  6509   ENE6510 Double Low-e Cool #2 Argon       4/12/4           1.19  0.221  0.259  0.318  0.523
+  6510   ENE6510 Triple Low-e #2#5 High Gain      4/12.7/4/12.7/4  0.93  0.421  0.483  0.327  0.744
+_EXTENSION_WINPOOL_END_
+
+_EXTENSION_BuildingGeometry_START_
+_EXTENSION_BuildingGeometry_END_
+
+_EXTENSION_VirtualSurfaceGeometry_START_
+_EXTENSION_VirtualSurfaceGeometry_END_
+
+_EXTENSION_ExternalShadingGeometry_START_
+_EXTENSION_ExternalShadingGeometry_END_
+
+_EXTENSION_GeoPositionGeometry_START_
+_EXTENSION_GeoPositionGeometry_END_
+
+_EXTENSION_DaylightSensorPoints_START_
+_EXTENSION_DaylightSensorPoints_END_
+
+_EXTENSION_AdditionalDaylightGeometry_START_
+_EXTENSION_AdditionalDaylightGeometry_END_
+
+_EXTENSION_VAMPARAMS_START_
+_EXTENSION_VAMPARAMS_END_
+
+
+
