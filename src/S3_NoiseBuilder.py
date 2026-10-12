@@ -323,7 +323,6 @@ def noiseTsetpoint(c):
         
         SchedulesNoised.to_csv(c.path_OutputSCH + schedFile, index=False)
         
-
 def recursive(d, stringcheck, extension):
     for k,v in d.items():
         if type(v)==str:
@@ -333,7 +332,6 @@ def recursive(d, stringcheck, extension):
             recursive(v, stringcheck, extension)
     return d
    
-
 def noise(c):
     """
     Main function for noise.
