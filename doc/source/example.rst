@@ -200,8 +200,7 @@ Now that we should have all the files, it's time to configure how we want the to
 1. Check the paths. Make sure it fits your project.
 2. Check the Identification key variables, make sure it fits your project.
 3. Check the InputFamily attribute. Update it with your schedules input family (for instance, all schedules used for restaurant should use the same start name: Resto_ventilation, Resto_occupant...)
-4. Check the DictSpacetype attribute. Update it with your spacetype and their probability. For instance, if you have an entry in DictSpacetype that is "I":{"Workshop":0.1, "School":0.5, "Library":0.4}, 
-then each zone starting with "I" ("I as their spacetype category identifier") will have 10% probability to be a orkshop, 50% probability to be a school and 40% for a library.
+4. Check the DictSpacetype attribute. Update it with your spacetype and their probability. For instance, if you have an entry in DictSpacetype that is "I":{"Workshop":0.1, "School":0.5, "Library":0.4}, then each zone starting with "I" ("I as their spacetype category identifier") will have 10% probability to be a orkshop, 50% probability to be a school and 40% for a library.
 
 3. Create Configuration object
 ------------------------------
