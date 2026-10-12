@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation of TRNBpy Tool &mdash; Documentation TRNBpy 2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e8570148"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Example of use" href="example.html" />
+    <link rel="prev" title="Documentation of TRNBpy Tool" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TRNBpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation of TRNBpy Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">0. Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-generation">1. Model Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-spacetypes">1.1 Preparing Spacetypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-json-files-for-buildings">1.2 Generating JSON Files for Buildings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#noise-generation">1.3 Noise Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conversion-to-the-b18-format">1.4 Conversion to the B18 Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dck-generation">1.5 DCK Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calculation-of-building-loads">2. Calculation of Building Loads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definition-of-clusters">2.1 Definition of Clusters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-cluster-loads">2.2 Calculating Cluster Loads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-building-loads">2.3 Calculating Building Loads</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generation-of-the-heating-network">3. Generation of the Heating Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#updating-operating-conditions">3.1 Updating Operating Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-pumps">3.2.Updating Pumps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating-pipes">3.3 Updating Pipes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example of use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codedoc.html">Code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TRNBpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation of TRNBpy Tool</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/documentation.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-of-trnbpy-tool">
+<h1>Documentation of TRNBpy Tool<a class="headerlink" href="#documentation-of-trnbpy-tool" title="Lien vers cette rubrique"></a></h1>
+<section id="configuration">
+<h2>0. Configuration<a class="headerlink" href="#configuration" title="Lien vers cette rubrique"></a></h2>
+<p>Configuration involves selecting the parameters. All paths and variables used
+are listed in the config.y file. The main parameters that the user is
+prompted to enter are:</p>
+<ul class="simple">
+<li><p>The relative path to the scenario file.</p></li>
+<li><p>The level of precision for buildings <em>Precision_BLD</em> in the three
+methods studied in this research (<em>Detailed</em>, <em>Tailored</em>,
+<em>Prototype</em>).</p></li>
+<li><p>The level of precision for the operational assumptions
+<em>Precision_EXP</em>, which determines whether variability and noise should
+be added.</p></li>
+<li><p>The level of precision for the district heating network
+<em>Precision_THN</em>, which defines the topology and load groupings within
+the district heating network (and thus specifies which subfolder
+generated by PipingTool to use).</p></li>
+</ul>
+</section>
+<section id="model-generation">
+<h2>1. Model Generation<a class="headerlink" href="#model-generation" title="Lien vers cette rubrique"></a></h2>
+<p>Model generation (green path) is broken down into several steps. Their
+roles are detailed below.</p>
+<section id="preparing-spacetypes">
+<h3>1.1 Preparing Spacetypes<a class="headerlink" href="#preparing-spacetypes" title="Lien vers cette rubrique"></a></h3>
+<p>The first step is to prepare the schedules. For each spacetype, the
+annual schedules are stored in a CSV file. It is easier for humans to
+write daily schedules than schedules broken down into one-hour time
+steps. That is why TRNBpy includes a function to generate annual
+schedules from daily schedules provided as input in a CSV file (for
+weekdays, Saturdays, and Sundays, for each desired profile). We use
+these annual schedules as inputs for the B18 model because this allows
+for a more flexible definition (to add vacations and holidays, for
+example). The associated functions can be found in
+<code class="docutils literal notranslate"><span class="pre">_SiteDataBuilder.py</span></code>.</p>
+</section>
+<section id="generating-json-files-for-buildings">
+<h3>1.2 Generating JSON Files for Buildings<a class="headerlink" href="#generating-json-files-for-buildings" title="Lien vers cette rubrique"></a></h3>
+<p>In this section, we proceed in several steps. These steps can be found
+in <code class="docutils literal notranslate"><span class="pre">_jsonbuilder.py</span></code>.</p>
+<ol class="arabic simple">
+<li><p>First, we generate a data structure in JSON format, listing each zone
+in a building along with its main properties (ID, name, area, volume,
+exterior surface area, floor, etc.). These characteristics are
+extracted from the building’s B18 file. In the future, when TRNSYS
+natively supports JSON files for its buildings, this step can be
+omitted.</p></li>
+<li><p>Next, we assign a spacetype to each thermal zone. There are two
+methods for doing this. The first method is “manual,” where each type
+of thermal zone corresponds to a single spacetype. The second method
+is “conditional,” where each type of thermal zone corresponds to a
+set of spacetypes and their average representation. For example:
+<code class="docutils literal notranslate"><span class="pre">{“Restaurant”:</span> <span class="pre">0.2;</span> <span class="pre">‘Retail’:</span> <span class="pre">0.6;</span> <span class="pre">“Theater”:</span> <span class="pre">0.2}</span></code>. The sum must
+equal 1, and the representation corresponds to the desired percentage
+of the spacetype’s area relative to the building’s total area. The
+spacetype assigned to each thermal zone is then stored in the zone’s
+properties within the building’s JSON file. This “conditional” method
+allows for the distribution of different commercial zones and, in
+certain scenarios, introduces variability into residential spaces.</p></li>
+<li><p>Third, for each zone, if the assigned spacetype includes certain
+gains, ventilation, or infiltration whose values depend on the zone’s
+geometric characteristics, then the values of these objects are
+recalculated. For example, the value of the lighting gain for a
+thermal zone depends on the zone’s floor area. Thus, once the
+spacetype has been assigned and stored in a zone’s characteristics,
+we can update the lighting gain since we know the zone’s floor area.</p></li>
+</ol>
+</section>
+<section id="noise-generation">
+<h3>1.3 Noise Generation<a class="headerlink" href="#noise-generation" title="Lien vers cette rubrique"></a></h3>
+<p>Noise generation function are in the <code class="docutils literal notranslate"><span class="pre">NoiseBuilder.py</span></code> file.
+Finally, if the scenario is configured to have variable occupancy
+assumptions, functions to add noise are called in order to vary the
+values of certain gains and schedules. The buildings’ JSON files are
+thus read, edited, and saved. Noise is introduced for internal heat
+gains, DHW, and ventilation using a random selection algorithm within a
+specified range, while ensuring that the sum (or rather the average) of
+the values for each object remains constant. Introducing noise into the
+schedules involves reading the annual schedule file, identifying
+transition periods (for example, when the heating setpoint changes from
+18°C to 24°C at 8:00 a.m.), and then shifting these transition periods
+within a fixed interval (for example, the heating setpoint changes from
+18°C to 24°C randomly between 6 a.m. and 10 a.m.). Thus, for each
+schedule and for each transition period, the developed algorithm
+randomly selects a time within the fixed interval. The values are then
+adjusted to shift the transition to the randomly selected time.</p>
+</section>
+<section id="conversion-to-the-b18-format">
+<h3>1.4 Conversion to the B18 Format<a class="headerlink" href="#conversion-to-the-b18-format" title="Lien vers cette rubrique"></a></h3>
+<p>Based on our discussions with TRNSOLAR, it appears that TRNSYS19 is
+moving toward a more text-based data structure using the JSON format.
+This is the basis for our development decision. However, for the time
+being, TRNSYS18 uses the text-based .B18 format for building files. This
+is why we need to convert the main building files so that they can be
+interpreted by the software as of today. To this end, the building input
+files (also in .B18 format, since the SketchUp3D extension is intended
+for TRNSYS18) are updated using writing functions to add the inputs,
+outputs, gains, ventilation, infiltration, schedules, etc., specific to
+each thermal zone of the building. These conversion functions can be
+found in <code class="docutils literal notranslate"><span class="pre">_TranslateToB18.py</span></code>.</p>
+</section>
+<section id="dck-generation">
+<h3>1.5 DCK Generation<a class="headerlink" href="#dck-generation" title="Lien vers cette rubrique"></a></h3>
+<p>In this section, the tool’s objective is to generate a DCK file that
+links a .B18 building file with the CSV file containing its input
+schedules, the desired weather file, and the building’s output boxes in
+order to generate the desired output CSV files. Several functions are
+used for this purpose in the <code class="docutils literal notranslate"><span class="pre">deckbuilder.py</span></code> file.</p>
+</section>
+</section>
+<section id="calculation-of-building-loads">
+<h2>2. Calculation of Building Loads<a class="headerlink" href="#calculation-of-building-loads" title="Lien vers cette rubrique"></a></h2>
+<p>The calculation of building loads uses the <code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">builder</span></code> file.
+It follows the same model for all three building modeling approaches. First, identify groups of thermal zones
+(i.e., <em>clusters</em>); next, calculate the loads for these <em>clusters</em>; and
+finally, determine the building loads based on the respective areas of
+the clusters in the desired models and buildings.</p>
+<figure class="align-default" id="id1">
+<img alt="ScalingMethods" src="_images/ScalingMethods.png" />
+<figcaption>
+<p><span class="caption-text">ScalingMethods</span><a class="headerlink" href="#id1" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<section id="definition-of-clusters">
+<h3>2.1 Definition of Clusters<a class="headerlink" href="#definition-of-clusters" title="Lien vers cette rubrique"></a></h3>
+<p>The definition of thermal zone groupings depends entirely on the chosen
+modeling approach. First, note that for each building, we associate one
+or more models to be used for calculating loads, and that this
+association guides the definition of <em>clusters</em>.</p>
+<ul class="simple">
+<li><p>For the <em>detailed</em> approach, the geometry of the models accurately
+reflects that of the buildings. Thus, a single model is associated
+with each building; for example, the loads on the ground floor of a
+model correspond to the loads on the ground floor of the modeled
+building. The only exception is that the central floors are reduced to
+a single central floor in the models. For each building, the grouping
+by thermal zone accounts for this by defining each cluster as the set
+of zones on the same floor.</p></li>
+<li><p>For the <em>reference-based</em> approach, the geometry is simplified and
+does not directly represent the buildings. However, each building has
+been assigned a single model that includes at least all of the
+building’s uses. Here, scaling must ensure that the proportions of
+each use are maintained. For each building, this involves defining a
+<em>cluster</em> as the set of zones on the same floor and of the same
+spacetype.</p></li>
+<li><p>For the <em>prototype</em> approach, in keeping with the inspiration from the
+DOE database, we consider that each model corresponds to a single
+spacetype. Here, each building has been assigned as many models as it
+has different uses. Thus, we define <em>clusters</em> for this approach as
+the set of zones with the same use. In terms of models, this
+corresponds to all zones within a single model.</p></li>
+</ul>
+</section>
+<section id="calculating-cluster-loads">
+<h3>2.2 Calculating Cluster Loads<a class="headerlink" href="#calculating-cluster-loads" title="Lien vers cette rubrique"></a></h3>
+<p>Once these groupings have been identified, calculating their load is
+fairly straightforward. In the models, we sum the loads of each of the
+thermal zones that make up the <em>cluster</em>. Since the building’s JSON file
+has been populated with the name of each zone’s cluster, a single
+function is sufficient to perform the calculation.</p>
+</section>
+<section id="calculating-building-loads">
+<h3>2.3 Calculating Building Loads<a class="headerlink" href="#calculating-building-loads" title="Lien vers cette rubrique"></a></h3>
+<p>Two intermediate steps must be performed before the building loads can
+be calculated. First, calculate the area of the cluster in the models
+using the models’ JSON file. Next, calculate the area of each cluster in
+the desired buildings using the CSV file describing the buildings. Once
+these steps are completed, the loads for a building are given by
+<span class="math notranslate nohighlight">\(Q_{building}=\displaystyle\sum_{c \in C_{building}}Q_c \cdot \frac{S_{c,model}}{S_{c,building}}\)</span>.
+Where <span class="math notranslate nohighlight">\(C_b\)</span> is the set of clusters in a building, <span class="math notranslate nohighlight">\(Q_c\)</span> is
+the load of cluster <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(S_{c,model}\)</span> is the area of the
+cluster in the models, and <span class="math notranslate nohighlight">\(S_{c,building}\)</span> is the area of the
+cluster in the buildings. The area calculations are performed
+independently for the three building modeling approaches.</p>
+</section>
+</section>
+<section id="generation-of-the-heating-network">
+<h2>3. Generation of the Heating Network<a class="headerlink" href="#generation-of-the-heating-network" title="Lien vers cette rubrique"></a></h2>
+<p>Generating the heating network essentially involves reading and updating
+certain values in a pre-built heating network file. These <em>template</em>
+files are based on previous work carried out during a feasibility study
+for the city of Laval, in which I was tasked with building a heating
+network model using TRNSYS. These steps use building loads and pipe
+sizing files from PipingTool as inputs. The model is updated in three
+areas: equipment operating conditions, pump sizing, and pipe sizing.</p>
+<section id="updating-operating-conditions">
+<h3>3.1 Updating Operating Conditions<a class="headerlink" href="#updating-operating-conditions" title="Lien vers cette rubrique"></a></h3>
+<p>Based on peak and annual values for heating and cooling loads, we can
+redefine the nominal values for the heat pump’s condenser and
+evaporator, as well as the nominal value for the chiller. We can also
+update the performance correction factors for the heat pump and the
+chiller if the system’s operating temperatures change.</p>
+</section>
+<section id="updating-pumps">
+<h3>3.2.Updating Pumps<a class="headerlink" href="#updating-pumps" title="Lien vers cette rubrique"></a></h3>
+<p>For each pump, we can update the maximum flow rate and the maximum loads
+passing through the pump pipe, thereby defining the pump’s rated power
+and duty factor at all times.</p>
+</section>
+<section id="updating-pipes">
+<h3>3.3 Updating Pipes<a class="headerlink" href="#updating-pipes" title="Lien vers cette rubrique"></a></h3>
+<p>For each pipe, we update its length, inner and outer diameters, and the
+thickness of the insulation. By default, we also redefine the thermal
+conductivity of the insulation and the pipe (which are considered
+constant in our models).</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation of TRNBpy Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="example.html" class="btn btn-neutral float-right" title="Example of use" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, MEUNIER Guilwen.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

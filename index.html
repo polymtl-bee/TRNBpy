@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation of TRNBpy Tool &mdash; Documentation TRNBpy 2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e8570148"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Documentation of TRNBpy Tool" href="documentation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            TRNBpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation of TRNBpy Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example of use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codedoc.html">Code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">TRNBpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation of TRNBpy Tool</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-of-trnbpy-tool">
+<h1>Documentation of TRNBpy Tool<a class="headerlink" href="#documentation-of-trnbpy-tool" title="Lien vers cette rubrique"></a></h1>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>TRNBpy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Version</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Licence</p></td>
+<td><p>MIT</p></td>
+</tr>
+<tr class="row-even"><td><p>Author</p></td>
+<td><p>MEUNIER Guilwen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Last update</p></td>
+<td><p>October 2026</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview-of-trnbpy">
+<h2>Overview of TRNBpy<a class="headerlink" href="#overview-of-trnbpy" title="Lien vers cette rubrique"></a></h2>
+<p>As shown in following figure, the TRNBpy tool serves three distinct
+purposes:</p>
+<ol class="arabic simple">
+<li><p>First, to simplify and automate the entry of operational assumptions
+into building structural files (green path). At the end of these
+steps, TRNBpy will generate building files in JSON and B18 formats,
+as well as the necessary decks (DCK) to run simulations using
+TRNEdit.</p></li>
+<li><p>Second, to scale the model loads to the building loads (blue path).
+To do this, three similar algorithms enable scaling for each of the
+three methods: <em>Detailed</em>, <em>Tailored</em>, and <em>Prototype</em>.</p></li>
+<li><p>Third, to generate a deck file to simulate a heating and cooling
+system sized according to the input loads (yellow path).</p></li>
+</ol>
+<figure class="align-default">
+<img alt="TRNBpyDetailed" src="_images/TRNBpyDetailedENG.png" />
+</figure>
+</section>
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Lien vers cette rubrique"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation of TRNBpy Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#configuration">0. Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#model-generation">1. Model Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#calculation-of-building-loads">2. Calculation of Building Loads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#generation-of-the-heating-network">3. Generation of the Heating Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example of use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example.html#create-project-data">1. Create project data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#building-csv-description">1.1 Building CSV description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#model-structural-b18-files">1.2 Model structural b18 files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#spacetype-json-files">1.3 Spacetype json files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#configure-tool">2. Configure tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#create-configuration-object">3. Create Configuration object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example.html#call-the-functions">4. Call the functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codedoc.html">Code documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S1_SiteDataBuilder">1. Site data builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S2_JsonBuilder">2. JSON builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S3_NoiseBuilder">3. Noise builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S4_DeckBuilder">4. Deck builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S6_LoadBuilder">5. Load builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-S8_ThnBuilder">6. Thermal network builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-_Logging">7. Log file builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-_TranslateToB18">8. Translate to B18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codedoc.html#module-_Utils">9. Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="documentation.html" class="btn btn-neutral float-right" title="Documentation of TRNBpy Tool" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, MEUNIER Guilwen.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

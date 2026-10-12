@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code documentation &mdash; Documentation TRNBpy 2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e8570148"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Licence" href="licence.html" />
+    <link rel="prev" title="Example of use" href="example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TRNBpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation of TRNBpy Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example of use</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-S1_SiteDataBuilder">1. Site data builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._make_Site"><code class="docutils literal notranslate"><span class="pre">_make_Site()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._make_Buildings"><code class="docutils literal notranslate"><span class="pre">_make_Buildings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._schedules_generator"><code class="docutils literal notranslate"><span class="pre">_schedules_generator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._get_scheduleList_FromSpacetype"><code class="docutils literal notranslate"><span class="pre">_get_scheduleList_FromSpacetype()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._generate_InputSchedule"><code class="docutils literal notranslate"><span class="pre">_generate_InputSchedule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._update_json_with_trnsys_schedules"><code class="docutils literal notranslate"><span class="pre">_update_json_with_trnsys_schedules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._update_json_with_input_schedules"><code class="docutils literal notranslate"><span class="pre">_update_json_with_input_schedules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S1_SiteDataBuilder._loadAllSchedules_InAllSpacetypes"><code class="docutils literal notranslate"><span class="pre">_loadAllSchedules_InAllSpacetypes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-S2_JsonBuilder">2. JSON builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S2_JsonBuilder._BuildSpacetypeSurface"><code class="docutils literal notranslate"><span class="pre">_BuildSpacetypeSurface()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S2_JsonBuilder._ChooseSpacetype_Probability"><code class="docutils literal notranslate"><span class="pre">_ChooseSpacetype_Probability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S2_JsonBuilder._ChooseSpacetype_Manually"><code class="docutils literal notranslate"><span class="pre">_ChooseSpacetype_Manually()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S2_JsonBuilder._BuildJSONFile"><code class="docutils literal notranslate"><span class="pre">_BuildJSONFile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-S3_NoiseBuilder">3. Noise builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S3_NoiseBuilder.randomIntervalSelection"><code class="docutils literal notranslate"><span class="pre">randomIntervalSelection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S3_NoiseBuilder.noiseValues"><code class="docutils literal notranslate"><span class="pre">noiseValues()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S3_NoiseBuilder.noiseSchedules"><code class="docutils literal notranslate"><span class="pre">noiseSchedules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S3_NoiseBuilder.noiseTsetpoint"><code class="docutils literal notranslate"><span class="pre">noiseTsetpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S3_NoiseBuilder.noise"><code class="docutils literal notranslate"><span class="pre">noise()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-S4_DeckBuilder">4. Deck builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S4_DeckBuilder._buildDeck_FromB18"><code class="docutils literal notranslate"><span class="pre">_buildDeck_FromB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S4_DeckBuilder._link_B18Output_as_printerInput"><code class="docutils literal notranslate"><span class="pre">_link_B18Output_as_printerInput()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S4_DeckBuilder._link_CSVOutput_as_BuildingInput"><code class="docutils literal notranslate"><span class="pre">_link_CSVOutput_as_BuildingInput()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S4_DeckBuilder.generate_AllDeckForSimulations"><code class="docutils literal notranslate"><span class="pre">generate_AllDeckForSimulations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-S6_LoadBuilder">5. Load builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._get_ModelLoads_FromCSV"><code class="docutils literal notranslate"><span class="pre">_get_ModelLoads_FromCSV()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._print_stats"><code class="docutils literal notranslate"><span class="pre">_print_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._ModelsLoader"><code class="docutils literal notranslate"><span class="pre">_ModelsLoader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._GetClusterLoads"><code class="docutils literal notranslate"><span class="pre">_GetClusterLoads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._GetBuildingLoads"><code class="docutils literal notranslate"><span class="pre">_GetBuildingLoads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._GetSurfacicZoneLoads"><code class="docutils literal notranslate"><span class="pre">_GetSurfacicZoneLoads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._UpdateSiteLoads"><code class="docutils literal notranslate"><span class="pre">_UpdateSiteLoads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder._UpdateSpacetypeLoads"><code class="docutils literal notranslate"><span class="pre">_UpdateSpacetypeLoads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder.smoothing"><code class="docutils literal notranslate"><span class="pre">smoothing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder.scaling_detailed"><code class="docutils literal notranslate"><span class="pre">scaling_detailed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder.scaling_archetype"><code class="docutils literal notranslate"><span class="pre">scaling_archetype()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder.scaling_prototype"><code class="docutils literal notranslate"><span class="pre">scaling_prototype()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#S6_LoadBuilder.Scaling"><code class="docutils literal notranslate"><span class="pre">Scaling()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-S8_ThnBuilder">6. Thermal network builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#S8_ThnBuilder.update_RTh"><code class="docutils literal notranslate"><span class="pre">update_RTh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-_Logging">7. Log file builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Logging.CallCounted"><code class="docutils literal notranslate"><span class="pre">CallCounted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Logging.log_recap"><code class="docutils literal notranslate"><span class="pre">log_recap()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-_TranslateToB18">8. Translate to B18</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.convert_FromJSON_ToB18"><code class="docutils literal notranslate"><span class="pre">convert_FromJSON_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_coolings"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_coolings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_gains"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_gains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_heatings"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_heatings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_infiltrations"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_infiltrations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_schedules"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_schedules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.update_json_with_b18_ventilations"><code class="docutils literal notranslate"><span class="pre">update_json_with_b18_ventilations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONDefCooling_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONDefCooling_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONDefGain_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONDefGain_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONDefHeating_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONDefHeating_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONDefInfiltration_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONDefInfiltration_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONDefVentilation_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONDefVentilation_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONZoneCooling_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONZoneCooling_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONZoneGain_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONZoneGain_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONZoneHeating_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONZoneHeating_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONZoneInfiltration_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONZoneInfiltration_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_JSONZoneVentilation_ToB18"><code class="docutils literal notranslate"><span class="pre">write_JSONZoneVentilation_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_furnitures_ToB18"><code class="docutils literal notranslate"><span class="pre">write_furnitures_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_input_ToB18"><code class="docutils literal notranslate"><span class="pre">write_input_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_outputs_ToB18"><code class="docutils literal notranslate"><span class="pre">write_outputs_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_schedule_ToB18"><code class="docutils literal notranslate"><span class="pre">write_schedule_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_surfaceComposition_FromTemplate_ToB18"><code class="docutils literal notranslate"><span class="pre">write_surfaceComposition_FromTemplate_ToB18()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TranslateToB18.write_zone_spacetype"><code class="docutils literal notranslate"><span class="pre">write_zone_spacetype()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-_Utils">9. Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TRNBpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Code documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/codedoc.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code-documentation">
+<h1>Code documentation<a class="headerlink" href="#code-documentation" title="Lien vers cette rubrique"></a></h1>
+<section id="module-S1_SiteDataBuilder">
+<span id="site-data-builder"></span><h2>1. Site data builder<a class="headerlink" href="#module-S1_SiteDataBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._make_Site">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_make_Site</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._make_Site" title="Lien vers cette définition"></a></dt>
+<dd><p>Small function to build a site recap from reading all given B18 geometrics files descriptions. 
+Return a small CSV with recap of surfaces by Subbuilding, Building, Number of floor and enduse.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._make_Buildings">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_make_Buildings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._make_Buildings" title="Lien vers cette définition"></a></dt>
+<dd><p>Small function to build a an input surface file for every building given as an b18 input file.
+Should be used for a « real » or detailed or reference approach to get wanted surface for site. 
+Be careful if you model building with only 1 central floor, you must manually update CSV file to match what you really want.
+Return a small CSV with recap of surfaces by Subbuilding, Building, Number of floor and enduse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>c</strong> – A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._schedules_generator">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_schedules_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weekday</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturday</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sunday</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dayoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">holiday</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._schedules_generator" title="Lien vers cette définition"></a></dt>
+<dd><p>This function takes several daily schedules, for weekdays, saturday, sunday, dayoff and holidays.
+Then it build an annual based on those schedules values and predetermined dayoff and holiday dates.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>schedule (list): List of the hourly values of schedules during one year.</p>
+</dd>
+<dt>Args:</dt><dd><p>weekday (list): daily schedule values for weekday.
+saturday (list): daily schedule values for saturday.
+sunday (list): daily schedule values for sunday.
+dayoff (list): daily schedule values for a typical dayoff.
+holiday (list): daily schedule values for a typical holiday day.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._get_scheduleList_FromSpacetype">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_get_scheduleList_FromSpacetype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spacetype_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._get_scheduleList_FromSpacetype" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will recursively parse a json_object, returning every instance of a specific string target.
+We use this function to detect every schedule used in a JSON spacetype file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>spacetype_dict (dict): The JSON object we want to parse (so the JSON spacetype file).
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._generate_InputSchedule">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_generate_InputSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_schedule_family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['horexA',</span> <span class="pre">'horexB',</span> <span class="pre">'horexC',</span> <span class="pre">'horexG',</span> <span class="pre">'horexD',</span> <span class="pre">'horexK']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_schedule_subfamily</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['occ',</span> <span class="pre">'lum',</span> <span class="pre">'eq',</span> <span class="pre">'dhw',</span> <span class="pre">'cool',</span> <span class="pre">'heat',</span> <span class="pre">'vent']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_schedule_daytype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['WD',</span> <span class="pre">'Sat',</span> <span class="pre">'Sun']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._generate_InputSchedule" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will read the input schedule file (detected at c.path_ScheduleInput).
+Then it will create an annual schedule using  _schedules_generator() function and daily schedules found in inpout schedule file.
+Schedules names must follows « Schedule family » + « _ » + « Schedule category » + « Schedule daytype ».
+For instance: horexA_occSat, horexB_lumSat…</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+input_schedule_family (list): Schedule family (for instance: CNEB Schedule G for residential). Used in schedule name definition.
+input_schedule_subfamily (list): Schedule categories (for instance: occupant schedule, light schedule…). Used in schedule name definition.
+input_schedule_daytype (list): Schedule daytype identifier (for isntance: WD for Weekday, Sat for Saturday…).  Used in schedule name definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._update_json_with_trnsys_schedules">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_update_json_with_trnsys_schedules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TIME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUES'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._update_json_with_trnsys_schedules" title="Lien vers cette définition"></a></dt>
+<dd><p>This function aims to convert a schedule in csv format (list-like) to a TRNBuild schedule. 
+It will retrieve the timeColumn and valueColumn columns from the csv file using pandas and convert it to an annual schedule.
+Then the schedule definition will be added as a schedule in the spacetype given in json_dict.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file (str): A string containing the path to the csv file.
+json_dict (dict): A spacetype JSON definition stored in a dictionary. 
+k (dict): keys equivalence dictionary from ClassConfiguration.
+time_column (str): The name of the column to look for timestep values. Must be in hours.
+value_column (str): The name of the column to look for schedule values. Must be in interval [0,1].
+schedName (str): The name tu use for the schedule.</p>
+</dd>
+<dt>Return:</dt><dd><p>json_dict (dict): The spacetype definition where to add the schedule</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._update_json_with_input_schedules">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_update_json_with_input_schedules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._update_json_with_input_schedules" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the schedule schedName in json_dict JSON spacetype file. 
+No time and values series are given because this schedule is an input in the B18 file.
+The schedule type will be input so that B18 update will interprete this schedule as an input.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The spacetype definition where to add the schedule</p>
+</dd>
+<dt>Args:</dt><dd><p>json_dict (dict): A spacetype JSON definition stored in a dictionary. 
+k (dict): keys equivalence dictionary from ClassConfiguration.
+schedName (str): The name tu use for the schedule.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S1_SiteDataBuilder._loadAllSchedules_InAllSpacetypes">
+<span class="sig-prename descclassname"><span class="pre">S1_SiteDataBuilder.</span></span><span class="sig-name descname"><span class="pre">_loadAllSchedules_InAllSpacetypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S1_SiteDataBuilder._loadAllSchedules_InAllSpacetypes" title="Lien vers cette définition"></a></dt>
+<dd><p>This function loads all schedules from c.path_ScheduleHourlyTRNSYS, c.path_ScheduleDailyTRNSYS, c.path_ScheduleAnnualTRNSYS and c.path_ScheduleInput files.
+Then those schedules are written in spacetypes where the schedule is used (where its name is detected in a spacetype JSON file).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-S2_JsonBuilder">
+<span id="json-builder"></span><h2>2. JSON builder<a class="headerlink" href="#module-S2_JsonBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S2_JsonBuilder._BuildSpacetypeSurface">
+<span class="sig-prename descclassname"><span class="pre">S2_JsonBuilder.</span></span><span class="sig-name descname"><span class="pre">_BuildSpacetypeSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S2_JsonBuilder._BuildSpacetypeSurface" title="Lien vers cette définition"></a></dt>
+<dd><p>Function used to initialize Spacetype surfaces in the building surfaces CSV files.
+Read the building surface file, create new columns for each spacetype, update surface value for each {cluster, spacetype} according to cluster enduse surface, weight, and spacetype probability from parameters SpacetypeDict in ClassConfiguration object <cite>c</cite>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S2_JsonBuilder._ChooseSpacetype_Probability">
+<span class="sig-prename descclassname"><span class="pre">S2_JsonBuilder.</span></span><span class="sig-name descname"><span class="pre">_ChooseSpacetype_Probability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_dict_zone</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S2_JsonBuilder._ChooseSpacetype_Probability" title="Lien vers cette définition"></a></dt>
+<dd><p>This function is used for stochastic attribution of spacetype.
+A « leftover » surface is first created. Then, zones are read randomly and each time a spacetype is chosen using weighted probability coefficient fron c.SpacetypeDict</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties.
+file (str): name of surface file stored in c.path_GeneratedSurfaceRecap (name without file extension)</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>Return:</dt><dd><p>b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties. Updated with spacetypes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S2_JsonBuilder._ChooseSpacetype_Manually">
+<span class="sig-prename descclassname"><span class="pre">S2_JsonBuilder.</span></span><span class="sig-name descname"><span class="pre">_ChooseSpacetype_Manually</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_dict_zone</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S2_JsonBuilder._ChooseSpacetype_Manually" title="Lien vers cette définition"></a></dt>
+<dd><p>This function is used for manually attributing spacetype based on rules on zone names.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties.
+file (str): name of surface file stored in c.path_GeneratedSurfaceRecap (name without file extension)</p>
+</dd>
+<dt>Return:</dt><dd><p>b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties. Updated with spacetypes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S2_JsonBuilder._BuildJSONFile">
+<span class="sig-prename descclassname"><span class="pre">S2_JsonBuilder.</span></span><span class="sig-name descname"><span class="pre">_BuildJSONFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S2_JsonBuilder._BuildJSONFile" title="Lien vers cette définition"></a></dt>
+<dd><p>This function completely build a JSOn file for each building. The JSON file contains each zones:
+- Properties
+- Spacetype
+- Schedules and type of schedules
+- Deep hot water peak value
+This function also replace zone dependant equations by their results using zone properties.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-S3_NoiseBuilder">
+<span id="noise-builder"></span><h2>3. Noise builder<a class="headerlink" href="#module-S3_NoiseBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S3_NoiseBuilder.randomIntervalSelection">
+<span class="sig-prename descclassname"><span class="pre">S3_NoiseBuilder.</span></span><span class="sig-name descname"><span class="pre">randomIntervalSelection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ListOfValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Coef</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S3_NoiseBuilder.randomIntervalSelection" title="Lien vers cette définition"></a></dt>
+<dd><p>This function introduce a random noise from a controlled interval to the values of a specific attribute of eeach zone. 
+This function keep the specific attribute mean constant.
+For instance, a noise of +- Coef % will be introduced to every zone lighting gains, while keeping the total/mean lighting gain of the building identical.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ListOfValues (List): A list of all zones nominal value for a specific category. For instance, it could be a list of all nominal values for equipment gains.
+Coef (Float): Interval coefficient for introducing noise.</p>
+</dd>
+<dt>Return:</dt><dd><p>ListOfValues (List): The previous ListOfValues, updated with the noise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S3_NoiseBuilder.noiseValues">
+<span class="sig-prename descclassname"><span class="pre">S3_NoiseBuilder.</span></span><span class="sig-name descname"><span class="pre">noiseValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S3_NoiseBuilder.noiseValues" title="Lien vers cette définition"></a></dt>
+<dd><p>Generate noise for nominal value of zone’s dhw, gains and ventilation, using the previously defined randomIntervalSelection() function.
+Sum of building radiative, convective and humidification gains are kept constant for the 3 categories (people, equipment, lights)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S3_NoiseBuilder.noiseSchedules">
+<span class="sig-prename descclassname"><span class="pre">S3_NoiseBuilder.</span></span><span class="sig-name descname"><span class="pre">noiseSchedules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S3_NoiseBuilder.noiseSchedules" title="Lien vers cette définition"></a></dt>
+<dd><p>Generate noise to schedules. Annual occupancy schedule is read,every changes in occupancy are identified. Then those changes are moved by in an interval +- 2h with a gaussian-like probability.
+Schedules variation implies differents total electric consumption at the end of the day.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S3_NoiseBuilder.noiseTsetpoint">
+<span class="sig-prename descclassname"><span class="pre">S3_NoiseBuilder.</span></span><span class="sig-name descname"><span class="pre">noiseTsetpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S3_NoiseBuilder.noiseTsetpoint" title="Lien vers cette définition"></a></dt>
+<dd><p>Generate noise on schedule setpoint base value of every residential area for every schedule file.
+Using interval and wieght:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>interval = [-3, -2 , -1 , 0   , 1   , 2  , 3  ]</p></li>
+<li><p>weight   = [5%, 10%, 10%, 25% , 25% , 15%, 10%]</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S3_NoiseBuilder.noise">
+<span class="sig-prename descclassname"><span class="pre">S3_NoiseBuilder.</span></span><span class="sig-name descname"><span class="pre">noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S3_NoiseBuilder.noise" title="Lien vers cette définition"></a></dt>
+<dd><p>Main function for noise.
+Will call noise function if precision of occupancy is stochastic.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-S4_DeckBuilder">
+<span id="deck-builder"></span><h2>4. Deck builder<a class="headerlink" href="#module-S4_DeckBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S4_DeckBuilder._buildDeck_FromB18">
+<span class="sig-prename descclassname"><span class="pre">S4_DeckBuilder.</span></span><span class="sig-name descname"><span class="pre">_buildDeck_FromB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B18_InputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DCK_TemplatePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DCK_OutputPathDir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PATH_METEO_FILE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PATH_SCHEDULE_FILE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">KEY_sched</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">KEY_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PRINTER_MAX_INPUT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S4_DeckBuilder._buildDeck_FromB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function allows to update a template Deck file with saved configuration and buildings informations.
+It includes update path to meteo file, path to external schedule file, path to building file.
+It also includes linking all of the building’s output to different Type25 in deck file. 
+If maximum number of input is reached, then multiples deck are generated until all outputs are linked to one Type25 input.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>B18_InputPath (string): Path to .b18 building file.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+DCK_TemplatePath (string): Path to .dck template used to write output in.
+DCK_OutputPathDir (string): Path to output directory where to save updated .dck file.
+PATH_METEO_FILE (string): Relative path to meteo file.
+PATH_SCHEDULE_FILE (string): Relative path to schedule file.
+filename (string): A string containing the name of the output file, without it’s extension (.dck).
+schedKEY (string): A string of the common identifier found a the begening of every schedule name. Used for importing only specific columns from CSV file.
+schedFILEUNIT (string): A string of an integer corresponding to the fileUNIT of the CSV (defined in the assign line  of CSV import block).
+PRINTER_MAX_INPUT (int): Maximum number of input allowed per Type25c logger.infoer. If total outputs is greater than PRINTER_MAX_INPUT, multiple deck files will be generated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S4_DeckBuilder._link_B18Output_as_printerInput">
+<span class="sig-prename descclassname"><span class="pre">S4_DeckBuilder.</span></span><span class="sig-name descname"><span class="pre">_link_B18Output_as_printerInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dck_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_output_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_output_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fcount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S4_DeckBuilder._link_B18Output_as_printerInput" title="Lien vers cette définition"></a></dt>
+<dd><p>This functions allows one to write TRNSYS links between the outputs of Type56 stored in list_output_name and the inputs of the Type25c where fcount is pointing.
+The list_output_name and list_output_id are sublist extracted from Type56 list of output to make sure this Type25c doesn’t have too much inputs.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dck_lines (list-like): a list-like object of a .dck file.
+list_output_name (list): A list of output found in the path_b18 file used by Type56 building model.
+list_output_id (list): Unique ID for each output of list_output_name.
+fcount (int): The line from which to start reading the dck_lines file (i.e. the line of the current Type25c where to write the nexts outputs.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S4_DeckBuilder._link_CSVOutput_as_BuildingInput">
+<span class="sig-prename descclassname"><span class="pre">S4_DeckBuilder.</span></span><span class="sig-name descname"><span class="pre">_link_CSVOutput_as_BuildingInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dck_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_sched_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_sched_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fcounti</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedKEY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SCHED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedFILEUNIT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['14']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S4_DeckBuilder._link_CSVOutput_as_BuildingInput" title="Lien vers cette définition"></a></dt>
+<dd><p>This functions allows one to write TRNSYS links between the outputs of Type56 stored in list_output_name and the inputs of the Type25c where fcount is pointing.
+The list_output_name and list_output_id are sublist extracted from Type56 list of output to make sure this Type25c doesn’t have too much inputs.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dck_lines (list-like): a list-like object of a .dck file.
+list_sched_name (list): A list of schedule found in the schedule files columns used by Type9c file reader model.
+list_sched_id (list): Unique ID for each scuedule input of list_sched_name.
+fcount (int): The line from which to start reading the dck_lines file (i.e. the line of the current Type56 where to write the nexts inputs.)
+schedKEY (string): A string of the common identifier found a the begening of every schedule name. Used for importing only specific columns from CSV file.
+schedFILEUNIT (string): A string of an integer corresponding to the fileUNIT of the CSV (defined in the assign line  of CSV import block).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S4_DeckBuilder.generate_AllDeckForSimulations">
+<span class="sig-prename descclassname"><span class="pre">S4_DeckBuilder.</span></span><span class="sig-name descname"><span class="pre">generate_AllDeckForSimulations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S4_DeckBuilder.generate_AllDeckForSimulations" title="Lien vers cette définition"></a></dt>
+<dd><p>Main function for deck generation. 
+Iterates on the file found in building file directory and call _buildDeck_FromB18() function for each file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-S6_LoadBuilder">
+<span id="load-builder"></span><h2>5. Load builder<a class="headerlink" href="#module-S6_LoadBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._get_ModelLoads_FromCSV">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_get_ModelLoads_FromCSV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filee</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_DictOfZonesProperties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._get_ModelLoads_FromCSV" title="Lien vers cette définition"></a></dt>
+<dd><p>Read a bunch of files found in directory “path”. Read those files and stored them in a pandas dataframe.
+Make sure every files have the same time series, because this function will append on columns.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Model_Loads (DataFrame): A panda DataFrame containing all columns in list_key categories for each files read.</p>
+</dd>
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+filee (str): Name of an annual schedule file used (taken from c.path_OutpuSCH).
+Model_DictOfZonesProperties (Dict): JSON file description of zones properties.
+path (str): Path to the directory containing the loads resulting from a TRNSYS simulation of a deck.
+starttime (float): Starttime used to read the time series of the files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._print_stats">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_print_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SurfaceSerie</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._print_stats" title="Lien vers cette définition"></a></dt>
+<dd><p>This function calculate and save annual statistics of a dataframe. 
+It calculate total annual consumption (kJ and GWh), min and max power values (kJ/hr and MW), and surfacic annual consumption (kWh/m²)
+Statistics are saved in c.path_OutputLOADS dircetory, under “file + _STATS.csv” name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>DF (pd.DataFrame): A pandas dataframe (in [kJ/hr]) containing the building loads.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+file (str): Name of dir/file in which to read simulations results.
+SurfaceSerie (pd.Series): A pandas series containing total surfaces on which columns loads are applicable to. It is used to calculate surfacic loads.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._ModelsLoader">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_ModelsLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deckList</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._ModelsLoader" title="Lien vers cette définition"></a></dt>
+<dd><p>Function for creating load files and loading zone’s properties for each building. THen returning Dictionnary with loads files and zones properties for each building.</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+deckList (List): List of the names of each deck folder (i.e. each building)</p>
+</dd>
+<dt>Return:</dt><dd><p>DictOf_Model_Loads (Dict): Dictionnary of buildings loads dataframe generated using _get_ModelLoads_FromCSV() function.
+DictOf_Model_DictOfZonesProperties (Dict): Dictionnary of buildings’s dictionnary of zone’s properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._GetClusterLoads">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_GetClusterLoads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Cluster_Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_DictOfZonesProperties</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._GetClusterLoads" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to calculate the loads of each cluster defined in Cluster_Dict.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Cluster_Dict (Dict): Dictionnary containing properties of cluster (name, surface in model, surface in building)
+Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+Model_DictOfZonesProperties (Dict): Model dictionnary of zone’s properties.</p>
+</dd>
+<dt>Return:</dt><dd><p>Cluster_Dict (Dict): Dictionnary containing properties of cluster. Updated with cluster loads.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._GetBuildingLoads">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_GetBuildingLoads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Cluster_Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_Loads</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._GetBuildingLoads" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to calculate the loads of each buildings by using cluster loads, and cluster ratio of surface between model and building.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Cluster_Dict (Dict): Dictionnary containing properties of cluster (name, surface in model, surface in building, loads)
+Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.</p>
+</dd>
+<dt>Return:</dt><dd><p>Building_Loads (Dict): Buildings loads dataframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._GetSurfacicZoneLoads">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_GetSurfacicZoneLoads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_DictOfZonesProperties</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._GetSurfacicZoneLoads" title="Lien vers cette définition"></a></dt>
+<dd><p>Function built to generate a CSV file with surfacic loads of every building.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+Model_DictOfZonesProperties (Dict): Buildings’s dictionnary of zone’s properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._UpdateSiteLoads">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_UpdateSiteLoads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Model_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Site_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Site_Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Building_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Building_Surface</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._UpdateSiteLoads" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to update values of Site_Loads dataframe and Site_Surface variable with a building loads and surface.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+Site_Loads (Dict): Dataframe where we sum all buildings loads to obtain site loads dataframe.
+Site_Surface (Float): Total floor surface of all building already considered.
+Building_Loads (Dict): Buildings loads dataframe.
+Building_Surface (Float): Total floor surface of a building.</p>
+</dd>
+<dt>Return:</dt><dd><p>Site_Loads (Dict): Dataframe where we sum all buildings loads to obtain site loads dataframe. Updated with Building_Loads.
+Site_Surface (Float): Total floor surface of all building already considered. Updated with Building_Surface.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder._UpdateSpacetypeLoads">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">_UpdateSpacetypeLoads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Model_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Model_DictOfZonesProperties</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Spacetype_Loads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Spacetype_Surface</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder._UpdateSpacetypeLoads" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to update values of Spacetype_Loads dataframe and Spacetype_Surface variable with a model loads and surface.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+Model_DictOfZonesProperties (Dict): Model dictionnary of zone’s properties.
+Spacetype_Loads (Dict): Dataframe where we sum all loads of zone with same spacetype to obtain spacetype loads dataframe.
+Spacetype_Surface (Float): Variable to sum floor surface of all zones into total floor surface of each spacetype.</p>
+</dd>
+<dt>Return:</dt><dd><p>Spacetype_Loads (Dict): Dataframe where we sum all loads of zone with same spacetype to obtain spacetype loads dataframe. Updated with loads of a model.
+Spacetype_Surface (Float): Variable to sum floor surface of all zones into total floor surface of each spacetype. Updated with surfaces of a model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder.smoothing">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">smoothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder.smoothing" title="Lien vers cette définition"></a></dt>
+<dd><p>Small function to smooth data with weight function [0.05, 0.2, 0.5, 0.2, 0.05].</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder.scaling_detailed">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">scaling_detailed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder.scaling_detailed" title="Lien vers cette définition"></a></dt>
+<dd><p>Scaling up for Detailed approach.
+Cluster are define as {Subbuilding, Floor}. For instance (Main_F0).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder.scaling_archetype">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">scaling_archetype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder.scaling_archetype" title="Lien vers cette définition"></a></dt>
+<dd><p>Scaling up for Archetype approach.
+Cluster are define as {Spacetype, Floor}. For instance (Office_F0).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder.scaling_prototype">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">scaling_prototype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder.scaling_prototype" title="Lien vers cette définition"></a></dt>
+<dd><p>Scaling up for Prototype approach.
+In each building, clusters are define as {Spacetype}. For instance (Office).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="S6_LoadBuilder.Scaling">
+<span class="sig-prename descclassname"><span class="pre">S6_LoadBuilder.</span></span><span class="sig-name descname"><span class="pre">Scaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S6_LoadBuilder.Scaling" title="Lien vers cette définition"></a></dt>
+<dd><p>Main function for scaling, depending on c.Precision_BLD, will call adapted scaling method. 
+Then use smoothing algorithm.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-S8_ThnBuilder">
+<span id="thermal-network-builder"></span><h2>6. Thermal network builder<a class="headerlink" href="#module-S8_ThnBuilder" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="S8_ThnBuilder.update_RTh">
+<span class="sig-prename descclassname"><span class="pre">S8_ThnBuilder.</span></span><span class="sig-name descname"><span class="pre">update_RTh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#S8_ThnBuilder.update_RTh" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to size a template thermal network deck model (.dck). Depending on c.Precision_RTU, will use appropriate template, then:
+Read pipes.csv file to overwrite pipes properties and pumps sizing in template.
+Read total loads file to overwrite heat pump and chiller sizing in template.
+Then export resize deck so it’s ready to be simulated.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-_Logging">
+<span id="log-file-builder"></span><h2>7. Log file builder<a class="headerlink" href="#module-_Logging" title="Lien vers cette rubrique"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Logging.CallCounted">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">_Logging.</span></span><span class="sig-name descname"><span class="pre">CallCounted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Logging.CallCounted" title="Lien vers cette définition"></a></dt>
+<dd><p>Decorator to determine number of calls for a method</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Logging.log_recap">
+<span class="sig-prename descclassname"><span class="pre">_Logging.</span></span><span class="sig-name descname"><span class="pre">log_recap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Logging.log_recap" title="Lien vers cette définition"></a></dt>
+<dd><p>Print a recap of the number of info, warning and critical message in the object <cite>logger</cite>.</p>
+</dd></dl>
+
+</section>
+<section id="module-_TranslateToB18">
+<span id="translate-to-b18"></span><h2>8. Translate to B18<a class="headerlink" href="#module-_TranslateToB18" title="Lien vers cette rubrique"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.convert_FromJSON_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">convert_FromJSON_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.convert_FromJSON_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Main function for writing a set of template spacetype on a set of B18 building input files (i.e. structurals archetypes).
+It gets the different files and call writeSpacetypeJSON_InB18() to write each spacetype in corresponding subset of zones in every B18 file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_coolings">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_coolings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_coolings" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all cooling defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the cooling defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (dict): a nested dictionnaries where the spacetype data is to be stored.
+key (dict): A subset of the json key dictionnary containing keys for coolings definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_gains">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_gains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_gains" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all gains defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the gains defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (list-like): a nested dictionnaries where the spacetype data is to be stored.
+key (dict): A subset of the json key dictionnary containing keys for gains definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_heatings">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_heatings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_heatings" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all heating defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the heating defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (list-like): a nested dictionnaries where the spacetype data is to be stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_infiltrations">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_infiltrations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_infiltrations" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all infiltration defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the infiltration defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (list-like): a nested dictionnaries where the spacetype data is to be stored.
+key (dict): A subset of the json key dictionnary containing keys for infiltration definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_schedules">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_schedules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_schedules" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all schedules defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the schedules defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (list-like): a nested dictionnaries where the spacetype data is to be stored.
+key (dict): A subset of the json key dictionnary containing keys for schedules definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.update_json_with_b18_ventilations">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">update_json_with_b18_ventilations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.update_json_with_b18_ventilations" title="Lien vers cette définition"></a></dt>
+<dd><p>Given a b18 list-like file, this function will update the json dict with all ventilation defined in the file.</p>
+<dl class="simple">
+<dt>Return:</dt><dd><p>json_dict (dict): The json_dict udapted with all the ventilation defined in b18_lines.</p>
+</dd>
+<dt>Args:</dt><dd><p>b18_name (str): Name of the spacetype we are reading.
+b18_lines (list-like): a list-like object of a spacetype (as a TRNSYS building).
+json_dict (list-like): a nested dictionnaries where the spacetype data is to be stored.
+key (dict): A subset of the json key dictionnary containing keys for ventilation definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONDefCooling_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONDefCooling_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONDefCooling_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Write a cooling definition in a b18_lines object representing a .b18 file.
+The function type indicate if <em>TdbConsigne</em> data is given as a constant, as an input in the file or as a schedule in the file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+c (dict): A subset of a JSON dict containing the cooling definition.
+key (dict): A subset of the json key dictionnary containing keys for cooling definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONDefGain_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONDefGain_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONDefGain_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Write a gain definition in a b18_lines object representing a .b18 file.
+The gains category are the ones recognized by TRNBuild (people, light, equipment, thermal bridges and miscellanious).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+g (dict): A subset of a JSON dict containing the gain definition.
+key (dict): A subset of the json key dictionnary containing keys for gain definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONDefHeating_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONDefHeating_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONDefHeating_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Write a heating definition in a b18_lines object representing a .b18 file.
+The function type indicate if <em>TdbConsigne</em> data is given as a constant, as an input in the file or as a schedule in the file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+h (dict): A subset of a JSON dict containing the heating definition.
+key (dict): A subset of the json key dictionnary containing keys for heating definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONDefInfiltration_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONDefInfiltration_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONDefInfiltration_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Function to write the definition of an infiltration in a .b18 file.
+The <em>InfType</em> indicate if <em>InfRate</em> data is given as a constant, as an input in the file or as a schedule in the file.</p>
+<dl class="simple">
+<dt>Arg:</dt><dd><p>b18_lines :: list-liked containing the lines of the .b18
+f (dict): A subset of a JSON dict containing the infiltration definition.
+key (dict): A subset of the json key dictionnary containing keys for infiltration definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONDefVentilation_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONDefVentilation_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONDefVentilation_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Write a ventilation definition in a b18_lines object representing a .b18 file.
+The function type indicate if <em>ventAirflow</em> data is given as a constant, as an input in the file or as a schedule in the file.
+The function mode indicate the ventilation method to be used (so ventAirflow unit is linked to the Mode parameter).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+v (dict): A subset of a JSON dict containing the ventilation definition.
+key (dict): A subset of the json key dictionnary containing keys for ventilation definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONZoneCooling_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONZoneCooling_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONZoneCooling_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the cooling <em>coolName</em> in all TRNbuild zones given in the zones list argument.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zones (list of string): List of zone where the cooling is to be used.
+c (dict): A subset of a JSON dict containing the cooling definition.
+key (dict): A subset of the json key dictionnary containing keys for cooling definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONZoneGain_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONZoneGain_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale1Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CONSTANT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale2Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CONSTANT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONZoneGain_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the gain in all TRnbuild zones given in the zones list argument. 
+The scale parameters are used to add multiplier (such as occupation or use schedules…).</p>
+<dl>
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zones (list of string): List of zone where the gain is to be used.
+g (dict): A subset of a JSON dict containing the gains definition.
+key (dict): A subset of the json key dictionnary containing keys for gains definition.
+scale1 (string): String used as a multiplicator for the gain.
+scale2 (string): String used as a multiplicator for the gain.
+scale1Type (string): Default is « CONSTANT » : scale1 must be an existing schedule name. scale1Type can also be « CONSTANT »</p>
+<blockquote>
+<div><p>(then scale1 must be float-convertible) or « INPUT » (then scale1 must be an existing input name).</p>
+</div></blockquote>
+<dl class="simple">
+<dt>scale2Type (string): Default is « CONSTANT »<span class="classifier">scale2 must be an existing schedule name. scale2Type can also be « CONSTANT » </span></dt><dd><p>(then scale2 must be float-convertible) or « INPUT » (then scale2 must be an existing input name).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONZoneHeating_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONZoneHeating_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONZoneHeating_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the heating <em>heatName</em> in all TRNbuild zones given in the zones list argument.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zones (list of string): List of zone where the heating is to be used.
+h (dict): A subset of a JSON dict containing the heating definition.
+key (dict): A subset of the json key dictionnary containing keys for heating definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONZoneInfiltration_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONZoneInfiltration_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONZoneInfiltration_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the infiltration <em>infName</em> in all TRNbuild zones given in the zones list argument.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zones (list of string): List of zone where the infiltration is to be used.
+f (dict): A subset of a JSON dict containing the infiltration definition.
+key (dict): A subset of the json key dictionnary containing keys for infiltration definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_JSONZoneVentilation_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_JSONZoneVentilation_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zones</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_JSONZoneVentilation_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write the ventilation <em>ventName</em> in all TRNbuild zones given in the zones list argument.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zones (list of string): List of zone where the ventilation is to be used.
+v (dict): A subset of a JSON dict containing the ventilation definition.
+key (dict): A subset of the json key dictionnary containing keys for ventilation definition.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_furnitures_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_furnitures_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_furnitures_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function change the CAPACITANCE parameter of each thermal zone to account for room furnitures.
+We choose to have a capacitance ten times higher than what is proposed for each thermal zone to represent the furniture.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_input_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_input_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_input_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>Write a new input in a new line right after last input line of a B18 file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+inputName (string): A input name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_outputs_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_outputs_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_outputs_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>A simple function that remove every single outputs for every airnodes in a B18 file (as list-like object of lines).
+Then, for each airnode, the function will add every output defined in the OutputDict defined in the parameters in c ClassConfiguration object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_schedule_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_schedule_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_schedule_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function add a schedule to a B18 file.
+If the schedule is defined as an input, then it is added to the file input.
+If the schedule is to be defined locally, then the schedule is written in Schedules definition
+The function allows the definition of schedules of type « HOUR », « DAY », « ANNUAL ».</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+s (dict): A subset of a JSON dict containing the schedules definition.
+key (dict): A subset of the json key dictionnary containing keys for schedules definition.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_surfaceComposition_FromTemplate_ToB18">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_surfaceComposition_FromTemplate_ToB18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_surfaceComposition_FromTemplate_ToB18" title="Lien vers cette définition"></a></dt>
+<dd><p>This function basically copy&amp;paste a template surface composition in the B18_lines given as an entry.
+The template is taken from ClassConfiguration attribute <cite>c.path_TemplateB18_ForSurfaceComposition</cite>.
+Surface composition of the B18 lines where to paste will be overwritten.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TranslateToB18.write_zone_spacetype">
+<span class="sig-prename descclassname"><span class="pre">_TranslateToB18.</span></span><span class="sig-name descname"><span class="pre">write_zone_spacetype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b18_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zone</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TranslateToB18.write_zone_spacetype" title="Lien vers cette définition"></a></dt>
+<dd><p>This function will write all gains, coolings, heatings, infiltrations, ventilations of a spacetype in a set of thermal zones.
+This thermal zone set is obtain from zone-spacetype attribution results stored in JSON files.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>b18_lines (list-like): a list-like object of a .b18 file.
+zone (string): Zone name.
+c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-_Utils">
+<span id="utilities"></span><h2>9. Utilities<a class="headerlink" href="#module-_Utils" title="Lien vers cette rubrique"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="example.html" class="btn btn-neutral float-left" title="Example of use" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="licence.html" class="btn btn-neutral float-right" title="Licence" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, MEUNIER Guilwen.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
