@@ -4,6 +4,7 @@ Example of use
 For this example, we assume you just created a new file example.py at the root of the project. Then create the foldes in data/ as shown below. The folder structure should look like this:
 
 .. code-block::
+
     data/
         example/                         # << New folder for file data
             1_BuildingDescription_CSV/      # Where you store your CSV description of buildings
@@ -19,6 +20,7 @@ For this example, we assume you just created a new file example.py at the root o
 We also assume you have installed all dependencies in requirements.txt using the following command:
 
 .. code-block::
+
     pip install -r requirements.txt
 
 1. Create project data
@@ -68,6 +70,7 @@ B_SB3_F0    SB3	         B	      F0	 1	                                 826.0
 If you have detailed models of your buildings, you can also use the prebuilt function of TRNBpy for genereting CSV buildings files:
 
 .. code-block::
+
     print("Step 0.1 - Make buildings csv files")
     sitedatabuilder._make_Buildings(c)
 
@@ -107,6 +110,7 @@ Assuming the variable is in a f(x)= A*x equation, it will return item with f(x) 
 So for instance, I write my infiltration as follow: { $ZONEEXTSURFACE * 0.07 }. {} define where TRNBpy should look for equation A*x. A is zone dependant item, x is a constant value.
 
 .. code-block::
+
     {
         "Coolings":{
             "0":{
@@ -205,6 +209,7 @@ then each zone starting with "I" ("I as their spacetype category identifier") wi
 Now we can start manipulating the ``example.py`` file. First of all, let's import TRNBpy to our new project.
 
 .. code-block::
+
     # import TRNBpy
     from src.TRNBby import *
 
@@ -215,6 +220,7 @@ Now you can define:
 - The precision of thermal network model. By default, choose "TopologySimplified". This precision is used only if you go to the last step for generation of thermal network deck file.
 
 .. code-block::
+
     Precision_BLD = "Detailed"
     Precision_EXP = "Determinist"
     Precision_THN = "TopologySimplified"
@@ -224,6 +230,7 @@ Make sure your os can read the path defined in ClassConfiguration object. Change
 Finally, call the ClassConfiguration method ``_load_keys()`` so that template JSON strutcure is read and its keys copied.
 
 .. code-block::
+
     c = ClassConfiguration(scenarioName=scenario,         # Folder name (Windows my\\path but Linux my/path)
                            psep = "\\"                    # Must be "\\" on Windows and "/" on linux.
                            Precision_BLD=Precision_BLD,   # "detailed" - "tailored" - "prototype"
@@ -237,6 +244,7 @@ Finally, call the ClassConfiguration method ``_load_keys()`` so that template JS
 Now, copy paste the following lines to start the different steps necessary for generating deck files for all models.
 
 .. code-block::
+
     print("Step 2 - Generate JSON Building file")
     jsonbuilder._BuildJSONFile(c)
 
@@ -252,6 +260,7 @@ Now, copy paste the following lines to start the different steps necessary for g
 As automatic simulation is not yet supported, you should manually run all deck simulation before proceding to the next step. When it's done, do step 6 and check debug.log for warning or critical error to see if you have not forgotten to simulate a deck.
 
 .. code-block::
+
     print("Step 6 - Load builder: Start scaling from model to building loads")
     loadbuilder.Scaling(c)
 
@@ -261,6 +270,7 @@ If you want to go further and simulate a thermal network, you should check Pipin
 For now, let's assume you are coming back from Piping tool with the following files:
 
 .. code-block::
+
     input/
         cluster1.csv
         cluster2.csv
@@ -273,5 +283,6 @@ Then, copy all those files to ``data/6_RTh/YourPrecisionOfTHN/`` (of course, rep
 Then, run the following lines to generate an re-sized THN adapted to your pipes and loads: 
 
 .. code-block::
+    
     print("Step 8 - THN Builder: Update THN deck file with equipment and pipe sizing.")
     thnbuilder.update_RTh(c)

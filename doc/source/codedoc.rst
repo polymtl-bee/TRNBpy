@@ -5,7 +5,7 @@ Code documentation
 1. Site data builder
 ~~~~~~~~~~~~~~~~~~~~
 
-.. automodule:: S1_SiteDataBuilder
+.. autofunction:: _make_Site
     
 2. JSON builder
 ~~~~~~~~~~~~~~~
