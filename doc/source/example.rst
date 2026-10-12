@@ -52,18 +52,18 @@ Then, the following columns represent each of your category of occupation as def
 - **P** stands for Parking surface.
 
 ==========  ===========  ======== =====  ======  =====  =====  =====  =====  =====
-Name        SubBuilding  Building Floor  Weight	 R	    C	   O	  I	     P
+Name        SubBuilding  Building Floor  Weight  R      C      O      I      P    
 ==========  ===========  ======== =====  ======  =====  =====  =====  =====  =====
-B_SB1_F1	SB1          B	      F1	 1	     168.0	192.0			
-B_SB1_Fs	SB1	         B	      Fs	 7	     360.0				
-B_SB1_Ftop  SB1	         B	      Ftop	 1	     360.0				
-B_SB2_F1    SB2	         B	      F1	 1	     630.0	196.0			
-B_SB2_Fs    SB2	         B	      Fs	 5	     826.0				
-B_SB2_Ftop  SB2	         B	      Ftop	 1	     826.0				
-B_SB3_F1    SB3	         B	      F1	 1	     360.0				
-B_SB3_Fs    SB3	         B	      Fs	 9	     826.0				
-B_SB3_Ftop  SB3	         B	      Ftop	 1	     826.0				
-B_SB3_F0    SB3	         B	      F0	 1	                                 826.0
+B_SB1_F1    SB1          B        F1     1       168.0  192.0                     
+B_SB1_Fs    SB1          B        Fs     7       360.0                            
+B_SB1_Ftop  SB1          B        Ftop   1       360.0                            
+B_SB2_F1    SB2          B        F1     1       630.0  196.0                      
+B_SB2_Fs    SB2          B        Fs     5       826.0                            
+B_SB2_Ftop  SB2          B        Ftop   1       826.0                            
+B_SB3_F1    SB3          B        F1     1       360.0                            
+B_SB3_Fs    SB3          B        Fs     9       826.0                            
+B_SB3_Ftop  SB3          B        Ftop   1       826.0                            
+B_SB3_F0    SB3          B        F0     1                                   826.0
 ==========  ===========  ======== =====  ======  =====  =====  =====  =====  =====
 
 
