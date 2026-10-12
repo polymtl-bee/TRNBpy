@@ -1,6 +1,6 @@
 # local
-import src._TranslateToB18 as reader
-from src._Logging import logger 
+import _TranslateToB18 as reader
+from _Logging import logger 
 # packages
 import re
 import os

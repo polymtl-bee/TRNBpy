@@ -1,5 +1,5 @@
 # import TRNBpy
-from src.TRNBby import *
+from src.TRNBpy import *
 
 # ===========================================================================
 # Preparatory Steps =========================================================
@@ -25,6 +25,7 @@ def Get_c(scenario, Precision_THN):
         Precision_EXP = "determinist"
     
     c = ClassConfiguration(scenarioName=scenario,    # Folder name.  Windows my\\path but Linux my/ 
+                        psep="/",
                        Precision_BLD=Precision_BLD,             # "detailed" - "tailored" - "prototype"
                        Precision_EXP=Precision_EXP,          # "determinist" - "variable" - "stochastic"
                        Precision_THN=Precision_THN)   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
@@ -166,7 +167,7 @@ def main_4_BuildThermalNetworkDCK(c):
 
 # Step 0 : Config ------------------------------
 
-slist = ["data/RTH_detailed_sto/"]
+slist = ["data/RTH_detailed/"]
 for s in slist:
     
     print("====== DO FOR "+s+" ========")

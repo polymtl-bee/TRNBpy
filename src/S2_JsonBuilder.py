@@ -1,7 +1,7 @@
 # Local
-import src._TranslateToB18 as reader
-import src._Utils as utils
-from src._Logging import logger 
+import _TranslateToB18 as reader
+import _Utils as utils
+from _Logging import logger 
 # Lib
 import os
 import json
@@ -265,9 +265,9 @@ def _BuildJSONFile(c):
         
         # Get zone's spacetype name  
         if c.Precision_BLD == "detailed":
-            b18_dict_zone = _ChooseSpacetype_Probability(b18_lines, b18_dict_zone, file, c)
+            b18_dict_zone = _ChooseSpacetype_Probability( b18_dict_zone, file, c)
         else:
-            b18_dict_zone = _ChooseSpacetype_Manually(b18_lines, b18_dict_zone, file, c)
+            b18_dict_zone = _ChooseSpacetype_Manually( b18_dict_zone, file, c)
         
         # Get zone's spacetype data
         list_spacetype = (x for x in next(os.walk(c.path_SpacetypeJSON_updated), (None, None, []))[2] if ".json" in x)

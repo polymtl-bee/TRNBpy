@@ -1,5 +1,5 @@
 # Local
-from src._Logging import logger 
+from _Logging import logger 
 
 # Lib
 import os
@@ -344,12 +344,9 @@ def noise(c):
     """
     if c.Precision_EXP == "stochastic":
         print("Step 3 - Creating noise (can take some time)")
-        if ("sto" in s) or ("val" in s): 
-            noisebuilder.noiseValues(c)
-        if ("sto" in s) or ("sch" in s):
-            noisebuilder.noiseSchedules(c)
-        if ("sto" in s) or ("tset" in s):
-            noisebuilder.noiseTsetpoint(c)
+        noiseValues(c)
+        noiseSchedules(c)
+        noiseTsetpoint(c)
     else:
         print("Step 3 - Skipping noise generation")
 # ===========================================================================

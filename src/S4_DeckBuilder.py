@@ -1,7 +1,7 @@
 # Local
-import src._Utils as utils
-from src._Logging import logger 
-import src._TranslateToB18 as reader
+import _Utils as utils
+from _Logging import logger 
+import _TranslateToB18 as reader
 # Lib
 import os
 import pandas as pd

@@ -1,7 +1,7 @@
 # Local
-import src._Utils as utils
-import src._TranslateToB18 as reader
-from src._Logging import logger 
+import _Utils as utils
+import _TranslateToB18 as reader
+from _Logging import logger 
 # Lib
 import os                   # To manage cwd path and access files in dir.
 import json                 # To loads and save spacetypes.
