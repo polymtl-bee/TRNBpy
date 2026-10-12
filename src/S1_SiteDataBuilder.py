@@ -217,8 +217,7 @@ def _make_Buildings(c):
     Be careful if you model building with only 1 central floor, you must manually update CSV file to match what you really want.
     Return a small CSV with recap of surfaces by Subbuilding, Building, Number of floor and enduse.
 
-    Args:
-        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+    :param c: A ClassConfiguration object containing all path and parameters of tool.
     """
     # Get list of building file names in directory
     ListOf_Building_Filenames = next(os.walk(c.path_InputB18), (None, None, []))[2]  # [] if no file
