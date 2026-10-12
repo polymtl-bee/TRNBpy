@@ -7,6 +7,8 @@ Code documentation
 
 .. autofunction:: _make_Site
     
+.. autofunction:: _make_Buildings
+    
 2. JSON builder
 ~~~~~~~~~~~~~~~
 
