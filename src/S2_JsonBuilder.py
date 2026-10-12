@@ -8,7 +8,6 @@ import json
 import pandas as pd
 import random
 
-
 def _BuildSpacetypeSurface(c):
     """
     Function used to initialize Spacetype surfaces in the building surfaces CSV files.
@@ -39,7 +38,6 @@ def _BuildSpacetypeSurface(c):
                     for i in df.index:
                         df.loc[i, choice] += df.loc[i, choice_type] * df.loc[i, "Weight"] * AllChoices[choice_type][choice]
         df.to_csv(c.path_GeneratedSurfaceRecap + file, index=True, index_label="Name")
-
 
 def _ChooseSpacetype_Probability(b18_dict_zone, file, c):
     """

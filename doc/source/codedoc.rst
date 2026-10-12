@@ -5,7 +5,14 @@ Code documentation
 ~~~~~~~~~~~~~~~~~~~~
 
 .. automodule:: S1_SiteDataBuilder
-   :members:
+.. autofunction:: S1_SiteDataBuilder._make_Site
+.. autofunction:: S1_SiteDataBuilder._make_Buildings
+.. autofunction:: S1_SiteDataBuilder._schedules_generator
+.. autofunction:: S1_SiteDataBuilder._get_scheduleList_FromSpacetype
+.. autofunction:: S1_SiteDataBuilder._generate_InputSchedule
+.. autofunction:: S1_SiteDataBuilder._update_json_with_trnsys_schedules
+.. autofunction:: S1_SiteDataBuilder._update_json_with_input_schedules
+.. autofunction:: S1_SiteDataBuilder._loadAllSchedules_InAllSpacetypes
 
 2. JSON builder
 ~~~~~~~~~~~~~~~
