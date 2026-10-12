@@ -10,7 +10,15 @@ import pandas as pd
 # ================================================================================
 
 def update_RTh(c):
+    """
+    Function to size a template thermal network deck model (.dck). Depending on c.Precision_RTU, will use appropriate template, then:
+    Read pipes.csv file to overwrite pipes properties and pumps sizing in template.
+    Read total loads file to overwrite heat pump and chiller sizing in template.
+    Then export resize deck so it's ready to be simulated.
     
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.  
+    """
     # Get template ===================================================================================
     with open(c.path_Rth, "r", encoding="iso-8859-1") as b18_file:
                 dck_lines = b18_file.readlines()
@@ -154,6 +162,7 @@ def update_RTh(c):
                 for line in dck_lines:
                     converted_file.writelines(str(line))
     logger.info("Saving RTh ")
+
 # ================================================================================
 # ================================================================================
 # ================================================================================

@@ -1,4 +1,48 @@
 Code documentation
 ==================
 
-.. autofunction:: _Logging.log_recap
+
+1. Site data builder
+~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: S1_SiteDataBuilder
+    
+2. JSON builder
+~~~~~~~~~~~~~~~
+
+.. automodule:: S2_JsonBuilder
+
+3. Noise builder
+~~~~~~~~~~~~~~~~
+
+.. automodule:: S3_NoiseBuilder
+
+4. Deck builder
+~~~~~~~~~~~~~~~
+
+.. automodule:: S4_DeckBuilder
+
+5. Load builder
+~~~~~~~~~~~~~~~
+
+.. automodule:: S6_LoadBuilder
+
+6. Thermal network builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: S8_ThnBuilder
+
+7. Log file builder
+~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: _Logging
+
+8. Translate to B18
+~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: _TranslateToB18
+
+9. Utilities
+~~~~~~~~~~~~
+
+.. automodule:: _Utils

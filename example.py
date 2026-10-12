@@ -13,8 +13,8 @@ def Get_c(scenario, Precision_THN):
 
     if "detailed" in scenario:
         Precision_BLD="detailed"
-    elif "tailored" in scenario:
-        Precision_BLD="tailored"
+    elif "archetype" in scenario:
+        Precision_BLD="archetype"
     else:
         Precision_BLD="prototype"
     if ("val" in scenario) or ("sch" in scenario) or ("sto" in scenario) or ("tset" in scenario):
@@ -52,17 +52,8 @@ def main_1_BuildDCK(c):
     logger.info("===============================================")
     logger.info("Step 3 - Noise generation =====================")
     logger.info("===============================================")
-    if c.Precision_EXP == "stochastic":
-        print("Step 3 - Noise generation: For non-deterministic approaches, add noise & variability to some values")
-        if ("sto" in s) or ("val" in s): 
-            noisebuilder.noiseValues(c)
-        if ("sto" in s) or ("sch" in s):
-            noisebuilder.noiseSchedules(c)
-        if ("sto" in s) or ("tset" in s):
-            noisebuilder.noiseTsetpoint(c)
-    else:
-        print("Step 3 - Skipping noise generation")
-
+    print("Step 3 - Noise generation: For non-deterministic approaches, add noise & variability to some values")
+    noisebuilder.noise(c)
     logger.info(">> All good...")
 
     # Step 4 : Generate DECK Building file --------

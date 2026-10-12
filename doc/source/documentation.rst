@@ -48,7 +48,7 @@ example). The associated functions can be found in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this section, we proceed in several steps. These steps can be found
-in ``_jsonbuilder.py`` and ``_noisebuilder.py``.
+in ``_jsonbuilder.py``.
 
 1. First, we generate a data structure in JSON format, listing each zone
    in a building along with its main properties (ID, name, area, volume,
@@ -79,6 +79,7 @@ in ``_jsonbuilder.py`` and ``_noisebuilder.py``.
 1.3 Noise Generation
 ~~~~~~~~~~~~~~~~~~~~
 
+Noise generation function are in the ``NoiseBuilder.py`` file.
 Finally, if the scenario is configured to have variable occupancy
 assumptions, functions to add noise are called in order to vary the
 values of certain gains and schedules. The buildings’ JSON files are
@@ -123,8 +124,8 @@ used for this purpose in the ``deckbuilder.py`` file.
 2. Calculation of Building Loads
 --------------------------------
 
-The calculation of building loads follows the same model for all three
-building modeling approaches. First, identify groups of thermal zones
+The calculation of building loads uses the ``Load builder`` file. 
+It follows the same model for all three building modeling approaches. First, identify groups of thermal zones
 (i.e., *clusters*); next, calculate the loads for these *clusters*; and
 finally, determine the building loads based on the respective areas of
 the clusters in the desired models and buildings.

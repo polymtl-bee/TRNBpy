@@ -139,6 +139,15 @@ def _print_stats(DF, c, file, SurfaceSerie):
 
 def _ModelsLoader(c, deckList):
     """
+    Function for creating load files and loading zone's properties for each building. THen returning Dictionnary with loads files and zones properties for each building.
+    
+    Args: 
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+        deckList (List): List of the names of each deck folder (i.e. each building)
+
+    Return:
+        DictOf_Model_Loads (Dict): Dictionnary of buildings loads dataframe generated using _get_ModelLoads_FromCSV() function.
+        DictOf_Model_DictOfZonesProperties (Dict): Dictionnary of buildings's dictionnary of zone's properties.
     """
     DictOf_Model_Loads, DictOf_Model_DictOfZonesProperties = {}, {} 
 
@@ -161,6 +170,16 @@ def _ModelsLoader(c, deckList):
 
 def _GetClusterLoads(Cluster_Dict, Model_Loads, Model_DictOfZonesProperties):
     """
+    Function to calculate the loads of each cluster defined in Cluster_Dict.
+
+    Args:
+        Cluster_Dict (Dict): Dictionnary containing properties of cluster (name, surface in model, surface in building)
+        Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+        Model_DictOfZonesProperties (Dict): Model dictionnary of zone's properties.
+    
+    Return:
+        Cluster_Dict (Dict): Dictionnary containing properties of cluster. Updated with cluster loads.
+
     """
     for Cluster in Cluster_Dict.keys():
         
@@ -201,6 +220,14 @@ def _GetClusterLoads(Cluster_Dict, Model_Loads, Model_DictOfZonesProperties):
     
 def _GetBuildingLoads(Cluster_Dict, Model_Loads):
     """
+    Function to calculate the loads of each buildings by using cluster loads, and cluster ratio of surface between model and building.
+
+    Args:
+        Cluster_Dict (Dict): Dictionnary containing properties of cluster (name, surface in model, surface in building, loads)
+        Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+    
+    Return:
+        Building_Loads (Dict): Buildings loads dataframe.
     """
     # Initialize
     Building_Loads = Model_Loads[list(Model_Loads.keys())[0]][["TIME"]].copy()
@@ -222,6 +249,12 @@ def _GetBuildingLoads(Cluster_Dict, Model_Loads):
 
 def _GetSurfacicZoneLoads(c, Model_Loads, Model_DictOfZonesProperties):
     """
+    Function built to generate a CSV file with surfacic loads of every building.
+
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+        Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+        Model_DictOfZonesProperties (Dict): Buildings's dictionnary of zone's properties.
     """
     # Calcul for cluster loads and surface verification
     
@@ -240,10 +273,23 @@ def _GetSurfacicZoneLoads(c, Model_Loads, Model_DictOfZonesProperties):
                     zone_found = True
                     DFSURF.loc[zone,KEY] = sum(Model_Loads[KEY][columnName].copy()) / Model_DictOfZonesProperties[zone]["Surface"]
                                 
-        DFSURF.to_csv(c.path_OutputLOADS + "ZONESSURF"+c.psep + "ZONE.csv", index=True, index_label="NAME")        
-                
-         
+        DFSURF.to_csv(c.path_OutputLOADS + "ZONESSURF"+c.psep + "ZONE.csv", index=True, index_label="NAME")
+
 def _UpdateSiteLoads(Model_Loads, Site_Loads, Site_Surface, Building_Loads, Building_Surface):
+    """
+    Function to update values of Site_Loads dataframe and Site_Surface variable with a building loads and surface.
+
+    Args:
+        Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+        Site_Loads (Dict): Dataframe where we sum all buildings loads to obtain site loads dataframe.
+        Site_Surface (Float): Total floor surface of all building already considered.
+        Building_Loads (Dict): Buildings loads dataframe.
+        Building_Surface (Float): Total floor surface of a building.
+    Return:
+        Site_Loads (Dict): Dataframe where we sum all buildings loads to obtain site loads dataframe. Updated with Building_Loads.
+        Site_Surface (Float): Total floor surface of all building already considered. Updated with Building_Surface.
+    """
+    
     try:    Site_Surface += Building_Surface
     except: Site_Surface = Building_Surface
     for KEY in Building_Loads.keys():
@@ -253,6 +299,19 @@ def _UpdateSiteLoads(Model_Loads, Site_Loads, Site_Surface, Building_Loads, Buil
     return Site_Loads, Site_Surface
 
 def _UpdateSpacetypeLoads(Model_Loads, Model_DictOfZonesProperties, Spacetype_Loads, Spacetype_Surface):
+    """
+    Function to update values of Spacetype_Loads dataframe and Spacetype_Surface variable with a model loads and surface.
+
+    Args:
+        Model_Loads (Dict): Model loads dataframe generated using _get_ModelLoads_FromCSV() function.
+        Model_DictOfZonesProperties (Dict): Model dictionnary of zone's properties.
+        Spacetype_Loads (Dict): Dataframe where we sum all loads of zone with same spacetype to obtain spacetype loads dataframe.
+        Spacetype_Surface (Float): Variable to sum floor surface of all zones into total floor surface of each spacetype. 
+    Return:
+        Spacetype_Loads (Dict): Dataframe where we sum all loads of zone with same spacetype to obtain spacetype loads dataframe. Updated with loads of a model.
+        Spacetype_Surface (Float): Variable to sum floor surface of all zones into total floor surface of each spacetype. Updated with surfaces of a model.
+    """
+    
     Cluster_BySpacetype_Dict = {}
     for zoneName in Model_DictOfZonesProperties.keys():
         # Get cluster
@@ -292,7 +351,9 @@ def _UpdateSpacetypeLoads(Model_Loads, Model_DictOfZonesProperties, Spacetype_Lo
 
 def smoothing(c):
     """
-    
+    Small function to smooth data with weight function [0.05, 0.2, 0.5, 0.2, 0.05].
+
+
     Args:
         c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.   
     """ 
@@ -321,9 +382,9 @@ def smoothing(c):
 
 def scaling_detailed(c):
     """
-    Given the path_OutputSIM, will check for every model the presence of CSV files. 
-    If any CSV file is found, then scaling up methods are started.
-    
+    Scaling up for Detailed approach.
+    Cluster are define as {Subbuilding, Floor}. For instance (Main_F0).
+
     Args:
         c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.   
     """
@@ -479,10 +540,10 @@ def scaling_detailed(c):
     SiteSurfaceSerie = pd.Series(data=[Site_Surface]*len(Site_Loads.keys()), index=Site_Loads.keys())
     _print_stats(Site_Loads, c=c, file="SITE"+c.psep+"STATISTICS.csv", SurfaceSerie=SiteSurfaceSerie)
 
-def scaling_tailored(c):
+def scaling_archetype(c):
     """
-    Given the path_OutputSIM, will check for every model the presence of CSV files. 
-    If any CSV file is found, then scaling up methods are started.
+    Scaling up for Archetype approach.
+    Cluster are define as {Spacetype, Floor}. For instance (Office_F0).
     
     Args:
         c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.   
@@ -724,10 +785,10 @@ def scaling_tailored(c):
     SiteSurfaceSerie = pd.Series(data=[Site_Surface]*len(Site_Loads.keys()), index=Site_Loads.keys())
     _print_stats(Site_Loads, c=c, file="SITE"+c.psep+"STATISTICS.csv", SurfaceSerie=SiteSurfaceSerie)
 
-def scaling_energyplus(c):
+def scaling_prototype(c):
     """
-    Given the path_OutputSIM, will check for every model the presence of CSV files. 
-    If any CSV file is found, then scaling up methods are started.
+    Scaling up for Prototype approach.
+    In each building, clusters are define as {Spacetype}. For instance (Office).
     
     Args:
         c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.   
@@ -901,14 +962,14 @@ def Scaling(c):
     if c.Precision_BLD=="detailed":
         scaling_detailed(c)
 
-    elif c.Precision_BLD=="tailored":
-        scaling_tailored(c)
+    elif c.Precision_BLD=="archetype":
+        scaling_archetype(c)
 
     elif c.Precision_BLD=="prototype":
-        scaling_energyplus(c)
+        scaling_prototype(c)
 
     else: 
-        scaling_tailored(c)
+        scaling_archetype(c)
 
     # Smoothing
     smoothing(c)

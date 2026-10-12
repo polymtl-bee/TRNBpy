@@ -41,14 +41,19 @@ def _BuildSpacetypeSurface(c):
         df.to_csv(c.path_GeneratedSurfaceRecap + file, index=True, index_label="Name")
 
 
-def _ChooseSpacetype_Probability(b18_lines, b18_dict_zone, file, c):
+def _ChooseSpacetype_Probability(b18_dict_zone, file, c):
     """
+    This function is used for stochastic attribution of spacetype.
+    A "leftover" surface is first created. Then, zones are read randomly and each time a spacetype is chosen using weighted probability coefficient fron c.SpacetypeDict
 
       Args:
         c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
-    
+        b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties.
+        file (str): name of surface file stored in c.path_GeneratedSurfaceRecap (name without file extension)
+
     Return:
-        b18_dict_zone
+        b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties. Updated with spacetypes.
+
     """
     logger.info("Attributing end use to zones with conditionnals objectives "+file)
     
@@ -146,8 +151,17 @@ def _ChooseSpacetype_Probability(b18_lines, b18_dict_zone, file, c):
     """
     return b18_dict_zone
 
-def _ChooseSpacetype_Manually(b18_lines, b18_dict_zone, file, c):   
+def _ChooseSpacetype_Manually(b18_dict_zone, file, c):   
     """
+    This function is used for manually attributing spacetype based on rules on zone names.
+
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
+        b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties.
+        file (str): name of surface file stored in c.path_GeneratedSurfaceRecap (name without file extension)
+
+    Return:
+        b18_dict_zone (dict): Dictionnary of a JSON file description of zones properties. Updated with spacetypes.
     """  
     for zone in b18_dict_zone.keys():
         # Get zone characteristics ----------------------------------------------------
@@ -210,6 +224,15 @@ def _ChooseSpacetype_Manually(b18_lines, b18_dict_zone, file, c):
 
 def _BuildJSONFile(c):
     """
+    This function completely build a JSOn file for each building. The JSON file contains each zones:
+    - Properties
+    - Spacetype
+    - Schedules and type of schedules
+    - Deep hot water peak value
+    This function also replace zone dependant equations by their results using zone properties.
+
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.
     """
     # Get list of building file names in directory
     ListOf_Building_Filenames = c.models

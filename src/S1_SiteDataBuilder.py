@@ -444,7 +444,7 @@ def _update_json_with_trnsys_schedules(file, json_dict, k, time_column="TIME", v
     Then the schedule definition will be added as a schedule in the spacetype given in json_dict.
 
     Args:
-        path_to_csv (str): A string containing the path to the csv file.
+        file (str): A string containing the path to the csv file.
         json_dict (dict): A spacetype JSON definition stored in a dictionary. 
         k (dict): keys equivalence dictionary from ClassConfiguration.
         time_column (str): The name of the column to look for timestep values. Must be in hours.

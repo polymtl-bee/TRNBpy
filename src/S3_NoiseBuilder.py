@@ -12,7 +12,18 @@ import random
 # ===========================================================================
 
 def randomIntervalSelection(ListOfValues, Coef):
-    
+    """
+    This function introduce a random noise from a controlled interval to the values of a specific attribute of eeach zone. 
+    This function keep the specific attribute mean constant.
+    For instance, a noise of +- Coef % will be introduced to every zone lighting gains, while keeping the total/mean lighting gain of the building identical.
+
+    Args:
+        ListOfValues (List): A list of all zones nominal value for a specific category. For instance, it could be a list of all nominal values for equipment gains.
+        Coef (Float): Interval coefficient for introducing noise.
+
+    Return:
+        ListOfValues (List): The previous ListOfValues, updated with the noise.
+    """
     if sum(ListOfValues) > 0:
         # Choose epsilon
         epsilon = 0.01
@@ -48,130 +59,13 @@ def randomIntervalSelection(ListOfValues, Coef):
     else:
         return ListOfValues
 
-def noiseValues_v1(c):
-    """
-    Generate noise for nominal value of zone's dhw, gains and ventilation.
-    Sum of building radiative, convective and humidification gains are kept constant for the 3 categories (people, equipment, lights)
-    But schedules variation implies differents total electric consumption at the end of the day.
-
-    Args:
-        c (ClassConfiguration): _description_
-    """
-    LL = len(c.models)
-    Lcurrent = 0
-        
-    for buildingName in c.models:
-        Lcurrent += 1
-        print("Noise generation for values - Building "+buildingName+" [ "+str(Lcurrent)+"/"+str(LL)+ " ]")
-
-        # Load file of zones attribution and characteristics ----------------------------------------
-        try:
-            with open(c.path_AttributionFile + buildingName + ".json", "r") as f:
-                DictOfZonesProperties = json.load(f)
-        except:
-            logger.critical("No Zone Attribution files found for "+ buildingName +". Please generate them first.")
-        
-        logger.info(">> Starting to load zone characteristics files for "+buildingName)
-
-        # Check if there are residential zones ------------------------------------------------------
-        DOit = False
-        for zone in DictOfZonesProperties.keys():
-            if "Habitation" in DictOfZonesProperties[zone]["Spacetype"]["Name"] and not "Couloir" in  DictOfZonesProperties[zone]["Spacetype"]["Name"]:
-                DOit = True
-                
-        # ===========================================================================================
-        # Noise on values ===========================================================================
-        # ===========================================================================================
-        if DOit:
-            # 1. Noise coefficient------------------------------------------------------------------------
-            noiseCoefDHW            = 0.3
-            noiseCoefGainConvective = 0.3
-            noiseCoefGainRadiative  = 0.3
-            noiseCoefGainHumidity   = 0.3
-            noiseCoefVentilation    = 0.3
-    
-            # 2. Get mean values ------------------------------------------------------------------------
-            for KEY in ["horexGMoyen", "horexGFami", "horexGEtud", "horexGRetr", "horexGTele"]:
-                ListDHW, ListVent  = [], []
-                ListOccConv, ListOccRad, ListOccHum = [], [], []
-                ListEqConv, ListEqRad = [], []
-                ListLightConv, ListLightRad =  [], []
-                        
-                for zone in DictOfZonesProperties.keys():
-                    if KEY == DictOfZonesProperties[zone]["ScheduleSource"]:
-                        if "Habitation" in DictOfZonesProperties[zone]["Spacetype"]["Name"] and not "Couloir" in DictOfZonesProperties[zone]["Spacetype"]["Name"]:
-                            ListDHW.append(float(DictOfZonesProperties[zone]["Spacetype"]["Dhw"]["Value"]))
-                            G = DictOfZonesProperties[zone]["Spacetype"]["Gains"]
-                            for gain in G.keys():
-                                if G[gain]["GainCategory"] == "PEOPLE":
-                                    ListOccConv.append(float(G[gain]["Convective"]))
-                                    ListOccRad.append(float(G[gain]["Radiative"]))
-                                    ListOccHum.append(float(G[gain]["Humidity"]))
-                                if G[gain]["GainCategory"] == "EQUIPMENT":
-                                    ListEqConv.append(float(G[gain]["Convective"]))
-                                    ListEqRad.append(float(G[gain]["Radiative"]))
-                                if G[gain]["GainCategory"] == "LIGHTS":
-                                    ListLightConv.append(float(G[gain]["Convective"]))
-                                    ListLightRad.append(float(G[gain]["Radiative"]))                    
-                            for ventilation in DictOfZonesProperties[zone]["Spacetype"]["Ventilations"].keys():
-                                ListVent.append(float(DictOfZonesProperties[zone]["Spacetype"]["Ventilations"][ventilation]["FlowValue"]))
-
-                # 3. Build that noise ----------------------------------------------------------------------
-                ListRandomDHW               = randomIntervalSelection(ListOfValues=ListDHW,              Coef=noiseCoefDHW)
-                ListRandomGainPeopleConv    = randomIntervalSelection(ListOfValues=ListOccConv,   Coef=noiseCoefGainConvective)
-                ListRandomGainPeopleRad     = randomIntervalSelection(ListOfValues=ListOccRad,    Coef=noiseCoefGainRadiative)
-                ListRandomGainPeopleHum     = randomIntervalSelection(ListOfValues=ListOccHum,    Coef=noiseCoefGainHumidity)
-                ListRandomGainEquipmentConv = randomIntervalSelection(ListOfValues=ListEqConv,Coef=noiseCoefGainConvective)
-                ListRandomGainEquipmentRad  = randomIntervalSelection(ListOfValues=ListEqRad, Coef=noiseCoefGainRadiative)
-                ListRandomGainLightConv     = randomIntervalSelection(ListOfValues=ListLightConv,    Coef=noiseCoefGainConvective)
-                ListRandomGainLightRad      = randomIntervalSelection(ListOfValues=ListLightRad,     Coef=noiseCoefGainRadiative)
-                ListRandomVentilation       = randomIntervalSelection(ListOfValues=ListVent,      Coef=noiseCoefVentilation)
-
-                # 4. Write that noise ----------------------------------------------------------------------
-                i_dhw, i_vent = 0,0
-                i_gainsP, i_gainsE, i_gainsL = 0,0,0
-
-                for zone in DictOfZonesProperties.keys():
-                    if KEY == DictOfZonesProperties[zone]["ScheduleSource"]:
-
-                        if "Habitation" in DictOfZonesProperties[zone]["Spacetype"]["Name"] and not "Couloir" in DictOfZonesProperties[zone]["Spacetype"]["Name"]:
-                            # Save to DHW
-                            DictOfZonesProperties[zone]["Spacetype"]["Dhw"]["Value"] = ListRandomDHW[i_dhw]
-                            i_dhw += 1
-                            
-                            # Save to Gains
-                            G = DictOfZonesProperties[zone]["Spacetype"]["Gains"]
-                            for gain in G.keys():
-                                if G[gain]["GainCategory"] == "PEOPLE":
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Convective"] = ListRandomGainPeopleConv[i_gainsP]                         
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Radiative"] = ListRandomGainPeopleRad[i_gainsP]                            
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Humidity"] = ListRandomGainPeopleHum[i_gainsP]   
-                                    i_gainsP += 1
-                                if G[gain]["GainCategory"] == "EQUIPMENT":
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Convective"] = ListRandomGainEquipmentConv[i_gainsE]  
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Radiative"]  = ListRandomGainEquipmentRad[i_gainsE] 
-                                    i_gainsE += 1
-                                if G[gain]["GainCategory"] == "LIGHTS":
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Convective"] = ListRandomGainLightConv[i_gainsL]   
-                                    DictOfZonesProperties[zone]["Spacetype"]["Gains"][gain]["Radiative"]  = ListRandomGainLightRad[i_gainsL]   
-                                    i_gainsL += 1
-                            # Save to Ventilation
-                            for ventilation in DictOfZonesProperties[zone]["Spacetype"]["Ventilations"].keys():
-                                DictOfZonesProperties[zone]["Spacetype"]["Ventilations"][ventilation]["FlowValue"] = ListRandomVentilation[i_vent]
-                                i_vent += 1
-
-        # Save file --------------------------------------------------------------------------------
-        with open(c.path_AttributionFile + buildingName + ".json", "w") as f:
-            json.dump(DictOfZonesProperties, f, indent=4)
-
 def noiseValues(c):
     """
-    Generate noise for nominal value of zone's dhw, gains and ventilation.
+    Generate noise for nominal value of zone's dhw, gains and ventilation, using the previously defined randomIntervalSelection() function.
     Sum of building radiative, convective and humidification gains are kept constant for the 3 categories (people, equipment, lights)
-    But schedules variation implies differents total electric consumption at the end of the day.
 
     Args:
-        c (ClassConfiguration): _description_
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.    
     """
     LL = len(c.models)
     Lcurrent = 0
@@ -285,95 +179,14 @@ def noiseValues(c):
         # 6. Save file --------------------------------------------------------------------------------
         with open(c.path_AttributionFile + buildingName + ".json", "w") as f:
             json.dump(DictOfZonesProperties, f, indent=4)
-
-def noiseSchedules_v1(c):
-    """
-    Full schedules in b18 files
-    """
-    Schedules = pd.read_csv(c.path_SpacetypeJSON_updated+"ScheduleInput.csv")
-    LL = len(c.models)
-    Lcurrent = 0
-    
-    for buildingName in c.models:
-        Lcurrent += 1
-        print("Noise generation for schedule - Building "+buildingName+" [ "+str(Lcurrent)+"/"+str(LL)+ " ]")
-        SchedulesNoised = Schedules.copy()
-        
-        # Load file of zones attribution and characteristics ----------------------------------------
-        try:
-            with open(c.path_AttributionFile + buildingName + ".json", "r") as f:
-                DictOfZonesProperties = json.load(f)
-        except:
-            logger.critical("No Zone Attribution files found for "+ buildingName +". Please generate them first.")
-        
-        logger.info(">> Starting to load zone characteristics files for "+buildingName)
-
-        for zone in DictOfZonesProperties.keys():
-            if "Habitation" in DictOfZonesProperties[zone]["Spacetype"]["Name"] and not "Couloir" in  DictOfZonesProperties[zone]["Spacetype"]["Name"]:
-
-                # 1/ Get zones schedules ----------------------------------------------------------------
-                schedHorex = DictOfZonesProperties[zone]["ScheduleSource"]
-                zone_schedules = []
-                zone_schedules_newname = []   
-                for column in SchedulesNoised.columns.difference(["TIME"]):
-                    if schedHorex+"_" in column:
-                        zone_schedules.append(column)
-                        zone_schedules_newname.append(schedHorex+zone+"_"+column.split("_")[1])
-                    
-                subSchedules = Schedules[zone_schedules].copy()
-                sched = subSchedules[schedHorex+"_occ"]
-
-                subSchedules.columns = zone_schedules_newname
-
-                # 2/ First, we add noise only to occupant profiles --------------------------------------
-                random.seed(999)
-                interval_size = 2    # Nb of hour for the size of the random interval 
-                i=interval_size
-                
-                while i < (len(sched)-interval_size-1):
-                    # Get interval
-                    interval = sched.loc[i-interval_size:i+interval_size]
-                    # Check if value changes for central value of interval
-                    if interval[i] != interval[i-1]:
-                        
-                        r = random.randint(-interval_size, interval_size)
-
-                        if r>0:
-                            subSchedules.iloc[i+r] = subSchedules.iloc[i].copy()
-                            for k in [i, i+(r-1)]:
-                                subSchedules.iloc[k] = subSchedules.iloc[i-1].copy()   
-                            i+=r
-                        if r<0:
-                            subSchedules.iloc[i+r] = subSchedules.iloc[i-1].copy()
-                            for k in [i-(r-1), i]:
-                                subSchedules.iloc[k] = subSchedules.iloc[i].copy()
-                    i+=1
-                # Schedules in CSV - Stock building schedules in CSv
-                DictOfZonesProperties[zone] = recursive(DictOfZonesProperties[zone], schedHorex, schedHorex+zone)
-                
-                """
-                # Schedules in B18 - Rewrite schedule name in spacetype 
-                DictOfZonesProperties[zone] = recursive(DictOfZonesProperties[zone], c.targetkey_INPUT, c.targetkey_SCHEDULE)
-                for s in DictOfZonesProperties[zone]["Spacetype"]["Schedules"].keys():
-                    schedule = DictOfZonesProperties[zone]["Spacetype"]["Schedules"][s]
-                    schedule["SchedType"] = "ANNUAL"
-                    schedule["ValueList"] = list(subSchedules[schedule["Name"]])
-                    schedule["TimeList"]  = list(subSchedules.index)
-                    DictOfZonesProperties[zone]["Spacetype"]["Schedules"][s] = schedule
-                """
-                # Save file --------------------------------------------------------------------------------
-                logger.info("Built custom schedules for "+zone+" in "+buildingName+", tagged "+schedHorex+zone)
-               
-                # 2/Now we save zone schedules -----------------------------------------------------------------
-                SchedulesNoised = pd.concat([SchedulesNoised,subSchedules], axis=1)
-            
-        SchedulesNoised.to_csv(c.path_OutputSCH + buildingName+".csv", index=False)
-        with open(c.path_AttributionFile + buildingName + ".json", "w") as f:
-            json.dump(DictOfZonesProperties, f, indent=4)
-   
+ 
 def noiseSchedules(c):
     """
-    Full schedules in b18 files
+    Generate noise to schedules. Annual occupancy schedule is read,every changes in occupancy are identified. Then those changes are moved by in an interval +- 2h with a gaussian-like probability.
+    Schedules variation implies differents total electric consumption at the end of the day.
+
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool. 
     """
     
     # Initialize 
@@ -468,9 +281,12 @@ def noiseSchedules(c):
 def noiseTsetpoint(c):
     """
     Generate noise on schedule setpoint base value of every residential area for every schedule file.
-
+    Using interval and wieght: 
+        - interval = [-3, -2 , -1 , 0   , 1   , 2  , 3  ]  
+        - weight   = [5%, 10%, 10%, 25% , 25% , 15%, 10%]
+        
     Args:
-        c (ClassConfiguration): _description_
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.    
     """
     logger.info("Modifying base value of T° setpoint for every residential profiles of each schedule file")
     Lcurrent = 0
@@ -517,6 +333,25 @@ def recursive(d, stringcheck, extension):
             recursive(v, stringcheck, extension)
     return d
    
+
+def noise(c):
+    """
+    Main function for noise.
+    Will call noise function if precision of occupancy is stochastic.
+
+    Args:
+        c (ClassConfiguration): A ClassConfiguration object containing all path and parameters of tool.    
+    """
+    if c.Precision_EXP == "stochastic":
+        print("Step 3 - Creating noise (can take some time)")
+        if ("sto" in s) or ("val" in s): 
+            noisebuilder.noiseValues(c)
+        if ("sto" in s) or ("sch" in s):
+            noisebuilder.noiseSchedules(c)
+        if ("sto" in s) or ("tset" in s):
+            noisebuilder.noiseTsetpoint(c)
+    else:
+        print("Step 3 - Skipping noise generation")
 # ===========================================================================
 # ===========================================================================
 # ===========================================================================
