@@ -77,9 +77,9 @@ def main_2_SimmulateModels(c):
 
     # 2) Running TRNSYS simulation
     trnsys_path =r"C:/Trnsys18/Exe/TRNExe64.exe"
-    dck_path = c.path_OutputDCK + "5B/5B.dck"
+    dck_path = c.path_OutputSIM + "5B/5B.dck"
     
-    relpath_to_deck = os.path.relpath(c.path_OutputDCK, c.path_Cwd)
+    relpath_to_deck = os.path.relpath(c.path_OutputSIM, c.path_Cwd)
 
 
     
@@ -174,9 +174,9 @@ for s in slist:
     c = Get_c(scenario=s, Precision_THN="TopologyReduced")
 
     main_1_BuildDCK(c)
-    main_2_SimmulateModels(c)
-    main_3_BuildBuildingLoads(c)
-    main_4_BuildThermalNetworkDCK(c)
+    #main_2_SimmulateModels(c)
+    #main_3_BuildBuildingLoads(c)
+    #main_4_BuildThermalNetworkDCK(c)
 
 
 
