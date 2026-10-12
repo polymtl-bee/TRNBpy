@@ -34,6 +34,7 @@ First things first, let's take a look at the data files needed to use TRNBpy:
 ----------------------------
 
 Building CSV files use a format close to the following. 
+
 - **Name** is an unique ID for each cluster. 
 - **SubBuilding** is the name of the Subbuilding.
 - **Building** is the name of the Building.
@@ -41,6 +42,7 @@ Building CSV files use a format close to the following.
 - **Weight** is the time the cluster need to be taken into account. For instance, if a building have 25 floors, with 23 being central floor, we can decide to model only ground floor, top floor and one central floor (because all of them have the same boundaries conditions). Then the weight of the central floor should be 23 (25-1-1).
 
 Then, the following columns represent each of your category of occupation as defined in the configuration file (see below configuration file).
+
 - **R** stands for Residential surface.
 - **C** stands for Commercial surface.
 - **B** stands for Office surface.
@@ -82,6 +84,7 @@ Given the number of modeled thermal zones, a clear naming convention is necessar
 > R-SubBuilding-Floor-id
 
 Where:
+
 - R: the occupancy type category (R for residential, C for commercial, I for institutional, B for Office (Bureau in french), P for Parking).
 - SubBuilding: the name of the subbuilding to which the zone belongs.
 - Fi: the floor identifier (for *Floor i*). For example: Fcave for basements, Ftop for the top floor, Fstack for the middle floors, F0 through FX for the rest.
@@ -206,6 +209,7 @@ Now we can start manipulating the ``example.py`` file. First of all, let's impor
     from src.TRNBby import *
 
 Now you can define: 
+
 - The precision you want for model geometry (Precision_BLD) depending on what you have stored in 2_StructuralModels_B18 folder.
 - The precision for occupancy. "Determinist", "Variable" (Multiple choice for residential areas), "Stochastic" (variable and use of noise builder code for more stochasticity).
 - The precision of thermal network model. By default, choose "TopologySimplified". This precision is used only if you go to the last step for generation of thermal network deck file.
