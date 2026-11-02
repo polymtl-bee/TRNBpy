@@ -1,0 +1,5 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+5B_Main_F0,Main,5B,F0,1,576.0,,,,,,64.0,,,,,,,,,
+5B_Main_Fstack,Main,5B,Fstack,23,576.0,,,,,,64.0,,,,,,,,,
+5B_Main_Ftop,Main,5B,Ftop,1,576.0,,,,,,64.0,,,,,,,,,
+5B_Main_Fcave,Main,5B,Fcave,1,,,,,640.0,,,,,,,,,,,

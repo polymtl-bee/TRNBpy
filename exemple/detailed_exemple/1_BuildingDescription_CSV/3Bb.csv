@@ -1,0 +1,10 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+3Bb_MixteSmall_F0,MixteSmall,3Bb,F0,1,168.0,192.0,,,,,48.0,,,,,,,,,
+3Bb_MixteSmall_F1,MixteSmall,3Bb,F1,1,360.0,,,,,,48.0,,,,,,,,,
+3Bb_MixteSmall_Fstack,MixteSmall,3Bb,Fstack,5,360.0,,,,,,48.0,,,,,,,,,
+3Bb_MixteLarge_F0,MixteLarge,3Bb,F0,1,630.0,196.0,,,,,114.0,,,,,,,,,
+3Bb_MixteLarge_F1,MixteLarge,3Bb,F1,1,826.0,,,,,,114.0,,,,,,,,,
+3Bb_MixteLarge_Fstack,MixteLarge,3Bb,Fstack,9,826.0,,,,,,114.0,,,,,,,,,
+3Bb_MixteSmall_Ftop,MixteSmall,3Bb,Ftop,1,360.0,,,,,,48.0,,,,,,,,,
+3Bb_MixteLarge_Ftop,MixteLarge,3Bb,Ftop,1,826.0,,,,,,114.0,,,,,,,,,
+3Bb_Main_Fcave,Main,3Bb,Fcave,1,,,,,1348.0,,,,,,,,,,,

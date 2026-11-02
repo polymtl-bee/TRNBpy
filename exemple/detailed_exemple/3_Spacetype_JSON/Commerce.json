@@ -1,0 +1,144 @@
+{
+    "Coolings": {
+        "0": {
+            "Name": "cool_com1",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Fev 26",
+            "Type": "INPUT",
+            "Power": "360",
+            "TdbConsigne": "$INPUT_horexC_cool",
+            "AreaRelPower": "1",
+            "RadFrac": "0",
+            "Humidity": "0.012",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Heatings": {
+        "0": {
+            "Name": "heat_com1",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Fev 26",
+            "Type": "INPUT",
+            "Power": "360",
+            "TdbConsigne": "$INPUT_horexC_heat",
+            "AreaRelPower": "1",
+            "RadFrac": "0",
+            "Humidity": "0.004",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Gains": {
+        "0": {
+            "Name": "gain_com_light",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Gains pour les lumi\u00e8res. Fev 26",
+            "GainCategory": "LIGHTS",
+            "GainType": "AREA_RELATED",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexC_lum",
+            "Convective": "27.2",
+            "Radiative": "5.2",
+            "Humidity": "0",
+            "ElecPowerFrac": "1"
+        },
+        "1": {
+            "Name": "gain_com_eq",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerces. Gains pour les \u00e9quipements. Fev 26",
+            "GainCategory": "EQUIPMENT",
+            "GainType": "AREA_RELATED",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexC_eq",
+            "Convective": "9.0",
+            "Radiative": "0",
+            "Humidity": "0",
+            "ElecPowerFrac": "1"
+        },
+        "2": {
+            "Name": "gain_com_people",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Gains pour les occupants. Fev 26",
+            "GainCategory": "PEOPLE",
+            "GainType": "AREA_RELATED",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexC_occ",
+            "Convective": "3.8",
+            "Radiative": "5.2",
+            "Humidity": "0.0027",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Ventilations": {
+        "0": {
+            "Name": "vent_com1",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Fev 26",
+            "Mode": "VAIRFLOW",
+            "FlowValue": "{2.3 * $ZONESURFACE}",
+            "FlowInput": "$INPUT_horexC_vent",
+            "FlowSchedule": "",
+            "Tdb": "OUTSIDE",
+            "TdbType": "OUTSIDE",
+            "Humidity": "OUTSIDE",
+            "HumidityType": "OUTSIDE",
+            "RelOrAbs": "rel",
+            "SpecFanPower": "0",
+            "SensHr": "0",
+            "Calcqahu": "1"
+        }
+    },
+    "Infiltrations": {
+        "0": {
+            "Name": "inf_com1",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype commerce. Fev 26",
+            "InfType": "CONSTANT",
+            "InfRate": "{0.15 * $ZONERATIOEXT}"
+        }
+    },
+    "Schedules": {
+        "0": {
+            "Name": "horexC_vent",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "1": {
+            "Name": "horexC_lum",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "2": {
+            "Name": "horexC_heat",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "3": {
+            "Name": "horexC_occ",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "4": {
+            "Name": "horexC_cool",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "5": {
+            "Name": "horexC_eq",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        }
+    },
+    "Dhw": {
+        "Value": "3.8"
+    },
+    "Name": "Commerce",
+    "Decription": "Spacetype commerce.",
+    "Source": "Guilwen Meunier",
+    "ScheduleSource": "horexC"
+}

@@ -1,0 +1,9 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+3Ba_Main_F0,Main,3Ba,F0,1,585.0,,,,,,90.0,,,,,,,,,
+3Ba_Main_Fstack,Main,3Ba,Fstack,9,585.0,,,,,,90.0,,,,,,,,,
+3Ba_Bridge_F0,Bridge,3Ba,F0,1,130.0,,,,,,20.0,,,,,,,,,
+3Ba_Side_Fstack,Side,3Ba,Fstack,5,468.0,,,,,,72.0,,,,,,,,,
+3Ba_Side_F0,Side,3Ba,F0,1,450.0,,,,,,90.0,,,,,,,,,
+3Ba_Main_Ftop,Main,3Ba,Ftop,1,585.0,,,,,,90.0,,,,,,,,,
+3Ba_Side_Ftop,Side,3Ba,Ftop,1,468.0,,,,,,72.0,,,,,,,,,
+3Ba_Main_Fcave,Main,3Ba,Fcave,1,,,,,1365.0,,,,,,,,,,,

@@ -1,0 +1,13 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+9A_Side_F0,Side,9A,F0,1,,,746.0,,,382.0,,,,,,,,,,
+9A_Small_F0,Small,9A,F0,1,,,591.7489999999999,,,105.667,,,,,,,,,,
+9A_Main_F0,Main,9A,F0,1,,,1096.33,,,203.667,,,,,,,,,,
+9A_Small_Ftop,Small,9A,Ftop,1,,,591.7489999999999,,,105.667,,,,,,,,,,
+9A_Hall_F0,Hall,9A,F0,1,,,340.0,,,,,,,,,,,,,
+9A_Side_F2,Side,9A,F2,1,,,844.0,,,,,,,,,,,,,
+9A_Main_F2,Main,9A,F2,1,,,1096.33,,,203.667,,,,,,,,,,
+9A_Side_Fstack,Side,9A,Fstack,11,,,1412.0,,,,,,,,,,,,,
+9A_Side_Ftop,Side,9A,Ftop,1,,,1128.0,,,,,,,,,,,,,
+9A_Main_Ftop,Main,9A,Ftop,1,,,1084.4129999999998,,,203.667,,,,,,,,,,
+9A_Main_Fstack,Main,9A,Fstack,1,,,1084.4129999999998,,,203.667,,,,,,,,,,
+9A_Main_Fcave,Main,9A,Fcave,1,,,,,3508.0,,,,,,,,,,,

@@ -1,0 +1,5 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+2Cb_Side_F0,Side,2Cb,F0,1,720.0,,,,,,80.0,,,,,,,,,
+2Cb_Side_Fstack,Side,2Cb,Fstack,1,720.0,,,,,,80.0,,,,,,,,,
+2Cb_Side_Ftop,Side,2Cb,Ftop,1,720.0,,,,,,80.0,,,,,,,,,
+2Cb_Side_Fcave,Side,2Cb,Fcave,1,,,,,800.0,,,,,,,,,,,

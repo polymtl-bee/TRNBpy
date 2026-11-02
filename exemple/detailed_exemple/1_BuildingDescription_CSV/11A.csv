@@ -1,0 +1,4 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+11A_Main_F0,Main,11A,F0,1,,,,,,80.0,,200.0,,,400.0,,720.0,800.0,,
+11A_Main_F1,Main,11A,F1,1,,,,,,80.0,,,,,,,970.0,,,
+11A_Main_Fcave,Main,11A,Fcave,1,,,,,2200.0,,,,,,,,,,,

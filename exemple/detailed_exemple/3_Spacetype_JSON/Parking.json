@@ -1,0 +1,106 @@
+{
+    "Coolings": {},
+    "Heatings": {
+        "0": {
+            "Name": "heat_parking",
+            "Source": "Guilwen Meunier",
+            "Description": "Power [kj/hr.m\u00b2]",
+            "Type": "INPUT",
+            "Power": "360",
+            "TdbConsigne": "$INPUT_horexK_heat",
+            "AreaRelPower": "1",
+            "RadFrac": "0",
+            "Humidity": "0.004",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Gains": {
+        "0": {
+            "Name": "gain_parking_light",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype parking. Gains pour les lumi\u00e8res. Fev 26",
+            "GainCategory": "LIGHTS",
+            "GainType": "AREA_RELATED",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexK_lum",
+            "Convective": "5.75",
+            "Radiative": "1.1",
+            "Humidity": "0",
+            "ElecPowerFrac": "1"
+        },
+        "1": {
+            "Name": "gain_parking_people",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype parking. Gains pour les occupants. Fev 26",
+            "GainCategory": "PEOPLE",
+            "GainType": "AREA_RELATED",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexK_occ",
+            "Convective": "0.1",
+            "Radiative": "0.2",
+            "Humidity": "0.0001",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Ventilations": {
+        "0": {
+            "Name": "vent_resDwelling",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype parking. Fev 26",
+            "Mode": "VAIRFLOW",
+            "FlowValue": "{0.55 * $ZONESURFACE}",
+            "FlowInput": "$INPUT_horexK_vent",
+            "FlowSchedule": "",
+            "Tdb": "OUTSIDE",
+            "TdbType": "OUTSIDE",
+            "Humidity": "OUTSIDE",
+            "HumidityType": "OUTSIDE",
+            "RelOrAbs": "rel",
+            "SpecFanPower": "0",
+            "SensHr": "0",
+            "Calcqahu": "1"
+        }
+    },
+    "Infiltrations": {
+        "0": {
+            "Name": "inf_resDwelling",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype parking. Fev 26",
+            "InfType": "CONSTANT",
+            "InfRate": "{0.15 * $ZONERATIOEXT}"
+        }
+    },
+    "Schedules": {
+        "0": {
+            "Name": "horexK_lum",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "1": {
+            "Name": "horexK_occ",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "2": {
+            "Name": "horexK_heat",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "3": {
+            "Name": "horexK_vent",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        }
+    },
+    "Dhw": {
+        "Value": "0.0"
+    },
+    "Name": "Parking",
+    "Decription": "Spacetype parking",
+    "Source": "Guilwen Meunier",
+    "ScheduleSource": "horexK"
+}

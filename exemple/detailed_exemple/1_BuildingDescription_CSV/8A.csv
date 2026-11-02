@@ -1,0 +1,11 @@
+Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
+8A_Main_F0,Main,8A,F0,1,,,1040.0,,,80.0,,,,,,,,,,
+8A_Main_F1,Main,8A,F1,1,,,1040.0,,,80.0,,,,,,,,,,
+8A_Main_F2,Main,8A,F2,1,,,1040.0,,,80.0,,,,,,,,,,
+8A_Main_Ftop,Main,8A,Ftop,1,,,1040.0,,,80.0,,,,,,,,,,
+8A_Hall_F0,Hall,8A,F0,1,,,387.513,,,,,,,,,,,,,
+8A_Side_F2,Side,8A,F2,1,,,609.268,,,45.864,,,,,,,,,,
+8A_Side_F1,Side,8A,F1,1,,,913.902,,,68.797,,,,,,,,,,
+8A_Side_F0,Side,8A,F0,1,,,1218.536,,,91.729,,,,,,,,,,
+8A_Side_Ftop,Side,8A,Ftop,1,,,304.634,,,22.932,,,,,,,,,,
+8A_Main_Fcave,Main,8A,Fcave,1,,,,,2817.781,,,,,,,,,,,
