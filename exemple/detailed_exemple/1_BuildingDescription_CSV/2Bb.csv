@@ -1,5 +1,0 @@
-Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
-2Bb_Tower_F0,Tower,2Bb,F0,1,828.0,,,,,,72.0,,,,,,,,,
-2Bb_Tower_Fstack,Tower,2Bb,Fstack,21,720.0,,,,,,72.0,,,,,,,,,
-2Bb_Tower_Ftop,Tower,2Bb,Ftop,1,720.0,,,,,,72.0,,,,,,,,,
-2Bb_TowerCave_Fcave,TowerCave,2Bb,Fcave,1,,,,,900.0,,,,,,,,,,,

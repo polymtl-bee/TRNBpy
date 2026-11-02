@@ -1,5 +1,0 @@
-Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
-7A_Main_F0,Main,7A,F0,1,,,2560.0,,,752.0,,,,,,,,,,
-7A_Main_Fstack,Main,7A,Fstack,2,,,2560.0,,,752.0,,,,,,,,,,
-7A_Main_Ftop,Main,7A,Ftop,1,,,2560.0,,,752.0,,,,,,,,,,
-7A_Main_Fcave,Main,7A,Fcave,1,,,,,14688.0,,,,,,,,,,,

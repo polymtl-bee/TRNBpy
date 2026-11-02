@@ -1,8 +1,0 @@
-Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
-10A_Small_F0,Small,10A,F0,1,364.067,,,,,,103.787,,,,,,,,,
-10A_Small_Ftop,Small,10A,Ftop,1,364.067,,,,,,103.787,,,,,,,,,
-10A_Small_Fstack,Small,10A,Fstack,6,364.067,,,,,,103.787,,,,,,,,,
-10A_Main_F0,Main,10A,F0,1,618.529,,,,,,149.908,,,,,,,,,
-10A_Main_Fstack,Main,10A,Fstack,13,618.529,,,,,,149.908,,,,,,,,,
-10A_Main_Ftop,Main,10A,Ftop,1,618.529,,,,,,149.908,,,,,,,,,
-10A_Main_Fcave,Main,10A,Fcave,1,,,,,1236.29,,,,,,,,,,,

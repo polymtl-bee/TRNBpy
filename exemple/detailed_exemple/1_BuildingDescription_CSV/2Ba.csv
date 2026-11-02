@@ -1,6 +1,0 @@
-Name,SubBuilding,Building,Floor,Weight,R,C,B,I,P,BC,RC,CB,CC,CG,CT,IA,IE,IB,NbFloor,EndUse
-2Ba_Main_F0,Main,2Ba,F0,1,1800.0,,,,,,200.0,,,,,,,,,
-2Ba_Main_Fstack,Main,2Ba,Fstack,6,1800.0,,,,,,200.0,,,,,,,,,
-2Ba_Main_Bridge,Main,2Ba,Bridge,1,160.0,,,,,,,,,,,,,,,
-2Ba_Main_Ftop,Main,2Ba,Ftop,1,1800.0,,,,,,200.0,,,,,,,,,
-2Ba_MainCave_Fcave,MainCave,2Ba,Fcave,1,,,,,2200.0,,,,,,,,,,,
