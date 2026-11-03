@@ -1,0 +1,270 @@
+{
+    "IA-Main-F0-1": {
+        "Name": "IA-Main-F0-1",
+        "Surface": 600.0,
+        "Extsurface": 1350.0,
+        "Volume": 4500.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_workshop",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_workshop",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_workshop_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype th\u00e9\u00e2tre. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_lum",
+                    "Convective": "29.63",
+                    "Radiative": "5.65",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_workshop_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype th\u00e9\u00e2tre. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_eq",
+                    "Convective": "36.0",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_workshop_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype th\u00e9\u00e2tre. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_occ",
+                    "Convective": "5.0",
+                    "Radiative": "7.6",
+                    "Humidity": "0.0066",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_workshop_IA-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype th\u00e9\u00e2tre. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "1140.0",
+                    "FlowInput": "$INPUT_horexA_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_workshop_IA-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype th\u00e9\u00e2tre. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.045"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexA_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexA_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexA_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexA_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexA_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexA_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "8.6"
+            },
+            "Name": "Atelier",
+            "Decription": "Spacetype Atelier.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexA"
+        },
+        "ScheduleSource": "horexA",
+        "LoadsDhw": "8.6",
+        "Floor": "F0"
+    },
+    "P-Main-Fcave-1": {
+        "Name": "P-Main-Fcave-1",
+        "Surface": 600.0,
+        "Extsurface": 450.0,
+        "Volume": 2700.0,
+        "Spacetype": {
+            "Coolings": {},
+            "Heatings": {
+                "0": {
+                    "Name": "heat_parking",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexK_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_parking_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexK_lum",
+                    "Convective": "5.75",
+                    "Radiative": "1.1",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_parking_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexK_occ",
+                    "Convective": "0.1",
+                    "Radiative": "0.2",
+                    "Humidity": "0.0001",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_resDwelling_P-Main-Fcave-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "330.0",
+                    "FlowInput": "$INPUT_horexK_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_resDwelling_P-Main-Fcave-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.024999999999999998"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexK_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexK_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexK_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexK_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "0.0"
+            },
+            "Name": "Parking",
+            "Decription": "Spacetype parking",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexK"
+        },
+        "ScheduleSource": "horexK",
+        "LoadsDhw": "0.0",
+        "Floor": "Fcave"
+    }
+}

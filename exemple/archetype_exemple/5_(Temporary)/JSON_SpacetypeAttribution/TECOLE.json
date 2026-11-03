@@ -1,0 +1,1380 @@
+{
+    "IE-Main-F0-1": {
+        "Name": "IE-Main-F0-1",
+        "Surface": 360.0,
+        "Extsurface": 125.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.01488095238095238"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "F0"
+    },
+    "IE-Main-F0-2": {
+        "Name": "IE-Main-F0-2",
+        "Surface": 360.0,
+        "Extsurface": 125.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-F0-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-F0-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.01488095238095238"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "F0"
+    },
+    "BC-Main-F0-1": {
+        "Name": "BC-Main-F0-1",
+        "Surface": 80.0,
+        "Extsurface": 14.0,
+        "Volume": 280.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_burCorridor_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_lum",
+                    "Convective": "20.9",
+                    "Radiative": "4.0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_burCorridor_BC-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "44.0",
+                    "FlowInput": "$INPUT_horexA_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "15",
+                    "TdbType": "CONSTANT",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_burCorridor_BC-Main-F0-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.0075"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexA_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexA_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexA_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexA_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "0.0"
+            },
+            "Name": "BureauxCouloir",
+            "Decription": "Spacetype bureaux. Espace couloir.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexA"
+        },
+        "ScheduleSource": "horexA",
+        "LoadsDhw": "0.0",
+        "Floor": "F0"
+    },
+    "P-Main-FcavIE-1": {
+        "Name": "P-Main-FcavIE-1",
+        "Surface": 800.0,
+        "Extsurface": 420.0,
+        "Volume": 2800.0,
+        "Spacetype": {
+            "Coolings": {},
+            "Heatings": {
+                "0": {
+                    "Name": "heat_parking",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexK_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_parking_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexK_lum",
+                    "Convective": "5.75",
+                    "Radiative": "1.1",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_parking_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexK_occ",
+                    "Convective": "0.1",
+                    "Radiative": "0.2",
+                    "Humidity": "0.0001",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_resDwelling_P-Main-FcavIE-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "440.00000000000006",
+                    "FlowInput": "$INPUT_horexK_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_resDwelling_P-Main-FcavIE-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype parking. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.0225"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexK_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexK_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexK_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexK_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "0.0"
+            },
+            "Name": "Parking",
+            "Decription": "Spacetype parking",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexK"
+        },
+        "ScheduleSource": "horexK",
+        "LoadsDhw": "0.0",
+        "Floor": "FcavIE"
+    },
+    "IE-Main-Ftop-1": {
+        "Name": "IE-Main-Ftop-1",
+        "Surface": 360.0,
+        "Extsurface": 485.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-Ftop-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-Ftop-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.05773809523809524"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "Ftop"
+    },
+    "IE-Main-Fstack-2": {
+        "Name": "IE-Main-Fstack-2",
+        "Surface": 360.0,
+        "Extsurface": 125.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-Fstack-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-Fstack-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.01488095238095238"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "Fstack"
+    },
+    "BC-Main-Ftop-1": {
+        "Name": "BC-Main-Ftop-1",
+        "Surface": 80.0,
+        "Extsurface": 94.0,
+        "Volume": 280.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_burCorridor_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_lum",
+                    "Convective": "20.9",
+                    "Radiative": "4.0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_burCorridor_BC-Main-Ftop-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "44.0",
+                    "FlowInput": "$INPUT_horexA_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "15",
+                    "TdbType": "CONSTANT",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_burCorridor_BC-Main-Ftop-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.05035714285714285"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexA_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexA_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexA_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexA_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "0.0"
+            },
+            "Name": "BureauxCouloir",
+            "Decription": "Spacetype bureaux. Espace couloir.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexA"
+        },
+        "ScheduleSource": "horexA",
+        "LoadsDhw": "0.0",
+        "Floor": "Ftop"
+    },
+    "BC-Main-Fstack-1": {
+        "Name": "BC-Main-Fstack-1",
+        "Surface": 80.0,
+        "Extsurface": 14.0,
+        "Volume": 280.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_burCorridor",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexA_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_burCorridor_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexA_lum",
+                    "Convective": "20.9",
+                    "Radiative": "4.0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_burCorridor_BC-Main-Fstack-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "44.0",
+                    "FlowInput": "$INPUT_horexA_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "15",
+                    "TdbType": "CONSTANT",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_burCorridor_BC-Main-Fstack-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype bureaux (couloir). Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.0075"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexA_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexA_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexA_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexA_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "0.0"
+            },
+            "Name": "BureauxCouloir",
+            "Decription": "Spacetype bureaux. Espace couloir.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexA"
+        },
+        "ScheduleSource": "horexA",
+        "LoadsDhw": "0.0",
+        "Floor": "Fstack"
+    },
+    "IE-Main-Fstack-1": {
+        "Name": "IE-Main-Fstack-1",
+        "Surface": 360.0,
+        "Extsurface": 125.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-Fstack-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-Fstack-1",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.01488095238095238"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "Fstack"
+    },
+    "IE-Main-Ftop-2": {
+        "Name": "IE-Main-Ftop-2",
+        "Surface": 360.0,
+        "Extsurface": 485.0,
+        "Volume": 1260.0,
+        "Spacetype": {
+            "Coolings": {
+                "0": {
+                    "Name": "cool_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_cool",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.012",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Heatings": {
+                "0": {
+                    "Name": "heat_univ",
+                    "Source": "Guilwen Meunier",
+                    "Description": "Power [kj/hr.m\u00b2]",
+                    "Type": "INPUT",
+                    "Power": "360",
+                    "TdbConsigne": "$INPUT_horexD_heat",
+                    "AreaRelPower": "1",
+                    "RadFrac": "0",
+                    "Humidity": "0.004",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Gains": {
+                "0": {
+                    "Name": "gain_univ_light",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les lumi\u00e8res. Fev 26",
+                    "GainCategory": "LIGHTS",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_lum",
+                    "Convective": "23.59",
+                    "Radiative": "4.49",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "1": {
+                    "Name": "gain_univ_eq",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les \u00e9quipements. Fev 26",
+                    "GainCategory": "EQUIPMENT",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_eq",
+                    "Convective": "18",
+                    "Radiative": "0",
+                    "Humidity": "0",
+                    "ElecPowerFrac": "1"
+                },
+                "2": {
+                    "Name": "gain_univ_people",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Gains pour les occupants. Fev 26",
+                    "GainCategory": "PEOPLE",
+                    "GainType": "AREA_RELATED",
+                    "GainSchedule": "",
+                    "GainInput": "$INPUT_horexD_occ",
+                    "Convective": "14.2",
+                    "Radiative": "19.6",
+                    "Humidity": "0.0101",
+                    "ElecPowerFrac": "0"
+                }
+            },
+            "Ventilations": {
+                "0": {
+                    "Name": "vent_univ_IE-Main-Ftop-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "Mode": "VAIRFLOW",
+                    "FlowValue": "792.0000000000001",
+                    "FlowInput": "$INPUT_horexD_vent",
+                    "FlowSchedule": "",
+                    "Tdb": "OUTSIDE",
+                    "TdbType": "OUTSIDE",
+                    "Humidity": "OUTSIDE",
+                    "HumidityType": "OUTSIDE",
+                    "RelOrAbs": "rel",
+                    "SpecFanPower": "0",
+                    "SensHr": "0",
+                    "Calcqahu": "1"
+                }
+            },
+            "Infiltrations": {
+                "0": {
+                    "Name": "inf_univ_IE-Main-Ftop-2",
+                    "Source": "Guilwen Meunier",
+                    "Description": "spacetype \u00e9cole/universit\u00e9. Fev 26",
+                    "InfType": "CONSTANT",
+                    "InfRate": "0.05773809523809524"
+                }
+            },
+            "Schedules": {
+                "0": {
+                    "Name": "horexD_cool",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "1": {
+                    "Name": "horexD_eq",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "2": {
+                    "Name": "horexD_heat",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "3": {
+                    "Name": "horexD_occ",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "4": {
+                    "Name": "horexD_lum",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                },
+                "5": {
+                    "Name": "horexD_vent",
+                    "Source": "From CSV file",
+                    "Description": " ",
+                    "SchedType": "INPUT"
+                }
+            },
+            "Dhw": {
+                "Value": "21.6"
+            },
+            "Name": "Ecole",
+            "Decription": "Spacetype \u00e9cole/universit\u00e9. Espace logement.",
+            "Source": "Guilwen Meunier",
+            "ScheduleSource": "horexD"
+        },
+        "ScheduleSource": "horexD",
+        "LoadsDhw": "21.6",
+        "Floor": "Ftop"
+    }
+}

@@ -1,0 +1,106 @@
+{
+    "Coolings": {
+        "0": {
+            "Name": "cool_sourceth",
+            "Source": "Guilwen Meunier",
+            "Description": "Power [kj/hr.m\u00b2]",
+            "Type": "INPUT",
+            "Power": "360",
+            "TdbConsigne": "$INPUT_horexA_cool",
+            "AreaRelPower": "1",
+            "RadFrac": "0",
+            "Humidity": "0.012",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Heatings": {
+        "0": {
+            "Name": "heat_sourceth",
+            "Source": "Guilwen Meunier",
+            "Description": "Power [kj/hr.m\u00b2]",
+            "Type": "INPUT",
+            "Power": "360",
+            "TdbConsigne": "$INPUT_horexA_heat",
+            "AreaRelPower": "1",
+            "RadFrac": "0",
+            "Humidity": "0.004",
+            "ElecPowerFrac": "0"
+        }
+    },
+    "Gains": {
+        "0": {
+            "Name": "gain_sourceth",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype SourceThermique. Gains de la source thermique (consommation des \u00e9quipements). Fev 26",
+            "GainCategory": "EQUIPMENT",
+            "GainType": "ABSOLUTE",
+            "GainSchedule": "",
+            "GainInput": "$INPUT_horexA_lum",
+            "Convective": "3600000",
+            "Radiative": "3600000",
+            "Humidity": "0",
+            "ElecPowerFrac": "1"
+        }
+    },
+    "Ventilations": {
+        "0": {
+            "Name": "vent_sourceth",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype SourceThermique. Fev 26",
+            "Mode": "VAIRFLOW",
+            "FlowValue": "{1.9 * $ZONESURFACE}",
+            "FlowInput": "$INPUT_horexA_vent",
+            "FlowSchedule": "",
+            "Tdb": "OUTSIDE",
+            "TdbType": "OUTSIDE",
+            "Humidity": "OUTSIDE",
+            "HumidityType": "OUTSIDE",
+            "RelOrAbs": "rel",
+            "SpecFanPower": "0",
+            "SensHr": "0",
+            "Calcqahu": "1"
+        }
+    },
+    "Infiltrations": {
+        "0": {
+            "Name": "inf_sourceth",
+            "Source": "Guilwen Meunier",
+            "Description": "spacetype SourceThermique. Fev 26",
+            "InfType": "CONSTANT",
+            "InfRate": "{0.15 * $ZONERATIOEXT}"
+        }
+    },
+    "Schedules": {
+        "0": {
+            "Name": "horexA_heat",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "1": {
+            "Name": "horexA_lum",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "2": {
+            "Name": "horexA_cool",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        },
+        "3": {
+            "Name": "horexA_vent",
+            "Source": "From CSV file",
+            "Description": " ",
+            "SchedType": "INPUT"
+        }
+    },
+    "Dhw": {
+        "Value": "0.0"
+    },
+    "Name": "SourceThermique",
+    "Decription": "Spacetype SourceThermique.",
+    "Source": "Guilwen Meunier",
+    "ScheduleSource": "horexA"
+}

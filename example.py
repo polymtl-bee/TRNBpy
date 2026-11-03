@@ -7,31 +7,6 @@ from src.TRNBpy import *
 
 #  Create site data function (used for detailed approach, to generate surfaces of each spacetype for each building, subbuilding, floor)
 
-# Work in progress automated simulation of deck
-
-def Get_c(scenario, Precision_THN):
-
-    if "detailed" in scenario:
-        Precision_BLD="detailed"
-    elif "archetype" in scenario:
-        Precision_BLD="archetype"
-    else:
-        Precision_BLD="prototype"
-    if ("val" in scenario) or ("sch" in scenario) or ("sto" in scenario) or ("tset" in scenario):
-        Precision_EXP = "stochastic"
-    elif ("var" in scenario):
-        Precision_EXP = "variable"
-    else:
-        Precision_EXP = "determinist"
-    
-    c = ClassConfiguration(scenarioName=scenario,    # Folder name.  Windows my\\path but Linux my/ 
-                        psep="/",
-                       Precision_BLD=Precision_BLD,             # "detailed" - "tailored" - "prototype"
-                       Precision_EXP=Precision_EXP,          # "determinist" - "variable" - "stochastic"
-                       Precision_THN=Precision_THN)   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
-    c._load_keys()
-    return c
-
 def main_1_BuildDCK(c):
     # Step 1: Preparation of spacetype ------------
     logger.info("===============================================")
@@ -167,15 +142,26 @@ def main_4_BuildThermalNetworkDCK(c):
 
 # Step 0 : Config ------------------------------
 
-slist = ["data/RTH_detailed/"]
+slist = ["exemple/archetype_exemple/"]
 for s in slist:
     
     print("====== DO FOR "+s+" ========")
-    c = Get_c(scenario=s, Precision_THN="TopologyReduced")
+    c = ClassConfiguration(scenarioName=scenario,   # Folder name.  Windows my\\path but Linux my/ 
+                       Precision_BLD="detailed",             # "detailed" - "tailored" - "prototype"
+                       Precision_EXP="determinist",          # "determinist" - "variable" - "stochastic"
+                       Precision_THN="TopologySimplified")   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
+    c._load_keys()
 
+    # Generate DCK for buidings
     main_1_BuildDCK(c)
+
+    # (Work in progress automated simulation function calling trnsys)
     #main_2_SimmulateModels(c)
+    
+    # Scale up loads from models to buildings
     #main_3_BuildBuildingLoads(c)
+
+    # Update deck ofo thermal network with pipe sizing
     #main_4_BuildThermalNetworkDCK(c)
 
 
