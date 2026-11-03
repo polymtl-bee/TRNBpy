@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example of use &mdash; Documentation TRNBpy 2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=e8570148"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Code documentation" href="codedoc.html" />
+    <link rel="prev" title="Documentation of TRNBpy Tool" href="documentation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TRNBpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation of TRNBpy Tool</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example of use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-project-data">1. Create project data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-csv-description">1.1 Building CSV description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-structural-b18-files">1.2 Model structural b18 files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spacetype-json-files">1.3 Spacetype json files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-tool">2. Configure tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-configuration-object">3. Create Configuration object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#call-the-functions">4. Call the functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codedoc.html">Code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="licence.html">Licence</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TRNBpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example of use</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-of-use">
+<h1>Example of use<a class="headerlink" href="#example-of-use" title="Lien vers cette rubrique"></a></h1>
+<p>For this example, we assume you just created a new file example.py at the root of the project. Then create the foldes in data/ as shown below. The folder structure should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">/</span>
+    <span class="n">example</span><span class="o">/</span>                         <span class="c1"># &lt;&lt; New folder for file data</span>
+        <span class="mi">1</span><span class="n">_BuildingDescription_CSV</span><span class="o">/</span>      <span class="c1"># Where you store your CSV description of buildings</span>
+        <span class="mi">2</span><span class="n">_StructuralModels_B18</span><span class="o">/</span>         <span class="c1"># Where you store your b18 geometric models (built from Sketchup3D or other)</span>
+        <span class="mi">3</span><span class="n">_Spacetype_JSON</span><span class="o">/</span>               <span class="c1"># Where you store the spacetype in .json format.</span>
+<span class="n">doc</span><span class="o">/</span>
+<span class="n">src</span><span class="o">/</span>
+<span class="n">example</span><span class="o">.</span><span class="n">py</span>   <span class="c1"># &lt;&lt; New file</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENCE</span><span class="o">.</span><span class="n">md</span>
+<span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>We also assume you have installed all dependencies in requirements.txt using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<section id="create-project-data">
+<h2>1. Create project data<a class="headerlink" href="#create-project-data" title="Lien vers cette rubrique"></a></h2>
+<p>First things first, let’s take a look at the data files needed to use TRNBpy:</p>
+<ul class="simple">
+<li><p>Data for building surfaces (.CSV)</p></li>
+<li><p>TRNSYS model files (.B18).</p></li>
+<li><p>Set of occupancy hypothesis for models (.JSON)</p></li>
+</ul>
+</section>
+<section id="building-csv-description">
+<h2>1.1 Building CSV description<a class="headerlink" href="#building-csv-description" title="Lien vers cette rubrique"></a></h2>
+<p>Building CSV files use a format close to the following.</p>
+<ul class="simple">
+<li><p><strong>Name</strong> is an unique ID for each cluster.</p></li>
+<li><p><strong>SubBuilding</strong> is the name of the Subbuilding.</p></li>
+<li><p><strong>Building</strong> is the name of the Building.</p></li>
+<li><p><strong>Floor</strong> is the name of the floor. We use F1 for ground floor. Fs for central floors. Ftop for last floor. F0 for underground floor.</p></li>
+<li><p><strong>Weight</strong> is the time the cluster need to be taken into account. For instance, if a building have 25 floors, with 23 being central floor, we can decide to model only ground floor, top floor and one central floor (because all of them have the same boundaries conditions). Then the weight of the central floor should be 23 (25-1-1).</p></li>
+</ul>
+<p>Then, the following columns represent each of your category of occupation as defined in the configuration file (see below configuration file).</p>
+<ul class="simple">
+<li><p><strong>R</strong> stands for Residential surface.</p></li>
+<li><p><strong>C</strong> stands for Commercial surface.</p></li>
+<li><p><strong>B</strong> stands for Office surface.</p></li>
+<li><p><strong>I</strong> stands for Institutionnal surface.</p></li>
+<li><p><strong>P</strong> stands for Parking surface.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>SubBuilding</p></th>
+<th class="head"><p>Building</p></th>
+<th class="head"><p>Floor</p></th>
+<th class="head"><p>Weight</p></th>
+<th class="head"><p>R</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>O</p></th>
+<th class="head"><p>I</p></th>
+<th class="head"><p>P</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>B_SB1_F1</p></td>
+<td><p>SB1</p></td>
+<td><p>B</p></td>
+<td><p>F1</p></td>
+<td><p>1</p></td>
+<td><p>168.0</p></td>
+<td><p>192.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>B_SB1_Fs</p></td>
+<td><p>SB1</p></td>
+<td><p>B</p></td>
+<td><p>Fs</p></td>
+<td><p>7</p></td>
+<td><p>360.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>B_SB1_Ftop</p></td>
+<td><p>SB1</p></td>
+<td><p>B</p></td>
+<td><p>Ftop</p></td>
+<td><p>1</p></td>
+<td><p>360.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>B_SB2_F1</p></td>
+<td><p>SB2</p></td>
+<td><p>B</p></td>
+<td><p>F1</p></td>
+<td><p>1</p></td>
+<td><p>630.0</p></td>
+<td><p>196.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>B_SB2_Fs</p></td>
+<td><p>SB2</p></td>
+<td><p>B</p></td>
+<td><p>Fs</p></td>
+<td><p>5</p></td>
+<td><p>826.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>B_SB2_Ftop</p></td>
+<td><p>SB2</p></td>
+<td><p>B</p></td>
+<td><p>Ftop</p></td>
+<td><p>1</p></td>
+<td><p>826.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>B_SB3_F1</p></td>
+<td><p>SB3</p></td>
+<td><p>B</p></td>
+<td><p>F1</p></td>
+<td><p>1</p></td>
+<td><p>360.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>B_SB3_Fs</p></td>
+<td><p>SB3</p></td>
+<td><p>B</p></td>
+<td><p>Fs</p></td>
+<td><p>9</p></td>
+<td><p>826.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>B_SB3_Ftop</p></td>
+<td><p>SB3</p></td>
+<td><p>B</p></td>
+<td><p>Ftop</p></td>
+<td><p>1</p></td>
+<td><p>826.0</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>B_SB3_F0</p></td>
+<td><p>SB3</p></td>
+<td><p>B</p></td>
+<td><p>F0</p></td>
+<td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>826.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>If you have detailed models of your buildings, you can also use the prebuilt function of TRNBpy for genereting CSV buildings files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 0.1 - Make buildings csv files&quot;</span><span class="p">)</span>
+<span class="n">sitedatabuilder</span><span class="o">.</span><span class="n">_make_Buildings</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, check those files, and edit the weight of each cluster (« Building-Subbuilding-floor ») if you have modelled your detailed building with
+central floor simplification (1 centrale floor instead of modelling all of them).</p>
+</section>
+<section id="model-structural-b18-files">
+<h2>1.2 Model structural b18 files<a class="headerlink" href="#model-structural-b18-files" title="Lien vers cette rubrique"></a></h2>
+<p>You can use Sketchup and its TRNSYS3D extension to build models for your project.</p>
+<p>Given the number of modeled thermal zones, a clear naming convention is necessary. This convention is also chosen to characterize the space in question using relevant data (building, floor, etc.). The zone naming convention follows this format:</p>
+<p>&gt; R-SubBuilding-Floor-id</p>
+<p>Where:</p>
+<ul class="simple">
+<li><p>R: the occupancy type category (R for residential, C for commercial, I for institutional, B for Office (Bureau in french), P for Parking).</p></li>
+<li><p>SubBuilding: the name of the subbuilding to which the zone belongs.</p></li>
+<li><p>Fi: the floor identifier (for <em>Floor i</em>). For example: Fcave for basements, Ftop for the top floor, Fstack for the middle floors, F0 through FX for the rest.</p></li>
+<li><p>id: a unique zone identifier for that floor of the subbuilding.</p></li>
+</ul>
+<p>Floor definition should match the building CSV files.</p>
+</section>
+<section id="spacetype-json-files">
+<h2>1.3 Spacetype json files<a class="headerlink" href="#spacetype-json-files" title="Lien vers cette rubrique"></a></h2>
+<p>Here is an example of a spacetype json file. Note that all entry are string, even when they represent float or integers.
+A few things:</p>
+<p>First, TRNBUILD use three type of data (« CONSTANT », « INPUT » and « SCHEDULE ») so that variable can be defined as constant, as an input to the b18 model (so taken from TRNSYS deck) or as an internal variable following a schedule defined in schedule objects.
+For TRNBpy, we use those three type using the following recommandation. In conf.py, prefix are defined for input type and schedule type. If those prefix are seen in the value expression, then TRNBpy know what to do, if no prefix is found, TRNBpy assume the value is constant.
+For instance, i define in my spacetype the value of heating setpoint as « $INPUT_HeatingSetpoint1 ». Here I also write the type « INPUT » in my heating definition. Because of prefix « $INPUT_ », TRNBpy will know that it should look for an entry named « HeatingSetpoint1 », and use its value for heating setpoint.</p>
+<p>Second, sometimes, some variables are floor-area dependant, or volume dependzant or whatever. To do so, TRNBpy can also do some math.  TRNBpy can detect and modifiy item values with real values of $ZONEVOLUME, $ZONESURFACE, $ZONEEXTSURFACE or $ZONERATIOEXT.
+Assuming the variable is in a f(x)= A*x equation, it will return item with f(x) instead of A*x.
+So for instance, I write my infiltration as follow: { $ZONEEXTSURFACE * 0.07 }. {} define where TRNBpy should look for equation A*x. A is zone dependant item, x is a constant value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Coolings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>                <span class="c1"># Name of cooling.</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span>            <span class="c1"># Sources of hypothesis for this cooling.</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>   <span class="c1"># Description of cooling.</span>
+            <span class="s2">&quot;Type&quot;</span><span class="p">:</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span>                 <span class="c1"># &quot;INPUT&quot;, &quot;SCHEDULE&quot; or &quot;CONSTANT&quot;. Define type of TdbConsigne.</span>
+            <span class="s2">&quot;Power&quot;</span><span class="p">:</span><span class="s2">&quot;Power&quot;</span><span class="p">,</span>               <span class="c1"># Nominal sensible power of cooling per floor area (kJ/hr/m2)</span>
+            <span class="s2">&quot;TdbConsigne&quot;</span><span class="p">:</span><span class="s2">&quot;TdbConsigne&quot;</span><span class="p">,</span>   <span class="c1"># Temperature setpoint. Could be a constant value, an input (using &quot;$INPUT_&quot; prefix before input name) or an shcedule (using &quot;$SCHEDULE_&quot; prefix before input name)</span>
+            <span class="s2">&quot;AreaRelPower&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>            <span class="c1"># 1 if nominal power is per floor area. Else 0. Default is 1.</span>
+            <span class="s2">&quot;RadFrac&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>                 <span class="c1"># Radiative fraction of sensible power. Float in [0, 1]. Default is 0.</span>
+            <span class="s2">&quot;Humidity&quot;</span><span class="p">:</span><span class="s2">&quot;Humidity&quot;</span><span class="p">,</span>         <span class="c1"># Absolute humidity gains in kg/kg (String)</span>
+            <span class="s2">&quot;ElecPowerFrac&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span>            <span class="c1"># Fraction of actual sensible power from electricity. Float in [0, 1]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Heatings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>                <span class="c1"># Name of heating.</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span>            <span class="c1"># Sources of hypothesis for this heating.</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>   <span class="c1"># Description of heating.</span>
+            <span class="s2">&quot;Type&quot;</span><span class="p">:</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span>                 <span class="c1"># &quot;INPUT&quot;, &quot;SCHEDULE&quot; or &quot;CONSTANT&quot;. Define type of TdbConsigne.</span>
+            <span class="s2">&quot;Power&quot;</span><span class="p">:</span><span class="s2">&quot;Power&quot;</span><span class="p">,</span>               <span class="c1"># Nominal sensible power of heating per floor area (kJ/hr/m2)</span>
+            <span class="s2">&quot;TdbConsigne&quot;</span><span class="p">:</span><span class="s2">&quot;TdbConsigne&quot;</span><span class="p">,</span>   <span class="c1"># Temperature setpoint. Could be a constant value, an input (using &quot;$INPUT_&quot; prefix before input name) or an shcedule (using &quot;$SCHEDULE_&quot; prefix before input name)</span>
+            <span class="s2">&quot;AreaRelPower&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>            <span class="c1"># 1 if nominal power is per floor area. Else 0. Default is 1.</span>
+            <span class="s2">&quot;RadFrac&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>                 <span class="c1"># Radiative fraction of sensible power. Float in [0, 1]. Default is 0.</span>
+            <span class="s2">&quot;Humidity&quot;</span><span class="p">:</span><span class="s2">&quot;Humidity&quot;</span><span class="p">,</span>         <span class="c1"># Absolute humidity gains in kg/kg (String)</span>
+            <span class="s2">&quot;ElecPowerFrac&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span>            <span class="c1"># Fraction of actual sensible power from electricity. Float in [0, 1]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Gains&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>                   <span class="c1"># Name of gain.</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span>               <span class="c1"># Sources of hypothesis for this gain.</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>      <span class="c1"># Description of gain.</span>
+            <span class="s2">&quot;GainCategory&quot;</span><span class="p">:</span><span class="s2">&quot;GainCategory&quot;</span><span class="p">,</span>    <span class="c1"># &quot;LIGHTS&quot;, &quot;EQUIPMENT&quot;, &quot;PEOPLE&quot;. TRNSYS gain category.</span>
+            <span class="s2">&quot;GainType&quot;</span><span class="p">:</span><span class="s2">&quot;GainType&quot;</span><span class="p">,</span>            <span class="c1"># &quot;AREA_RELATED&quot; or &quot;ABSOLUTE&quot;. Default is &quot;AREA_RELATED&quot;.</span>
+            <span class="s2">&quot;GainSchedule&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>                <span class="c1"># Name of schedule if used. Using prefix &quot;$SCHEDULE_&quot;.</span>
+            <span class="s2">&quot;GainInput&quot;</span><span class="p">:</span> <span class="s2">&quot;$INPUT_NameInput&quot;</span><span class="p">,</span>  <span class="c1"># Name of inpu if used. Using prefix &quot;$INPUT_&quot;.</span>
+            <span class="s2">&quot;Convective&quot;</span><span class="p">:</span><span class="s2">&quot;Convective&quot;</span><span class="p">,</span>        <span class="c1"># Value of convective gain in kJ/hr.</span>
+            <span class="s2">&quot;Radiative&quot;</span><span class="p">:</span><span class="s2">&quot;Radiative&quot;</span><span class="p">,</span>          <span class="c1"># Value of radiative gain in kJ/hr.</span>
+            <span class="s2">&quot;Humidity&quot;</span><span class="p">:</span><span class="s2">&quot;Humidity&quot;</span><span class="p">,</span>            <span class="c1"># Value of humidity gain in kJ/hr.</span>
+            <span class="s2">&quot;ElecPowerFrac&quot;</span><span class="p">:</span><span class="s2">&quot;ElecPowerFrac&quot;</span>   <span class="c1"># Fraction of actual sensible gain from electricity. 0 for PEOPLE, 1 for LIGHTS and EQUIPMENT type.</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+
+
+    <span class="s2">&quot;Infiltrations&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>              <span class="c1"># Name of infiltration.</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span>          <span class="c1"># Sources of hypothesis for this infiltration.</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span> <span class="c1"># Description of infiltration.</span>
+            <span class="s2">&quot;InfType&quot;</span><span class="p">:</span><span class="s2">&quot;InfType&quot;</span><span class="p">,</span>         <span class="c1"># &quot;CONSTANT&quot;, &quot;INPUT&quot;, &quot;SCHEDULE&quot;. Type of InfRate entry.</span>
+            <span class="s2">&quot;InfRate&quot;</span><span class="p">:</span><span class="s2">&quot;InfRate&quot;</span>          <span class="c1"># Value of infiltration in air replacement per hour (1/hr).</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Schedules&quot;</span><span class="p">:{</span>
+        <span class="c1"># Should be left empty. Will be automatically filled with schedule definition.</span>
+        <span class="c1"># Make sure schedule file and schedule found in spacetype are matching.</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Ventilations&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span>                  <span class="c1"># Name of ventilation.</span>
+            <span class="s2">&quot;Source&quot;</span><span class="p">:</span> <span class="s2">&quot;Source&quot;</span><span class="p">,</span>              <span class="c1"># Sources of hypothesis for this ventilation.</span>
+            <span class="s2">&quot;Description&quot;</span><span class="p">:</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>     <span class="c1"># Description of ventilation.</span>
+            <span class="s2">&quot;Mode&quot;</span><span class="p">:</span><span class="s2">&quot;Mode&quot;</span><span class="p">,</span>                   <span class="c1"># &quot;AIRCHANGE&quot; for air change rate. &quot;AIRFLOW&quot; for mass flow rate.&quot;AIRFLOWSPEC&quot; for mass flow rate related to reference floor area. &quot;VAIRFLOW&quot; for volume flow rate. &quot;VAIRFLOWSPEC&quot; for volume flow rate related to reference floor area. Default is &quot;VAIRFLOW&quot;</span>
+            <span class="s2">&quot;FlowValue&quot;</span><span class="p">:</span> <span class="s2">&quot;FlowValue&quot;</span><span class="p">,</span>        <span class="c1"># Nominal value of flow of ventilation. Unit depends on Mode. Default is a zone dependant esuation { $ZONESURFACE * ValuePerM2 }.</span>
+            <span class="s2">&quot;FlowInput&quot;</span><span class="p">:</span> <span class="s2">&quot;FlowInput&quot;</span><span class="p">,</span>        <span class="c1"># Empty or input name. Multiplying factor from an input entry. Using input prefix.</span>
+            <span class="s2">&quot;FlowSchedule&quot;</span><span class="p">:</span> <span class="s2">&quot;FlowSchedule&quot;</span><span class="p">,</span>  <span class="c1"># Empty or schedule name. Multiplying factor from a schedule object. Using schedule prefix.</span>
+            <span class="s2">&quot;Tdb&quot;</span><span class="p">:</span><span class="s2">&quot;OUTSIDE&quot;</span><span class="p">,</span>            <span class="c1"># Temperature of airflow. Can be user defined value or OUTSIDE.</span>
+            <span class="s2">&quot;TdbType&quot;</span><span class="p">:</span><span class="s2">&quot;OUTSIDE&quot;</span><span class="p">,</span>        <span class="c1"># &quot;CONSTANT&quot;, &quot;INPUT&quot;, &quot;SCHEDULE&quot;  or &quot;OUTSIDE&quot;. Type of Tdb entry.</span>
+            <span class="s2">&quot;Humidity&quot;</span><span class="p">:</span><span class="s2">&quot;OUTSIDE&quot;</span><span class="p">,</span>       <span class="c1"># (Relative or absolute) Humidity of airflow. Can be user defined value or OUTSIDE.</span>
+            <span class="s2">&quot;HumidityType&quot;</span><span class="p">:</span><span class="s2">&quot;OUTSIDE&quot;</span><span class="p">,</span>   <span class="c1"># &quot;CONSTANT&quot;, &quot;INPUT&quot;, &quot;SCHEDULE&quot; or &quot;OUTSIDE&quot;. Type of Humidity entry.</span>
+            <span class="s2">&quot;RelOrAbs&quot;</span><span class="p">:</span><span class="s2">&quot;rel&quot;</span><span class="p">,</span>           <span class="c1"># &quot;rel&quot; or &quot;abs&quot;. Default is &quot;rel&quot; for relative. Relative or Absolute definition for Humidity.</span>
+            <span class="s2">&quot;SpecFanPower&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>         <span class="c1"># Default is 0.</span>
+            <span class="s2">&quot;SensHr&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>               <span class="c1"># Default is 0.</span>
+            <span class="s2">&quot;Calcqahu&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>              <span class="c1"># Default is 1.</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-tool">
+<h2>2. Configure tool<a class="headerlink" href="#configure-tool" title="Lien vers cette rubrique"></a></h2>
+<p>Now that we should have all the files, it’s time to configure how we want the tool to work. Go to the config.py file.</p>
+<ol class="arabic simple">
+<li><p>Check the paths. Make sure it fits your project.</p></li>
+<li><p>Check the Identification key variables, make sure it fits your project.</p></li>
+<li><p>Check the InputFamily attribute. Update it with your schedules input family (for instance, all schedules used for restaurant should use the same start name: Resto_ventilation, Resto_occupant…)</p></li>
+<li><p>Check the DictSpacetype attribute. Update it with your spacetype and their probability. For instance, if you have an entry in DictSpacetype that is « I »:{« Workshop »:0.1, « School »:0.5, « Library »:0.4}, then each zone starting with « I » (« I as their spacetype category identifier ») will have 10% probability to be a orkshop, 50% probability to be a school and 40% for a library.</p></li>
+</ol>
+</section>
+<section id="create-configuration-object">
+<h2>3. Create Configuration object<a class="headerlink" href="#create-configuration-object" title="Lien vers cette rubrique"></a></h2>
+<p>Now we can start manipulating the <code class="docutils literal notranslate"><span class="pre">example.py</span></code> file. First of all, let’s import TRNBpy to our new project.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># import TRNBpy</span>
+<span class="kn">from</span> <span class="nn">src.TRNBby</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Now you can define:</p>
+<ul class="simple">
+<li><p>The precision you want for model geometry (Precision_BLD) depending on what you have stored in 2_StructuralModels_B18 folder.</p></li>
+<li><p>The precision for occupancy. « Determinist », « Variable » (Multiple choice for residential areas), « Stochastic » (variable and use of noise builder code for more stochasticity).</p></li>
+<li><p>The precision of thermal network model. By default, choose « TopologySimplified ». This precision is used only if you go to the last step for generation of thermal network deck file.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Precision_BLD</span> <span class="o">=</span> <span class="s2">&quot;Detailed&quot;</span>
+<span class="n">Precision_EXP</span> <span class="o">=</span> <span class="s2">&quot;Determinist&quot;</span>
+<span class="n">Precision_THN</span> <span class="o">=</span> <span class="s2">&quot;TopologySimplified&quot;</span>
+</pre></div>
+</div>
+<p>Now that you’ve defined your choice of precision for the three dimensions, just create a ClassConfiguration object to initiate all parameters.
+Make sure your os can read the path defined in ClassConfiguration object. Change c.psep to match your os path definition.
+Finally, call the ClassConfiguration method <code class="docutils literal notranslate"><span class="pre">_load_keys()</span></code> so that template JSON strutcure is read and its keys copied.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">ClassConfiguration</span><span class="p">(</span><span class="n">scenarioName</span><span class="o">=</span><span class="n">scenario</span><span class="p">,</span>         <span class="c1"># Folder name (Windows my\\path but Linux my/path)</span>
+                       <span class="n">psep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span>                    <span class="c1"># Must be &quot;\\&quot; on Windows and &quot;/&quot; on linux.</span>
+                       <span class="n">Precision_BLD</span><span class="o">=</span><span class="n">Precision_BLD</span><span class="p">,</span>   <span class="c1"># &quot;detailed&quot; - &quot;tailored&quot; - &quot;prototype&quot;</span>
+                       <span class="n">Precision_EXP</span><span class="o">=</span><span class="n">Precision_EXP</span><span class="p">,</span>   <span class="c1"># &quot;determinist&quot; - &quot;variable&quot; - &quot;stochastic&quot;</span>
+                       <span class="n">Precision_THN</span><span class="o">=</span><span class="n">Precision_THN</span><span class="p">)</span>   <span class="c1"># &quot;TopologyDetailed&quot; - &quot;TopologyReduced&quot; - &quot;TopologySimplified&quot;</span>
+<span class="n">c</span><span class="o">.</span><span class="n">_load_keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="call-the-functions">
+<h2>4. Call the functions<a class="headerlink" href="#call-the-functions" title="Lien vers cette rubrique"></a></h2>
+<p>Now, copy paste the following lines to start the different steps necessary for generating deck files for all models.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 2 - Generate JSON Building file&quot;</span><span class="p">)</span>
+<span class="n">jsonbuilder</span><span class="o">.</span><span class="n">_BuildJSONFile</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 3 - Noise generation: For non-deterministic approaches, add noise &amp; variability to some values&quot;</span><span class="p">)</span>
+<span class="n">noisebuilder</span><span class="o">.</span><span class="n">noise</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 4.1 - Convert JSON Building file to B18&quot;</span><span class="p">)</span>
+<span class="n">convert</span><span class="o">.</span><span class="n">convert_FromJSON_ToB18</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 4.2 - Deck generation&quot;</span><span class="p">)</span>
+<span class="n">deckbuilder</span><span class="o">.</span><span class="n">generate_AllDeckForSimulations</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As automatic simulation is not yet supported, you should manually run all deck simulation before proceding to the next step. When it’s done, do step 6 and check debug.log for warning or critical error to see if you have not forgotten to simulate a deck.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 6 - Load builder: Start scaling from model to building loads&quot;</span><span class="p">)</span>
+<span class="n">loadbuilder</span><span class="o">.</span><span class="n">Scaling</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here you go ! You now have built the loads for all of your buildings !
+If you want to go further and simulate a thermal network, you should check PipingTool tool before proceding to the next step.</p>
+<p>For now, let’s assume you are coming back from Piping tool with the following files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="o">/</span>
+    <span class="n">cluster1</span><span class="o">.</span><span class="n">csv</span>
+    <span class="n">cluster2</span><span class="o">.</span><span class="n">csv</span>
+    <span class="o">...</span>
+    <span class="n">clusterN</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">totalloads</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>Then, copy all those files to <code class="docutils literal notranslate"><span class="pre">data/6_RTh/YourPrecisionOfTHN/</span></code> (of course, replace YourPrecisionOfTHN by your precision of THN).
+Then, run the following lines to generate an re-sized THN adapted to your pipes and loads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Step 8 - THN Builder: Update THN deck file with equipment and pipe sizing.&quot;</span><span class="p">)</span>
+<span class="n">thnbuilder</span><span class="o">.</span><span class="n">update_RTh</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="documentation.html" class="btn btn-neutral float-left" title="Documentation of TRNBpy Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="codedoc.html" class="btn btn-neutral float-right" title="Code documentation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, MEUNIER Guilwen.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
