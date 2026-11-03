@@ -395,7 +395,7 @@ def _get_scheduleList_FromSpacetype(spacetype_dict, c):
     list_of_schedule_input = list(set(list_of_schedule_input))
     return list_of_schedule_input
 
-def _generate_InputSchedule(c, input_schedule_family = ["horexA", "horexB", "horexC", "horexG", "horexD", "horexK"], input_schedule_subfamily = ["occ", "lum", "eq", "dhw", "cool", "heat", "vent"],     input_schedule_daytype = ["WD", "Sat", "Sun"]):
+def _generate_InputSchedule(c, input_schedule_subfamily = ["occ", "lum", "eq", "dhw", "cool", "heat", "vent"],     input_schedule_daytype = ["WD", "Sat", "Sun"]):
     """
     This function will read the input schedule file (detected at c.path_ScheduleInput).
     Then it will create an annual schedule using  _schedules_generator() function and daily schedules found in inpout schedule file.
@@ -410,6 +410,18 @@ def _generate_InputSchedule(c, input_schedule_family = ["horexA", "horexB", "hor
 
 
     """
+
+    ListOf_SpaceType_Filenames = (x for x in next(os.walk(c.path_SpacetypeJSON_raw), (None, None, []))[2] if ".json" in x)  # [] if no file
+    ListOf_SpaceType_Dict = []
+    input_schedule_family = []
+
+    # for each spacetype file (.json) ==========================
+    for file in ListOf_SpaceType_Filenames:            
+        # Read current spacetype
+        with open(c.path_SpacetypeJSON_raw + file) as file:
+            spacetype_dict = json.load(file)
+            input_schedule_family.append(spacetype_dict["ScheduleSource"])
+
     # Initialize dataframe of input schedule
     sched_input = pd.DataFrame({"TIME":list(range(0, 8760))})
 
@@ -598,7 +610,7 @@ def _loadAllSchedules_InAllSpacetypes(c):
         except:
             logger.info(">> No data detected for input schedules.")
         else:
-            _generate_InputSchedule(c=c, input_schedule_family=c.InputFamily)  # If no 
+            _generate_InputSchedule(c=c)  # If no 
             sched_input = pd.read_csv(c.path_SpacetypeJSON_updated+"ScheduleInput.csv")
             flag_horexinput = True
     else:

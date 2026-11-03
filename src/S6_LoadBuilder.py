@@ -592,11 +592,11 @@ def scaling_archetype(c):
         # ----------------------------------------------------------------------------------------
         # 1.1 Load files -------------------------------------------------------------------------
         # ----------------------------------------------------------------------------------------
-        Tailored_push = 0
-        TailoredBuilding = "default"
+        archetype_push = 0
+        archetypeBuilding = "default"
 
         # 1/ Get booleans for surface categories
-        if Tailored_push == 0:
+        if archetype_push == 0:
             try:    is_res = (sum(Building_SurfaceDetails["R"]) > 0)
             except: is_res = False
             try:    is_com = (sum(Building_SurfaceDetails["C"]) > 0)
@@ -617,46 +617,46 @@ def scaling_archetype(c):
             except: is_lib = False
             # Mixt building .
             is_mix = (int(is_res) + int(is_com) + int(is_bur) + int(is_the) + int(is_sch) + int(is_gym) + int(is_wor) + int(is_lib))
-        # 2/ Deciding which tailored model to use based on building used spacetype
+        # 2/ Deciding which archetype model to use based on building used spacetype
         if is_mix == 1:
-            Tailored_push += 1
-            if is_sch: TailoredBuilding = "TECOLE"
-            if is_gym: TailoredBuilding = "TGYM"
-            if is_bur: TailoredBuilding = "TBUREAUX"
-            if is_wor: TailoredBuilding = "TATELIER"
-            if is_res: TailoredBuilding = "TRESID"
-            if is_the: TailoredBuilding = "TTHEATRE"
-            if is_lib: TailoredBuilding = "TLIBRARY"
+            archetype_push += 1
+            if is_sch: archetypeBuilding = "TECOLE"
+            if is_gym: archetypeBuilding = "TGYM"
+            if is_bur: archetypeBuilding = "TBUREAUX"
+            if is_wor: archetypeBuilding = "TATELIER"
+            if is_res: archetypeBuilding = "TRESID"
+            if is_the: archetypeBuilding = "TTHEATRE"
+            if is_lib: archetypeBuilding = "TLIBRARY"
             if is_com: pass
         else: 
             if is_res and is_com and is_the and not is_gym:
-                TailoredBuilding = "TMIXT_CB_CV_CT"
-                Tailored_push += 1
+                archetypeBuilding = "TMIXT_CB_CV_CT"
+                archetype_push += 1
             elif is_res and is_com and is_gym and not is_the:
-                TailoredBuilding = "TMIXT_CB_CV_CG"
-                Tailored_push += 1
+                archetypeBuilding = "TMIXT_CB_CV_CG"
+                archetype_push += 1
             elif is_res and is_com and not is_gym and not is_the:
-                TailoredBuilding = "TMIXT_CB_CV"
-                Tailored_push += 1
+                archetypeBuilding = "TMIXT_CB_CV"
+                archetype_push += 1
             elif is_res and is_com and is_gym and is_the:
-                TailoredBuilding = "TMIXT_CB_CV_CG_CT"
-                Tailored_push += 1
+                archetypeBuilding = "TMIXT_CB_CV_CG_CT"
+                archetype_push += 1
             elif (is_com or is_lib) and is_sch:
-                TailoredBuilding = "TINST"
-                Tailored_push += 1
+                archetypeBuilding = "TINST"
+                archetype_push += 1
             else:
                 pass
 
-        # 3/ Load zoneAttr file of used tailored model
+        # 3/ Load zoneAttr file of used archetype model
         # Raise error
-        if Tailored_push == 0:
-            logger.critical("No tailored building seems to be compatible for: "+current_building + "  /  " + TailoredBuilding)
-        if Tailored_push > 1:
-            logger.critical("Trying to push several tailored building on: "+current_building)
+        if archetype_push == 0:
+            logger.critical("No archetype building seems to be compatible for: "+current_building + "  /  " + archetypeBuilding)
+        if archetype_push > 1:
+            logger.critical("Trying to push several archetype building on: "+current_building)
         
         # Chose Model
-        logger.info(">> Choosing "+ TailoredBuilding+" for " + current_building)
-        chosen_model  = TailoredBuilding
+        logger.info(">> Choosing "+ archetypeBuilding+" for " + current_building)
+        chosen_model  = archetypeBuilding
         
         # Get Model data
         Model_Loads = DictOf_Model_Loads[chosen_model]

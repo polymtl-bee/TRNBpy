@@ -146,8 +146,8 @@ slist = ["exemple/archetype_exemple/"]
 for s in slist:
     
     print("====== DO FOR "+s+" ========")
-    c = ClassConfiguration(scenarioName=scenario,   # Folder name.  Windows my\\path but Linux my/ 
-                       Precision_BLD="detailed",             # "detailed" - "tailored" - "prototype"
+    c = ClassConfiguration(scenarioName=s,   # Folder name.  Windows my\\path but Linux my/ 
+                       Precision_BLD="archetype",             # "detailed" - "archetype" - "prototype"
                        Precision_EXP="determinist",          # "determinist" - "variable" - "stochastic"
                        Precision_THN="TopologySimplified")   # "TopologyDetailed" - "TopologyReduced" - "TopologySimplified" 
     c._load_keys()

@@ -47,7 +47,7 @@ class ClassConfiguration:
         keys (dict): a dictionary of key equivalence between path_JSONkeyEq and building JSON definition. This is used to navigate in JSON data between spacetype JSON data and building JSON data.
     """
 
-    def __init__(self, scenarioName, psep, Precision_BLD, Precision_EXP, Precision_THN):
+    def __init__(self, scenarioName, Precision_BLD, Precision_EXP, Precision_THN):
         
         self.psep = "/"
         
